@@ -8,9 +8,9 @@ which choice is ours.
 """
 import pytest
 
-from readlens.lang import pack
-from readlens.metrics.formulas import compute, count
-from readlens.text import sentences
+from readability_audit.lang import pack
+from readability_audit.metrics.formulas import compute, count
+from readability_audit.text import sentences
 
 textstat = pytest.importorskip("textstat")
 

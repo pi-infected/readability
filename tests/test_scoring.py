@@ -1,6 +1,6 @@
 import pytest
 
-from readlens.scoring import band_score, grade_of
+from readability_audit.scoring import band_score, grade_of
 
 
 def test_band_score_inside_ideal():

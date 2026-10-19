@@ -1,7 +1,7 @@
 import pytest
 
-from readlens.lang import detect, pack
-from readlens.text import sentences, syllables, words
+from readability_audit.lang import detect, pack
+from readability_audit.text import sentences, syllables, words
 
 EN, FR = pack("en"), pack("fr")
 

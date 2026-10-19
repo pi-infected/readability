@@ -3,8 +3,8 @@ from pathlib import Path
 
 import pytest
 
-from readlens.cli import main
-from readlens.select import METRICS, Selection, SelectionError
+from readability_audit.cli import main
+from readability_audit.select import METRICS, Selection, SelectionError
 
 SAMPLE = Path(__file__).parent / "fixtures" / "sample.html"
 
@@ -57,12 +57,12 @@ def test_metrics_command_json(capsys):
 
 def test_catalog_matches_scoring():
     import re
-    src = (Path(__file__).parents[1] / "src/readlens/scoring.py").read_text()
+    src = (Path(__file__).parents[1] / "src/readability_audit/scoring.py").read_text()
     assert set(re.findall(r'_m\("([a-z_]+)"', src)) == set(METRICS)
 
 
 def test_diff_ignores_pillars_one_run_did_not_measure():
-    from readlens.compare import diff
+    from readability_audit.compare import diff
 
     def run(pillars, findings, sel):
         return {"summary": {"score": 80, "pillars": pillars}, "options": {"selection": sel},

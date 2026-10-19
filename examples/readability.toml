@@ -1,0 +1,30 @@
+# Project targets for readability. Anything not listed keeps the built-in band.
+# readability audit https://example.com --config examples/readability.toml
+
+# metrics we do not want to be judged on at all (top-level key: TOML puts any key
+# written after a [table] header inside that table)
+disable = ["meta_description", "title_length"]
+
+# what to measure, same selectors as --only / --skip (see `readability metrics`)
+# only = ["comfort", "access"]
+skip = ["seo"]
+
+[bands.measure]          # our column is deliberately narrow
+ideal = [45, 72]
+tolerable = [35, 88]
+
+[bands.font_size]        # design system: 17px body
+ideal = [17, 21]
+tolerable = [15, 24]
+
+[bands.passive]          # technical writing, we tolerate more
+ideal = [0.0, 0.15]
+tolerable = [0.0, 0.30]
+
+[weights]
+contrast = 2.5           # accessibility is the thing we care most about
+hedging = 0.3
+
+[pillar_weights]
+comfort = 0.35
+clarity = 0.25

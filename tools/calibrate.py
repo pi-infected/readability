@@ -20,10 +20,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
-from readlens.analysis import analyse_page                      # noqa: E402
-from readlens.fetch import Cache, Fetcher                       # noqa: E402
-from readlens.render import Renderer                            # noqa: E402
-from readlens.scoring import band_score                         # noqa: E402
+from readability_audit.analysis import analyse_page                      # noqa: E402
+from readability_audit.fetch import Cache, Fetcher                       # noqa: E402
+from readability_audit.render import Renderer                            # noqa: E402
+from readability_audit.scoring import band_score                         # noqa: E402
 
 # One page per site. Chosen because each is either a typography authority, a public
 # service written under a plain-language mandate, or a publication whose reading
@@ -46,7 +46,7 @@ REFERENCE = [
 
 
 def collect(urls, *, concurrency=4, audience="general") -> list[dict]:
-    fetcher = Fetcher(cache=Cache(Path(".readlens-cache")), delay=0.6)
+    fetcher = Fetcher(cache=Cache(Path(".readability-cache")), delay=0.6)
     pages, rows = [], []
     try:
         for name, url in urls:

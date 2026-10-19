@@ -3,8 +3,8 @@ from pathlib import Path
 
 import pytest
 
-from readlens.analysis import analyse_page
-from readlens.fetch import Page
+from readability_audit.analysis import analyse_page
+from readability_audit.fetch import Page
 
 FIXTURE = Path(__file__).parent / "fixtures" / "sample.html"
 
@@ -33,7 +33,7 @@ def test_footer_is_not_counted_as_content():
 
 
 def test_serialisation_is_json_safe():
-    from readlens.report.serialize import page_to_dict
+    from readability_audit.report.serialize import page_to_dict
     d = page_to_dict(analyse_page(_page()))
     json.dumps(d)                     # must not raise
     assert d["score"] is not None
@@ -41,7 +41,7 @@ def test_serialisation_is_json_safe():
 
 
 def test_audience_profiles_change_targets():
-    from readlens.scoring import build_metrics
+    from readability_audit.scoring import build_metrics
     pa = analyse_page(_page())
     gen = {m.key: m.ideal for m in build_metrics(pa, "general")}
     kid = {m.key: m.ideal for m in build_metrics(pa, "children")}
@@ -51,7 +51,7 @@ def test_audience_profiles_change_targets():
 @pytest.mark.render
 def test_rendered_metrics_and_reports(tmp_path):
     pw = pytest.importorskip("playwright.sync_api")
-    from readlens.render import Renderer
+    from readability_audit.render import Renderer
     with Renderer(viewports={"desktop": (1440, 900)}, check_dark=False) as r:
         if r.error:
             pytest.skip(r.error)
@@ -76,7 +76,7 @@ def test_rendered_metrics_and_reports(tmp_path):
         top_findings = []
         errors = []
 
-    from readlens.site import aggregate_findings, consistency
+    from readability_audit.site import aggregate_findings, consistency
     rep = Rep()
     rep.consistency = consistency([pa])
     rep.top_findings = aggregate_findings([pa])
@@ -87,17 +87,17 @@ def test_rendered_metrics_and_reports(tmp_path):
                    "page_types": {pa.scores.page_type: 1}, "total_words": 100,
                    "reading_time_min": 1, "severity_counts": {}, "rendered": 1}
 
-    from readlens.report.html_report import build_html
+    from readability_audit.report.html_report import build_html
     html = build_html(rep, lang="fr", detail=1)
     assert "Audit de lisibilité" in html and "<table" in html
 
-    from readlens.report.pdf import write_pdf
+    from readability_audit.report.pdf import write_pdf
     out = write_pdf(html, tmp_path / "r.pdf")
     assert out.exists() and out.stat().st_size > 5000
 
 
 def test_concurrency_is_clamped_to_free_memory(monkeypatch):
-    from readlens import render as R
+    from readability_audit import render as R
     monkeypatch.setattr(R, "available_mb", lambda: 1000)      # floor 800 leaves 200 MB
     n, note = R.safe_concurrency(8)
     assert n == 1 and "one page at a time" in note
@@ -112,15 +112,15 @@ def test_concurrency_is_clamped_to_free_memory(monkeypatch):
 
 
 def test_memory_estimate_is_base_plus_marginal():
-    from readlens.render import estimated_mb
+    from readability_audit.render import estimated_mb
     assert estimated_mb(1) < estimated_mb(2) < estimated_mb(4)
     assert estimated_mb(4) - estimated_mb(3) == estimated_mb(3) - estimated_mb(2)
 
 
 def test_rendered_dom_is_preferred_over_the_served_html():
     """A client-rendered page must be measured on what the reader sees, not on the shell."""
-    from readlens.analysis import analyse_page
-    from readlens.fetch import Page
+    from readability_audit.analysis import analyse_page
+    from readability_audit.fetch import Page
 
     shell = ('<html lang="en"><head><title>Shell</title></head><body>'
              '<div id="root"></div><script>/* builds the page */</script></body></html>')
@@ -152,8 +152,8 @@ def test_rendered_dom_is_preferred_over_the_served_html():
 
 
 def test_server_rendered_page_is_not_flagged_as_js_dependent():
-    from readlens.analysis import analyse_page
-    from readlens.fetch import Page
+    from readability_audit.analysis import analyse_page
+    from readability_audit.fetch import Page
     page_html = FIXTURE.read_text(encoding="utf8")
 
     class RR:
@@ -172,8 +172,8 @@ def test_server_rendered_page_is_not_flagged_as_js_dependent():
 
 def test_machine_output_is_not_scored_as_prose():
     """A terminal demo on a marketing page must not be measured as writing."""
-    from readlens.analysis import analyse_page
-    from readlens.fetch import Page
+    from readability_audit.analysis import analyse_page
+    from readability_audit.fetch import Page
     demo = " ".join(
         '{"type":"tool_use","name":"Read","input":{"file_path":"src/handlers/session.ts"}}'
         for _ in range(6))
@@ -194,8 +194,8 @@ def test_machine_output_is_not_scored_as_prose():
 
 def test_reports_in_every_language_come_from_one_crawl(tmp_path):
     """Two languages must never describe two different crawls."""
-    from readlens.report.html_report import build_html
-    from readlens.report.serialize import site_to_dict
+    from readability_audit.report.html_report import build_html
+    from readability_audit.report.serialize import site_to_dict
 
     pa = analyse_page(_page())
 
@@ -218,7 +218,7 @@ def test_reports_in_every_language_come_from_one_crawl(tmp_path):
                                 "unscorable": 0, "failed": 0, "rendered": 0}}
 
     rep = Rep()
-    from readlens.site import consistency
+    from readability_audit.site import consistency
     rep.consistency = consistency([pa])
     data = site_to_dict(rep)
     import json as _json
@@ -232,7 +232,7 @@ def test_reports_in_every_language_come_from_one_crawl(tmp_path):
 
 
 def test_the_json_is_self_describing():
-    from readlens.report.serialize import site_to_dict
+    from readability_audit.report.serialize import site_to_dict
 
     pa = analyse_page(_page())
 
@@ -261,7 +261,7 @@ def test_the_json_is_self_describing():
 
 def test_browser_reported_overlays_are_stripped_from_the_content():
     """A cookie wall styled `div.fixed` carries no name a regex could catch."""
-    from readlens.extract import parse
+    from readability_audit.extract import parse
     # The overlay sits inside the content region, which is where it actually lands and
     # the only arrangement in which stripping it means anything.
     html = ('<html lang="en"><body><main>'
@@ -277,14 +277,14 @@ def test_browser_reported_overlays_are_stripped_from_the_content():
 
 def test_an_offsite_redirect_is_not_audited_as_part_of_the_site():
     """`/go/partner` redirects are how a site links out. Their target is not its page."""
-    from readlens.fetch import same_site
+    from readability_audit.fetch import same_site
     assert same_site("https://a.com/", "https://www.a.com/x")
     assert not same_site("https://a.com/", "https://b.com/")
 
 
 def test_canonical_and_identical_bodies_identify_a_duplicate():
     """No page is analysed twice, whichever way the duplicate arrives."""
-    from readlens.site import canonical_of
+    from readability_audit.site import canonical_of
     html = '<html><head><link rel="canonical" href="/en/x"/></head><body>hi</body></html>'
     assert canonical_of(html, "https://a.com/en/x?utm_source=nl") == "https://a.com/en/x"
     assert canonical_of(html, "https://a.com/en/x/") == "https://a.com/en/x"

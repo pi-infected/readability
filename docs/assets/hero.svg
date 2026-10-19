@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-labelledby="t">
-<title id="t">readlens — a lens sweeps a web page and flags thin contrast (APCA Lc 66, needs 92.5), small text and line length, while the terminal prints the same findings.</title>
+<title id="t">readability — a lens sweeps a web page and flags thin contrast (APCA Lc 66, needs 92.5), small text and line length, while the terminal prints the same findings.</title>
 <style>
 text{white-space:pre} .m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'DejaVu Sans Mono',monospace;font-size:15px;fill:#c9d1d9} .o{fill:#8b949e} .s{font-size:13px}
 .serif{font-family:Georgia,'Iowan Old Style','Times New Roman',serif} .sans{font-family:Inter,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}
@@ -15,7 +15,7 @@ text{white-space:pre} .m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,
 <g transform="translate(48 58)">
   <circle cx="16" cy="-8" r="15" fill="none" stroke="#ffd103" stroke-width="4"/>
   <line x1="27" y1="3" x2="38" y2="14" stroke="#ffd103" stroke-width="5" stroke-linecap="round"/>
-  <text x="54" y="4" class="sans" font-size="34" font-weight="800" fill="#f0f6fc">readlens</text>
+  <text x="54" y="4" class="sans" font-size="34" font-weight="800" fill="#f0f6fc">readability</text>
   <text x="222" y="2" class="sans" font-size="18" fill="#8b949e">see your pages the way readers do</text>
 </g>
 
@@ -62,16 +62,16 @@ text{white-space:pre} .m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,
   <rect x="622" y="100" width="530" height="420" rx="14" fill="#0d1117" stroke="#30363d"/>
   <circle cx="646" cy="122" r="6" fill="#30363d"/><circle cx="666" cy="122" r="6" fill="#30363d"/><circle cx="686" cy="122" r="6" fill="#30363d"/>
 </g>
-<clipPath id="c1"><rect x="646" y="150" height="22" width="0"><animate attributeName="width" dur="14s" repeatCount="indefinite" values="0;0;480;480;0;0" keyTimes="0;0.04;0.100;.95;.965;1"/></rect></clipPath><text x="646" y="166" clip-path="url(#c1)" class="m"><tspan fill="#7ee787">$</tspan> readlens page tokenade.net/fr --only contrast</text>
+<clipPath id="c1"><rect x="646" y="150" height="22" width="0"><animate attributeName="width" dur="14s" repeatCount="indefinite" values="0;0;480;480;0;0" keyTimes="0;0.04;0.100;.95;.965;1"/></rect></clipPath><text x="646" y="166" clip-path="url(#c1)" class="m"><tspan fill="#7ee787">$</tspan> readability page tokenade.net/fr --only contrast</text>
 <g opacity="0"><animate attributeName="opacity" dur="14s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.1;0.115;0.95;0.965;1"/><text x="646" y="192" class="m o"><tspan fill="#ffa657">medium</tspan>  3 text blocks are perceptually thin</text></g>
 <g opacity="0"><animate attributeName="opacity" dur="14s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.12;0.135;0.95;0.965;1"/><text x="646" y="214" class="m o">        · ratio 4.8 · apca 66.0 · required 92.5</text></g>
-<clipPath id="c2"><rect x="646" y="244" height="22" width="0"><animate attributeName="width" dur="14s" repeatCount="indefinite" values="0;0;480;480;0;0" keyTimes="0;0.34;0.400;.95;.965;1"/></rect></clipPath><text x="646" y="260" clip-path="url(#c2)" class="m"><tspan fill="#7ee787">$</tspan> readlens page tokenade.net/en --only typography</text>
+<clipPath id="c2"><rect x="646" y="244" height="22" width="0"><animate attributeName="width" dur="14s" repeatCount="indefinite" values="0;0;480;480;0;0" keyTimes="0;0.34;0.400;.95;.965;1"/></rect></clipPath><text x="646" y="260" clip-path="url(#c2)" class="m"><tspan fill="#7ee787">$</tspan> readability page tokenade.net/en --only typography</text>
 <g opacity="0"><animate attributeName="opacity" dur="14s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.4;0.415;0.95;0.965;1"/><text x="646" y="286" class="m o"><tspan fill="#ff7b72">high</tspan>    Text rendered below 16px     89%</text></g>
 <g opacity="0"><animate attributeName="opacity" dur="14s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.42;0.435;0.95;0.965;1"/><text x="646" y="308" class="m o"><tspan fill="#7ee787">100</tspan>     Line length                  47 ch</text></g>
-<clipPath id="c3"><rect x="646" y="338" height="22" width="0"><animate attributeName="width" dur="14s" repeatCount="indefinite" values="0;0;480;480;0;0" keyTimes="0;0.64;0.700;.95;.965;1"/></rect></clipPath><text x="646" y="354" clip-path="url(#c3)" class="m"><tspan fill="#7ee787">$</tspan> readlens audit tokenade.net --only clarity</text>
+<clipPath id="c3"><rect x="646" y="338" height="22" width="0"><animate attributeName="width" dur="14s" repeatCount="indefinite" values="0;0;480;480;0;0" keyTimes="0;0.64;0.700;.95;.965;1"/></rect></clipPath><text x="646" y="354" clip-path="url(#c3)" class="m"><tspan fill="#7ee787">$</tspan> readability audit tokenade.net --only clarity</text>
 <g opacity="0"><animate attributeName="opacity" dur="14s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.7;0.715;0.95;0.965;1"/><text x="646" y="380" class="m o"><tspan fill="#f0f6fc" font-weight="700">77.6/100 C</tspan>  7 pages · no browser · 3.8s</text></g>
 <g opacity="0"><animate attributeName="opacity" dur="14s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.72;0.735;0.95;0.965;1"/><text x="646" y="402" class="m o"><tspan fill="#ff7b72">high</tspan>    Transition words          3/7 pages</text></g>
-<clipPath id="c4"><rect x="646" y="432" height="22" width="0"><animate attributeName="width" dur="14s" repeatCount="indefinite" values="0;0;480;480;0;0" keyTimes="0;0.8;0.860;.95;.965;1"/></rect></clipPath><text x="646" y="448" clip-path="url(#c4)" class="m"><tspan fill="#7ee787">$</tspan> readlens page URL --format json | your-agent</text>
+<clipPath id="c4"><rect x="646" y="432" height="22" width="0"><animate attributeName="width" dur="14s" repeatCount="indefinite" values="0;0;480;480;0;0" keyTimes="0;0.8;0.860;.95;.965;1"/></rect></clipPath><text x="646" y="448" clip-path="url(#c4)" class="m"><tspan fill="#7ee787">$</tspan> readability page URL --format json | your-agent</text>
 <g opacity="0"><animate attributeName="opacity" dur="14s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.86;0.875;0.95;0.965;1"/><text x="646" y="474" class="m o s">{"score": 96.0, "findings": [{"key": "apca_fail", …</text></g>
 
 <text x="600" y="544" text-anchor="middle" class="sans" font-size="15" fill="#8b949e">contrast (WCAG 2.2 + APCA) · typography · line length · clarity · structure · accessibility — measured in a real browser</text>

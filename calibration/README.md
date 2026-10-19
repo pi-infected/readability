@@ -1,6 +1,6 @@
 # Calibration
 
-The target bands in `src/readlens/scoring.py` started as assertions from the literature:
+The target bands in `src/readability_audit/scoring.py` started as assertions from the literature:
 Bringhurst's 45–75 character measure, WCAG 2.2's 4.5:1 and 7:1, Yoast's 30% transition
 words, the 110–165 character meta description. Assertions are cheap. This directory is
 the attempt to make them accountable.

@@ -1,4 +1,4 @@
-# How readlens measures
+# How readability measures
 
 The reasoning behind every number: which document is measured, where the targets come from, how a band becomes a score, and when the tool refuses to give one.
 
@@ -99,8 +99,8 @@ language at all, and say so.
 
 ## Output
 
-One crawl produces one set of artifacts. `--out DIR` writes `readlens.json`,
-`readlens.csv`, and an HTML and PDF report **per report language**, all rendered from the
+One crawl produces one set of artifacts. `--out DIR` writes `readability.json`,
+`readability.csv`, and an HTML and PDF report **per report language**, all rendered from the
 same measurement pass — two languages can never describe two different crawls. Every page
 gets a detail section by default (`--detail N` limits it), and the report opens with its
 own coverage line: pages analysed, scored, measured in a browser, detailed below, plus any
@@ -109,7 +109,7 @@ that had no readable content or were unreachable.
 the whole report in French — labels, advice, findings, units and formula interpretations,
 not just the headings. `--screenshots` embeds a desktop screenshot per page.
 `--fail-under 70` exits 2 when the site score is below the threshold, for CI.
-`readlens diff before.json after.json` reports the score delta, which findings were resolved,
+`readability diff before.json after.json` reports the score delta, which findings were resolved,
 which are new, and which pages moved — that is the loop for getting better over time.
 
 The JSON is the single source and is self-describing. Besides every measured value, the

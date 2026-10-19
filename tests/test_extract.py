@@ -1,4 +1,4 @@
-from readlens.extract import own_text, parse
+from readability_audit.extract import own_text, parse
 import lxml.html
 
 HTML = """
@@ -75,13 +75,13 @@ def test_own_text_excludes_block_children():
 
 
 def test_coverage_is_none_without_a_reference():
-    from readlens.extract import _coverage
+    from readability_audit.extract import _coverage
     assert _coverage("some text", None) == (None, "")
     assert _coverage("some text", "too short") == (None, "")
 
 
 def test_coverage_flags_both_directions():
-    from readlens.extract import _coverage
+    from readability_audit.extract import _coverage
     ref = "x" * 1000
     assert _coverage("x" * 950, ref)[1] == ""
     assert "incomplete" in _coverage("x" * 300, ref)[1]
@@ -111,7 +111,7 @@ NARROW = """
 
 
 def test_fallback_widens_the_region_when_coverage_is_poor():
-    from readlens.extract import parse as p2
+    from readability_audit.extract import parse as p2
     full = p2(NARROW, "https://example.test/n")
     # a reference three times our text forces the < 0.6 fallback path
     forced = p2(NARROW, "https://example.test/n", reference_text=full.text + "y" * len(full.text) * 3)

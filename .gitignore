@@ -1,6 +1,6 @@
 .venv/
 /.cache/
-.readlens-cache/
+.readability-cache/
 /out*/
 /report/
 __pycache__/

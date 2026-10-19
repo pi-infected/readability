@@ -1,8 +1,8 @@
 import pytest
 
-from readlens.lang import pack
-from readlens.metrics.formulas import Counts, compute, consensus_grade, count
-from readlens.text import sentences
+from readability_audit.lang import pack
+from readability_audit.metrics.formulas import Counts, compute, consensus_grade, count
+from readability_audit.text import sentences
 
 EASY = "The cat sat on the mat. It was a sunny day. The dog ran fast. Birds sang in the tree."
 HARD = ("Notwithstanding the aforementioned considerations, the implementation of comprehensive "

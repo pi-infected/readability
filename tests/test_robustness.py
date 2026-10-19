@@ -6,8 +6,8 @@ but it must never invent a score, and it must never silently delete text it cann
 """
 import pytest
 
-from readlens.analysis import analyse_page
-from readlens.fetch import Page
+from readability_audit.analysis import analyse_page
+from readability_audit.fetch import Page
 
 ARABIC = ("هذه فقرة مكتوبة بالعربية وتحتوي على عدد كاف من الكلمات لكي تكون قابلة للقياس. " * 6)
 CHINESE = "这是一段中文文本用来测试可读性工具在没有空格的语言上的表现。" * 12
@@ -93,7 +93,7 @@ def test_entities_and_invisible_characters_decode():
 
 
 def test_empty_response_body_is_not_reported_as_a_status_code():
-    from readlens.fetch import Page as P
+    from readability_audit.fetch import Page as P
     pa = analyse_page(P("http://x/", "http://x/", 200, ""))
     assert not pa.ok
     # The status alone would send someone hunting a server error that did not happen.
@@ -102,8 +102,8 @@ def test_empty_response_body_is_not_reported_as_a_status_code():
 
 def test_the_served_language_declaration_is_the_one_reported():
     """Hydration can correct <html lang> after the fact. A crawler never sees that."""
-    from readlens.analysis import analyse_page
-    from readlens.fetch import Page
+    from readability_audit.analysis import analyse_page
+    from readability_audit.fetch import Page
 
     body = ("<main><p>Ceci est un paragraphe en français, assez long pour que la détection "
             "de langue ait de quoi travailler sans hésiter une seule seconde ici.</p>"

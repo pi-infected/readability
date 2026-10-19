@@ -4,11 +4,11 @@ Each test names the symptom that was seen in a delivered report.
 """
 import pytest
 
-from readlens.color import apca_min_lc
-from readlens.extract import flat_text, parse
-from readlens.fetch import looks_like_page
-from readlens.lang import pack
-from readlens.text import sentences
+from readability_audit.color import apca_min_lc
+from readability_audit.extract import flat_text, parse
+from readability_audit.fetch import looks_like_page
+from readability_audit.lang import pack
+from readability_audit.text import sentences
 
 EN = pack("en")
 
@@ -78,8 +78,8 @@ def test_hidden_and_hover_only_text_is_not_measured(tmp_path):
     pytest.importorskip("playwright.sync_api")
     from pathlib import Path
 
-    from readlens.metrics.typography import analyse
-    from readlens.render import Renderer
+    from readability_audit.metrics.typography import analyse
+    from readability_audit.render import Renderer
 
     fixture = Path(__file__).parent / "fixtures" / "hidden.html"
     with Renderer(viewports={"desktop": (1440, 900)}, check_dark=False) as r:

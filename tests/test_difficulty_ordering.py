@@ -13,10 +13,10 @@ from pathlib import Path
 
 import pytest
 
-from readlens.lang import pack
-from readlens.metrics import lexical, syntax
-from readlens.metrics.formulas import compute, count
-from readlens.text import sentences
+from readability_audit.lang import pack
+from readability_audit.metrics import lexical, syntax
+from readability_audit.metrics.formulas import compute, count
+from readability_audit.text import sentences
 
 PAIRS = json.loads((Path(__file__).parent / "fixtures" / "difficulty_pairs.json")
                    .read_text(encoding="utf8"))

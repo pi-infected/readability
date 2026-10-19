@@ -26,12 +26,12 @@ import httpx
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
-from readlens.lang import pack                                   # noqa: E402
-from readlens.metrics import lexical, syntax                     # noqa: E402
-from readlens.metrics.formulas import compute, count             # noqa: E402
-from readlens.text import sentences                              # noqa: E402
+from readability_audit.lang import pack                                   # noqa: E402
+from readability_audit.metrics import lexical, syntax                     # noqa: E402
+from readability_audit.metrics.formulas import compute, count             # noqa: E402
+from readability_audit.text import sentences                              # noqa: E402
 
-UA = "readlens/0.1 (readability research; contact via repository)"
+UA = "readability/0.1 (readability research; contact via repository)"
 
 WIKIS = {
     "en": {"easy": "https://simple.wikipedia.org/w/api.php",

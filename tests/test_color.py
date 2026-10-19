@@ -1,6 +1,6 @@
 import pytest
 
-from readlens.color import apca, blend, contrast_ratio, parse, wcag_level
+from readability_audit.color import apca, blend, contrast_ratio, parse, wcag_level
 
 W, K = parse("#ffffff"), parse("#000000")
 
