@@ -1,0 +1,8875 @@
+{
+  "pages": [
+    {
+      "name": "practicaltypography.com",
+      "url": "https://practicaltypography.com/typography-in-ten-minutes.html",
+      "page_type": "article",
+      "score": 77.5,
+      "grade": "C",
+      "metrics": {
+        "lix": {
+          "value": 32.3,
+          "ideal": [
+            30,
+            45
+          ],
+          "tolerable": [
+            20,
+            55
+          ],
+          "score": 100.0,
+          "label": "Reading difficulty (LIX)",
+          "pillar": "clarity"
+        },
+        "flesch": {
+          "value": 64.7,
+          "ideal": [
+            55,
+            85
+          ],
+          "tolerable": [
+            35,
+            105
+          ],
+          "score": 100.0,
+          "label": "Flesch Reading Ease",
+          "pillar": "clarity"
+        },
+        "asl": {
+          "value": 11.6,
+          "ideal": [
+            12,
+            20
+          ],
+          "tolerable": [
+            8,
+            26
+          ],
+          "score": 96.0,
+          "label": "Average sentence length",
+          "pillar": "clarity"
+        },
+        "long_sentences": {
+          "value": 0.045454545454545456,
+          "ideal": [
+            0,
+            0.18
+          ],
+          "tolerable": [
+            0,
+            0.32
+          ],
+          "score": 100.0,
+          "label": "Sentences over the length cap",
+          "pillar": "clarity"
+        },
+        "rhythm": {
+          "value": 0.62,
+          "ideal": [
+            0.45,
+            1.1
+          ],
+          "tolerable": [
+            0.25,
+            1.6
+          ],
+          "score": 100.0,
+          "label": "Sentence length variation",
+          "pillar": "clarity"
+        },
+        "passive": {
+          "value": 0.09090909090909091,
+          "ideal": [
+            0,
+            0.14
+          ],
+          "tolerable": [
+            0,
+            0.28
+          ],
+          "score": 100.0,
+          "label": "Passive voice",
+          "pillar": "clarity"
+        },
+        "nominalization": {
+          "value": 0.017578125,
+          "ideal": [
+            0,
+            0.05
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Nominalisations",
+          "pillar": "clarity"
+        },
+        "connectives": {
+          "value": 0.25,
+          "ideal": [
+            0.18,
+            0.65
+          ],
+          "tolerable": [
+            0.08,
+            0.85
+          ],
+          "score": 100.0,
+          "label": "Transition words",
+          "pillar": "clarity"
+        },
+        "polysyllabic": {
+          "value": 0.146484375,
+          "ideal": [
+            0.06,
+            0.18
+          ],
+          "tolerable": [
+            0.06,
+            0.28
+          ],
+          "score": 100.0,
+          "label": "Long-word load",
+          "pillar": "clarity"
+        },
+        "word_rarity": {
+          "value": 4.62,
+          "ideal": [
+            3.6,
+            5.5
+          ],
+          "tolerable": [
+            3.0,
+            6.5
+          ],
+          "score": 100.0,
+          "label": "Vocabulary rarity",
+          "pillar": "clarity"
+        },
+        "hedging": {
+          "value": 0.001953125,
+          "ideal": [
+            0,
+            0.01
+          ],
+          "tolerable": [
+            0,
+            0.025
+          ],
+          "score": 100.0,
+          "label": "Filler and marketing words",
+          "pillar": "clarity"
+        },
+        "diversity": {
+          "value": 0.7029411764705882,
+          "ideal": [
+            0.55,
+            0.85
+          ],
+          "tolerable": [
+            0.4,
+            0.95
+          ],
+          "score": 100.0,
+          "label": "Vocabulary diversity",
+          "pillar": "clarity"
+        },
+        "headings_density": {
+          "value": 0.0,
+          "ideal": [
+            3,
+            15
+          ],
+          "tolerable": [
+            1.5,
+            30
+          ],
+          "score": 0.0,
+          "label": "Headings per 1000 words",
+          "pillar": "structure"
+        },
+        "unbroken_run": {
+          "value": 516,
+          "ideal": [
+            0,
+            400
+          ],
+          "tolerable": [
+            0,
+            800
+          ],
+          "score": 88.4,
+          "label": "Longest stretch without a heading",
+          "pillar": "structure"
+        },
+        "paragraph_length": {
+          "value": 32.2,
+          "ideal": [
+            30,
+            80
+          ],
+          "tolerable": [
+            15,
+            120
+          ],
+          "score": 100.0,
+          "label": "Average paragraph length",
+          "pillar": "structure"
+        },
+        "long_paragraphs": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Paragraphs over 120 words",
+          "pillar": "structure"
+        },
+        "link_density": {
+          "value": 0.07364341085271318,
+          "ideal": [
+            0.01,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Link text share of the body",
+          "pillar": "structure"
+        },
+        "scannability": {
+          "value": 0.5382857142857143,
+          "ideal": [
+            0.7,
+            1.0
+          ],
+          "tolerable": [
+            0.45,
+            1.0
+          ],
+          "score": 74.1,
+          "label": "Scannability",
+          "pillar": "structure"
+        },
+        "title_length": {
+          "value": 60,
+          "ideal": [
+            25,
+            65
+          ],
+          "tolerable": [
+            10,
+            90
+          ],
+          "score": 100.0,
+          "label": "Title length",
+          "pillar": "structure"
+        },
+        "meta_description": {
+          "value": 32,
+          "ideal": [
+            70,
+            200
+          ],
+          "tolerable": [
+            0,
+            320
+          ],
+          "score": 78.3,
+          "label": "Meta description length",
+          "pillar": "structure"
+        },
+        "boilerplate": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.45
+          ],
+          "tolerable": [
+            0,
+            0.7
+          ],
+          "score": 100.0,
+          "label": "Boilerplate share of the page text",
+          "pillar": "structure"
+        },
+        "font_size": {
+          "value": 21.8,
+          "ideal": [
+            16,
+            21
+          ],
+          "tolerable": [
+            14,
+            24
+          ],
+          "score": 89.3,
+          "label": "Body text size (desktop)",
+          "pillar": "comfort"
+        },
+        "small_text": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.35
+          ],
+          "score": 100.0,
+          "label": "Text rendered below 16px",
+          "pillar": "comfort"
+        },
+        "line_height": {
+          "value": 1.45,
+          "ideal": [
+            1.45,
+            1.75
+          ],
+          "tolerable": [
+            1.25,
+            2.0
+          ],
+          "score": 100.0,
+          "label": "Line height",
+          "pillar": "comfort"
+        },
+        "measure": {
+          "value": 51.8,
+          "ideal": [
+            50,
+            80
+          ],
+          "tolerable": [
+            38,
+            95
+          ],
+          "score": 100.0,
+          "label": "Line length (characters per line)",
+          "pillar": "comfort"
+        },
+        "paragraph_gap": {
+          "value": 0.69,
+          "ideal": [
+            0.5,
+            1.4
+          ],
+          "tolerable": [
+            0.25,
+            2.2
+          ],
+          "score": 100.0,
+          "label": "Space between paragraphs",
+          "pillar": "comfort"
+        },
+        "contrast": {
+          "value": 21.0,
+          "ideal": [
+            7.0,
+            21.0
+          ],
+          "tolerable": [
+            4.5,
+            21.0
+          ],
+          "score": 100.0,
+          "label": "Body text contrast (WCAG)",
+          "pillar": "comfort"
+        },
+        "apca": {
+          "value": 106.0,
+          "ideal": [
+            75,
+            108
+          ],
+          "tolerable": [
+            60,
+            108
+          ],
+          "score": 100.0,
+          "label": "Perceptual contrast (APCA Lc)",
+          "pillar": "comfort"
+        },
+        "justified": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.02
+          ],
+          "tolerable": [
+            0,
+            0.15
+          ],
+          "score": 100.0,
+          "label": "Justified text without hyphenation",
+          "pillar": "comfort"
+        },
+        "uppercase": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.03
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Text set in capitals",
+          "pillar": "comfort"
+        },
+        "type_sizes": {
+          "value": 3,
+          "ideal": [
+            2,
+            8
+          ],
+          "tolerable": [
+            1,
+            12
+          ],
+          "score": 100.0,
+          "label": "Distinct type sizes",
+          "pillar": "comfort"
+        },
+        "occlusion": {
+          "value": 0.2,
+          "ideal": [
+            0,
+            0.25
+          ],
+          "tolerable": [
+            0,
+            0.45
+          ],
+          "score": 100.0,
+          "label": "First screen covered by fixed chrome",
+          "pillar": "comfort"
+        },
+        "cls": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Layout shift while loading",
+          "pillar": "comfort"
+        },
+        "mobile_font": {
+          "value": 16.4,
+          "ideal": [
+            16,
+            20
+          ],
+          "tolerable": [
+            14,
+            22
+          ],
+          "score": 100.0,
+          "label": "Body text size (mobile)",
+          "pillar": "comfort"
+        },
+        "mobile_measure": {
+          "value": 35.7,
+          "ideal": [
+            32,
+            60
+          ],
+          "tolerable": [
+            24,
+            70
+          ],
+          "score": 100.0,
+          "label": "Line length on mobile",
+          "pillar": "comfort"
+        },
+        "alt_coverage": {
+          "value": 1.0,
+          "ideal": [
+            1.0,
+            1.0
+          ],
+          "tolerable": [
+            0.85,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Images with alt text",
+          "pillar": "access"
+        },
+        "heading_order": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            2
+          ],
+          "score": 100.0,
+          "label": "Heading level skips",
+          "pillar": "access"
+        },
+        "weak_links": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            3
+          ],
+          "score": 100.0,
+          "label": "Uninformative link text",
+          "pillar": "access"
+        },
+        "acronyms": {
+          "value": 1,
+          "ideal": [
+            0,
+            4
+          ],
+          "tolerable": [
+            0,
+            12
+          ],
+          "score": 100.0,
+          "label": "Acronyms never expanded",
+          "pillar": "access"
+        },
+        "rem_scaling": {
+          "value": 0.0,
+          "ideal": [
+            1,
+            1
+          ],
+          "tolerable": [
+            1,
+            1
+          ],
+          "score": 0.0,
+          "label": "Text follows the browser's font size",
+          "pillar": "access"
+        }
+      }
+    },
+    {
+      "name": "mdn",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/font-size",
+      "page_type": "doc",
+      "score": 91.3,
+      "grade": "A",
+      "metrics": {
+        "lix": {
+          "value": 40.8,
+          "ideal": [
+            30,
+            45
+          ],
+          "tolerable": [
+            20,
+            55
+          ],
+          "score": 100.0,
+          "label": "Reading difficulty (LIX)",
+          "pillar": "clarity"
+        },
+        "flesch": {
+          "value": 59.1,
+          "ideal": [
+            55,
+            85
+          ],
+          "tolerable": [
+            35,
+            105
+          ],
+          "score": 100.0,
+          "label": "Flesch Reading Ease",
+          "pillar": "clarity"
+        },
+        "asl": {
+          "value": 17.2,
+          "ideal": [
+            12,
+            20
+          ],
+          "tolerable": [
+            8,
+            26
+          ],
+          "score": 100.0,
+          "label": "Average sentence length",
+          "pillar": "clarity"
+        },
+        "long_sentences": {
+          "value": 0.19298245614035087,
+          "ideal": [
+            0,
+            0.18
+          ],
+          "tolerable": [
+            0,
+            0.32
+          ],
+          "score": 96.3,
+          "label": "Sentences over the length cap",
+          "pillar": "clarity"
+        },
+        "rhythm": {
+          "value": 0.47,
+          "ideal": [
+            0.45,
+            1.1
+          ],
+          "tolerable": [
+            0.25,
+            1.6
+          ],
+          "score": 100.0,
+          "label": "Sentence length variation",
+          "pillar": "clarity"
+        },
+        "passive": {
+          "value": 0.24561403508771928,
+          "ideal": [
+            0,
+            0.14
+          ],
+          "tolerable": [
+            0,
+            0.28
+          ],
+          "score": 69.8,
+          "label": "Passive voice",
+          "pillar": "clarity"
+        },
+        "nominalization": {
+          "value": 0.018404907975460124,
+          "ideal": [
+            0,
+            0.05
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Nominalisations",
+          "pillar": "clarity"
+        },
+        "connectives": {
+          "value": 0.22807017543859648,
+          "ideal": [
+            0.18,
+            0.65
+          ],
+          "tolerable": [
+            0.08,
+            0.85
+          ],
+          "score": 100.0,
+          "label": "Transition words",
+          "pillar": "clarity"
+        },
+        "word_rarity": {
+          "value": 4.53,
+          "ideal": [
+            3.3,
+            5.5
+          ],
+          "tolerable": [
+            2.8,
+            6.5
+          ],
+          "score": 100.0,
+          "label": "Vocabulary rarity",
+          "pillar": "clarity"
+        },
+        "hedging": {
+          "value": 0.002938295788442703,
+          "ideal": [
+            0,
+            0.01
+          ],
+          "tolerable": [
+            0,
+            0.025
+          ],
+          "score": 100.0,
+          "label": "Filler and marketing words",
+          "pillar": "clarity"
+        },
+        "diversity": {
+          "value": 0.6102702702702703,
+          "ideal": [
+            0.55,
+            0.85
+          ],
+          "tolerable": [
+            0.4,
+            0.95
+          ],
+          "score": 100.0,
+          "label": "Vocabulary diversity",
+          "pillar": "clarity"
+        },
+        "headings_density": {
+          "value": 19.5,
+          "ideal": [
+            4,
+            20
+          ],
+          "tolerable": [
+            2,
+            32
+          ],
+          "score": 100.0,
+          "label": "Headings per 1000 words",
+          "pillar": "structure"
+        },
+        "unbroken_run": {
+          "value": 323,
+          "ideal": [
+            0,
+            400
+          ],
+          "tolerable": [
+            0,
+            800
+          ],
+          "score": 100.0,
+          "label": "Longest stretch without a heading",
+          "pillar": "structure"
+        },
+        "paragraph_length": {
+          "value": 32.8,
+          "ideal": [
+            30,
+            80
+          ],
+          "tolerable": [
+            15,
+            120
+          ],
+          "score": 100.0,
+          "label": "Average paragraph length",
+          "pillar": "structure"
+        },
+        "long_paragraphs": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Paragraphs over 120 words",
+          "pillar": "structure"
+        },
+        "link_density": {
+          "value": 0.08763388510223953,
+          "ideal": [
+            0.01,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Link text share of the body",
+          "pillar": "structure"
+        },
+        "scannability": {
+          "value": 0.8374792043399639,
+          "ideal": [
+            0.7,
+            1.0
+          ],
+          "tolerable": [
+            0.45,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Scannability",
+          "pillar": "structure"
+        },
+        "title_length": {
+          "value": 34,
+          "ideal": [
+            25,
+            65
+          ],
+          "tolerable": [
+            10,
+            90
+          ],
+          "score": 100.0,
+          "label": "Title length",
+          "pillar": "structure"
+        },
+        "meta_description": {
+          "value": 171,
+          "ideal": [
+            70,
+            200
+          ],
+          "tolerable": [
+            0,
+            320
+          ],
+          "score": 100.0,
+          "label": "Meta description length",
+          "pillar": "structure"
+        },
+        "boilerplate": {
+          "value": 0.7397642286728356,
+          "ideal": [
+            0,
+            0.45
+          ],
+          "tolerable": [
+            0,
+            0.7
+          ],
+          "score": 50.5,
+          "label": "Boilerplate share of the page text",
+          "pillar": "structure"
+        },
+        "font_size": {
+          "value": 16,
+          "ideal": [
+            16,
+            21
+          ],
+          "tolerable": [
+            14,
+            24
+          ],
+          "score": 100.0,
+          "label": "Body text size (desktop)",
+          "pillar": "comfort"
+        },
+        "small_text": {
+          "value": 0.01094017094017094,
+          "ideal": [
+            0,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.35
+          ],
+          "score": 100.0,
+          "label": "Text rendered below 16px",
+          "pillar": "comfort"
+        },
+        "line_height": {
+          "value": 1.75,
+          "ideal": [
+            1.45,
+            1.75
+          ],
+          "tolerable": [
+            1.25,
+            2.0
+          ],
+          "score": 100.0,
+          "label": "Line height",
+          "pillar": "comfort"
+        },
+        "measure": {
+          "value": 48.3,
+          "ideal": [
+            50,
+            80
+          ],
+          "tolerable": [
+            38,
+            95
+          ],
+          "score": 94.3,
+          "label": "Line length (characters per line)",
+          "pillar": "comfort"
+        },
+        "paragraph_gap": {
+          "value": 0.57,
+          "ideal": [
+            0.5,
+            1.4
+          ],
+          "tolerable": [
+            0.25,
+            2.2
+          ],
+          "score": 100.0,
+          "label": "Space between paragraphs",
+          "pillar": "comfort"
+        },
+        "contrast": {
+          "value": 21.0,
+          "ideal": [
+            7.0,
+            21.0
+          ],
+          "tolerable": [
+            4.5,
+            21.0
+          ],
+          "score": 100.0,
+          "label": "Body text contrast (WCAG)",
+          "pillar": "comfort"
+        },
+        "apca": {
+          "value": 106.0,
+          "ideal": [
+            75,
+            108
+          ],
+          "tolerable": [
+            60,
+            108
+          ],
+          "score": 100.0,
+          "label": "Perceptual contrast (APCA Lc)",
+          "pillar": "comfort"
+        },
+        "justified": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.02
+          ],
+          "tolerable": [
+            0,
+            0.15
+          ],
+          "score": 100.0,
+          "label": "Justified text without hyphenation",
+          "pillar": "comfort"
+        },
+        "uppercase": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.03
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Text set in capitals",
+          "pillar": "comfort"
+        },
+        "type_sizes": {
+          "value": 4,
+          "ideal": [
+            2,
+            8
+          ],
+          "tolerable": [
+            1,
+            12
+          ],
+          "score": 100.0,
+          "label": "Distinct type sizes",
+          "pillar": "comfort"
+        },
+        "occlusion": {
+          "value": 0.44,
+          "ideal": [
+            0,
+            0.25
+          ],
+          "tolerable": [
+            0,
+            0.45
+          ],
+          "score": 62.0,
+          "label": "First screen covered by fixed chrome",
+          "pillar": "comfort"
+        },
+        "cls": {
+          "value": 0.0004,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Layout shift while loading",
+          "pillar": "comfort"
+        },
+        "mobile_font": {
+          "value": 16,
+          "ideal": [
+            16,
+            20
+          ],
+          "tolerable": [
+            14,
+            22
+          ],
+          "score": 100.0,
+          "label": "Body text size (mobile)",
+          "pillar": "comfort"
+        },
+        "mobile_measure": {
+          "value": 29.7,
+          "ideal": [
+            32,
+            60
+          ],
+          "tolerable": [
+            24,
+            70
+          ],
+          "score": 88.5,
+          "label": "Line length on mobile",
+          "pillar": "comfort"
+        },
+        "alt_coverage": {
+          "value": 1.0,
+          "ideal": [
+            1.0,
+            1.0
+          ],
+          "tolerable": [
+            0.85,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Images with alt text",
+          "pillar": "access"
+        },
+        "heading_order": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            2
+          ],
+          "score": 100.0,
+          "label": "Heading level skips",
+          "pillar": "access"
+        },
+        "weak_links": {
+          "value": 1,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            3
+          ],
+          "score": 86.7,
+          "label": "Uninformative link text",
+          "pillar": "access"
+        },
+        "acronyms": {
+          "value": 2,
+          "ideal": [
+            0,
+            4
+          ],
+          "tolerable": [
+            0,
+            12
+          ],
+          "score": 100.0,
+          "label": "Acronyms never expanded",
+          "pillar": "access"
+        },
+        "rem_scaling": {
+          "value": 1.0,
+          "ideal": [
+            1,
+            1
+          ],
+          "tolerable": [
+            1,
+            1
+          ],
+          "score": 100.0,
+          "label": "Text follows the browser's font size",
+          "pillar": "access"
+        }
+      }
+    },
+    {
+      "name": "nngroup",
+      "url": "https://www.nngroup.com/articles/legibility-readability-comprehension/",
+      "page_type": "article",
+      "score": 96.7,
+      "grade": "A",
+      "metrics": {
+        "lix": {
+          "value": 44.8,
+          "ideal": [
+            30,
+            45
+          ],
+          "tolerable": [
+            20,
+            55
+          ],
+          "score": 100.0,
+          "label": "Reading difficulty (LIX)",
+          "pillar": "clarity"
+        },
+        "flesch": {
+          "value": 48.1,
+          "ideal": [
+            55,
+            85
+          ],
+          "tolerable": [
+            35,
+            105
+          ],
+          "score": 86.2,
+          "label": "Flesch Reading Ease",
+          "pillar": "clarity"
+        },
+        "asl": {
+          "value": 19.0,
+          "ideal": [
+            12,
+            20
+          ],
+          "tolerable": [
+            8,
+            26
+          ],
+          "score": 100.0,
+          "label": "Average sentence length",
+          "pillar": "clarity"
+        },
+        "long_sentences": {
+          "value": 0.15517241379310345,
+          "ideal": [
+            0,
+            0.18
+          ],
+          "tolerable": [
+            0,
+            0.32
+          ],
+          "score": 100.0,
+          "label": "Sentences over the length cap",
+          "pillar": "clarity"
+        },
+        "rhythm": {
+          "value": 0.45,
+          "ideal": [
+            0.45,
+            1.1
+          ],
+          "tolerable": [
+            0.25,
+            1.6
+          ],
+          "score": 100.0,
+          "label": "Sentence length variation",
+          "pillar": "clarity"
+        },
+        "passive": {
+          "value": 0.06896551724137931,
+          "ideal": [
+            0,
+            0.14
+          ],
+          "tolerable": [
+            0,
+            0.28
+          ],
+          "score": 100.0,
+          "label": "Passive voice",
+          "pillar": "clarity"
+        },
+        "nominalization": {
+          "value": 0.043596730245231606,
+          "ideal": [
+            0,
+            0.05
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Nominalisations",
+          "pillar": "clarity"
+        },
+        "connectives": {
+          "value": 0.39655172413793105,
+          "ideal": [
+            0.18,
+            0.65
+          ],
+          "tolerable": [
+            0.08,
+            0.85
+          ],
+          "score": 100.0,
+          "label": "Transition words",
+          "pillar": "clarity"
+        },
+        "polysyllabic": {
+          "value": 0.17151162790697674,
+          "ideal": [
+            0.06,
+            0.18
+          ],
+          "tolerable": [
+            0.06,
+            0.28
+          ],
+          "score": 100.0,
+          "label": "Long-word load",
+          "pillar": "clarity"
+        },
+        "word_rarity": {
+          "value": 4.58,
+          "ideal": [
+            3.6,
+            5.5
+          ],
+          "tolerable": [
+            3.0,
+            6.5
+          ],
+          "score": 100.0,
+          "label": "Vocabulary rarity",
+          "pillar": "clarity"
+        },
+        "hedging": {
+          "value": 0.004651162790697674,
+          "ideal": [
+            0,
+            0.01
+          ],
+          "tolerable": [
+            0,
+            0.025
+          ],
+          "score": 100.0,
+          "label": "Filler and marketing words",
+          "pillar": "clarity"
+        },
+        "diversity": {
+          "value": 0.7270769230769231,
+          "ideal": [
+            0.55,
+            0.85
+          ],
+          "tolerable": [
+            0.4,
+            0.95
+          ],
+          "score": 100.0,
+          "label": "Vocabulary diversity",
+          "pillar": "clarity"
+        },
+        "headings_density": {
+          "value": 4.6,
+          "ideal": [
+            3,
+            15
+          ],
+          "tolerable": [
+            1.5,
+            30
+          ],
+          "score": 100.0,
+          "label": "Headings per 1000 words",
+          "pillar": "structure"
+        },
+        "unbroken_run": {
+          "value": 297,
+          "ideal": [
+            0,
+            400
+          ],
+          "tolerable": [
+            0,
+            800
+          ],
+          "score": 100.0,
+          "label": "Longest stretch without a heading",
+          "pillar": "structure"
+        },
+        "paragraph_length": {
+          "value": 46.3,
+          "ideal": [
+            30,
+            80
+          ],
+          "tolerable": [
+            15,
+            120
+          ],
+          "score": 100.0,
+          "label": "Average paragraph length",
+          "pillar": "structure"
+        },
+        "long_paragraphs": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Paragraphs over 120 words",
+          "pillar": "structure"
+        },
+        "link_density": {
+          "value": 0.07527504342790967,
+          "ideal": [
+            0.01,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Link text share of the body",
+          "pillar": "structure"
+        },
+        "scannability": {
+          "value": 0.9852924145917777,
+          "ideal": [
+            0.7,
+            1.0
+          ],
+          "tolerable": [
+            0.45,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Scannability",
+          "pillar": "structure"
+        },
+        "title_length": {
+          "value": 79,
+          "ideal": [
+            25,
+            65
+          ],
+          "tolerable": [
+            10,
+            90
+          ],
+          "score": 77.6,
+          "label": "Title length",
+          "pillar": "structure"
+        },
+        "meta_description": {
+          "value": 159,
+          "ideal": [
+            70,
+            200
+          ],
+          "tolerable": [
+            0,
+            320
+          ],
+          "score": 100.0,
+          "label": "Meta description length",
+          "pillar": "structure"
+        },
+        "boilerplate": {
+          "value": 0.27234418541425953,
+          "ideal": [
+            0,
+            0.45
+          ],
+          "tolerable": [
+            0,
+            0.7
+          ],
+          "score": 100.0,
+          "label": "Boilerplate share of the page text",
+          "pillar": "structure"
+        },
+        "font_size": {
+          "value": 20,
+          "ideal": [
+            16,
+            21
+          ],
+          "tolerable": [
+            14,
+            24
+          ],
+          "score": 100.0,
+          "label": "Body text size (desktop)",
+          "pillar": "comfort"
+        },
+        "small_text": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.35
+          ],
+          "score": 100.0,
+          "label": "Text rendered below 16px",
+          "pillar": "comfort"
+        },
+        "line_height": {
+          "value": 1.85,
+          "ideal": [
+            1.45,
+            1.75
+          ],
+          "tolerable": [
+            1.25,
+            2.0
+          ],
+          "score": 84.0,
+          "label": "Line height",
+          "pillar": "comfort"
+        },
+        "measure": {
+          "value": 82.7,
+          "ideal": [
+            50,
+            80
+          ],
+          "tolerable": [
+            38,
+            95
+          ],
+          "score": 92.8,
+          "label": "Line length (characters per line)",
+          "pillar": "comfort"
+        },
+        "paragraph_gap": {
+          "value": 0.43,
+          "ideal": [
+            0.5,
+            1.4
+          ],
+          "tolerable": [
+            0.25,
+            2.2
+          ],
+          "score": 88.8,
+          "label": "Space between paragraphs",
+          "pillar": "comfort"
+        },
+        "contrast": {
+          "value": 21.0,
+          "ideal": [
+            7.0,
+            21.0
+          ],
+          "tolerable": [
+            4.5,
+            21.0
+          ],
+          "score": 100.0,
+          "label": "Body text contrast (WCAG)",
+          "pillar": "comfort"
+        },
+        "apca": {
+          "value": 106.0,
+          "ideal": [
+            75,
+            108
+          ],
+          "tolerable": [
+            60,
+            108
+          ],
+          "score": 100.0,
+          "label": "Perceptual contrast (APCA Lc)",
+          "pillar": "comfort"
+        },
+        "justified": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.02
+          ],
+          "tolerable": [
+            0,
+            0.15
+          ],
+          "score": 100.0,
+          "label": "Justified text without hyphenation",
+          "pillar": "comfort"
+        },
+        "uppercase": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.03
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Text set in capitals",
+          "pillar": "comfort"
+        },
+        "type_sizes": {
+          "value": 6,
+          "ideal": [
+            2,
+            8
+          ],
+          "tolerable": [
+            1,
+            12
+          ],
+          "score": 100.0,
+          "label": "Distinct type sizes",
+          "pillar": "comfort"
+        },
+        "occlusion": {
+          "value": 0.1563,
+          "ideal": [
+            0,
+            0.25
+          ],
+          "tolerable": [
+            0,
+            0.45
+          ],
+          "score": 100.0,
+          "label": "First screen covered by fixed chrome",
+          "pillar": "comfort"
+        },
+        "cls": {
+          "value": 0.0528,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Layout shift while loading",
+          "pillar": "comfort"
+        },
+        "mobile_font": {
+          "value": 20,
+          "ideal": [
+            16,
+            20
+          ],
+          "tolerable": [
+            14,
+            22
+          ],
+          "score": 100.0,
+          "label": "Body text size (mobile)",
+          "pillar": "comfort"
+        },
+        "mobile_measure": {
+          "value": 34,
+          "ideal": [
+            32,
+            60
+          ],
+          "tolerable": [
+            24,
+            70
+          ],
+          "score": 100.0,
+          "label": "Line length on mobile",
+          "pillar": "comfort"
+        },
+        "alt_coverage": {
+          "value": 1.0,
+          "ideal": [
+            1.0,
+            1.0
+          ],
+          "tolerable": [
+            0.85,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Images with alt text",
+          "pillar": "access"
+        },
+        "heading_order": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            2
+          ],
+          "score": 100.0,
+          "label": "Heading level skips",
+          "pillar": "access"
+        },
+        "weak_links": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            3
+          ],
+          "score": 100.0,
+          "label": "Uninformative link text",
+          "pillar": "access"
+        },
+        "acronyms": {
+          "value": 0,
+          "ideal": [
+            0,
+            4
+          ],
+          "tolerable": [
+            0,
+            12
+          ],
+          "score": 100.0,
+          "label": "Acronyms never expanded",
+          "pillar": "access"
+        },
+        "rem_scaling": {
+          "value": 1.0,
+          "ideal": [
+            1,
+            1
+          ],
+          "tolerable": [
+            1,
+            1
+          ],
+          "score": 100.0,
+          "label": "Text follows the browser's font size",
+          "pillar": "access"
+        }
+      }
+    },
+    {
+      "name": "wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Typography",
+      "page_type": "article",
+      "score": 52.7,
+      "grade": "E",
+      "metrics": {
+        "lix": {
+          "value": 61.1,
+          "ideal": [
+            30,
+            45
+          ],
+          "tolerable": [
+            20,
+            55
+          ],
+          "score": 23.4,
+          "label": "Reading difficulty (LIX)",
+          "pillar": "clarity"
+        },
+        "flesch": {
+          "value": 23.6,
+          "ideal": [
+            55,
+            85
+          ],
+          "tolerable": [
+            35,
+            105
+          ],
+          "score": 25.8,
+          "label": "Flesch Reading Ease",
+          "pillar": "clarity"
+        },
+        "asl": {
+          "value": 26.7,
+          "ideal": [
+            12,
+            20
+          ],
+          "tolerable": [
+            8,
+            26
+          ],
+          "score": 53.0,
+          "label": "Average sentence length",
+          "pillar": "clarity"
+        },
+        "long_sentences": {
+          "value": 0.436241610738255,
+          "ideal": [
+            0,
+            0.18
+          ],
+          "tolerable": [
+            0,
+            0.32
+          ],
+          "score": 10.2,
+          "label": "Sentences over the length cap",
+          "pillar": "clarity"
+        },
+        "rhythm": {
+          "value": 0.65,
+          "ideal": [
+            0.45,
+            1.1
+          ],
+          "tolerable": [
+            0.25,
+            1.6
+          ],
+          "score": 100.0,
+          "label": "Sentence length variation",
+          "pillar": "clarity"
+        },
+        "passive": {
+          "value": 0.40268456375838924,
+          "ideal": [
+            0,
+            0.14
+          ],
+          "tolerable": [
+            0,
+            0.28
+          ],
+          "score": 7.4,
+          "label": "Passive voice",
+          "pillar": "clarity"
+        },
+        "nominalization": {
+          "value": 0.04027183488547697,
+          "ideal": [
+            0,
+            0.05
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Nominalisations",
+          "pillar": "clarity"
+        },
+        "connectives": {
+          "value": 0.28187919463087246,
+          "ideal": [
+            0.18,
+            0.65
+          ],
+          "tolerable": [
+            0.08,
+            0.85
+          ],
+          "score": 100.0,
+          "label": "Transition words",
+          "pillar": "clarity"
+        },
+        "polysyllabic": {
+          "value": 0.2652188219809148,
+          "ideal": [
+            0.06,
+            0.18
+          ],
+          "tolerable": [
+            0.06,
+            0.28
+          ],
+          "score": 65.9,
+          "label": "Long-word load",
+          "pillar": "clarity"
+        },
+        "word_rarity": {
+          "value": 3.9,
+          "ideal": [
+            3.6,
+            5.5
+          ],
+          "tolerable": [
+            3.0,
+            6.5
+          ],
+          "score": 100.0,
+          "label": "Vocabulary rarity",
+          "pillar": "clarity"
+        },
+        "hedging": {
+          "value": 0.0018098058571898651,
+          "ideal": [
+            0,
+            0.01
+          ],
+          "tolerable": [
+            0,
+            0.025
+          ],
+          "score": 100.0,
+          "label": "Filler and marketing words",
+          "pillar": "clarity"
+        },
+        "diversity": {
+          "value": 0.7230416666666667,
+          "ideal": [
+            0.55,
+            0.85
+          ],
+          "tolerable": [
+            0.4,
+            0.95
+          ],
+          "score": 100.0,
+          "label": "Vocabulary diversity",
+          "pillar": "clarity"
+        },
+        "headings_density": {
+          "value": 3.3,
+          "ideal": [
+            3,
+            15
+          ],
+          "tolerable": [
+            1.5,
+            30
+          ],
+          "score": 100.0,
+          "label": "Headings per 1000 words",
+          "pillar": "structure"
+        },
+        "unbroken_run": {
+          "value": 1485,
+          "ideal": [
+            0,
+            400
+          ],
+          "tolerable": [
+            0,
+            800
+          ],
+          "score": 0.0,
+          "label": "Longest stretch without a heading",
+          "pillar": "structure"
+        },
+        "paragraph_length": {
+          "value": 67.3,
+          "ideal": [
+            30,
+            80
+          ],
+          "tolerable": [
+            15,
+            120
+          ],
+          "score": 100.0,
+          "label": "Average paragraph length",
+          "pillar": "structure"
+        },
+        "long_paragraphs": {
+          "value": 0.11864406779661017,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 95.0,
+          "label": "Paragraphs over 120 words",
+          "pillar": "structure"
+        },
+        "link_density": {
+          "value": 0.2644020037570445,
+          "ideal": [
+            0.01,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 53.4,
+          "label": "Link text share of the body",
+          "pillar": "structure"
+        },
+        "scannability": {
+          "value": 0.6840389289239358,
+          "ideal": [
+            0.7,
+            1.0
+          ],
+          "tolerable": [
+            0.45,
+            1.0
+          ],
+          "score": 97.4,
+          "label": "Scannability",
+          "pillar": "structure"
+        },
+        "title_length": {
+          "value": 22,
+          "ideal": [
+            25,
+            65
+          ],
+          "tolerable": [
+            10,
+            90
+          ],
+          "score": 92.0,
+          "label": "Title length",
+          "pillar": "structure"
+        },
+        "meta_description": {
+          "value": 0,
+          "ideal": [
+            70,
+            200
+          ],
+          "tolerable": [
+            0,
+            320
+          ],
+          "score": 60.0,
+          "label": "Meta description length",
+          "pillar": "structure"
+        },
+        "boilerplate": {
+          "value": 0.18525819347469652,
+          "ideal": [
+            0,
+            0.45
+          ],
+          "tolerable": [
+            0,
+            0.7
+          ],
+          "score": 100.0,
+          "label": "Boilerplate share of the page text",
+          "pillar": "structure"
+        },
+        "font_size": {
+          "value": 16,
+          "ideal": [
+            16,
+            21
+          ],
+          "tolerable": [
+            14,
+            24
+          ],
+          "score": 100.0,
+          "label": "Body text size (desktop)",
+          "pillar": "comfort"
+        },
+        "small_text": {
+          "value": 0.35244523331309263,
+          "ideal": [
+            0,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.35
+          ],
+          "score": 59.4,
+          "label": "Text rendered below 16px",
+          "pillar": "comfort"
+        },
+        "line_height": {
+          "value": 1.63,
+          "ideal": [
+            1.45,
+            1.75
+          ],
+          "tolerable": [
+            1.25,
+            2.0
+          ],
+          "score": 100.0,
+          "label": "Line height",
+          "pillar": "comfort"
+        },
+        "measure": {
+          "value": 79.5,
+          "ideal": [
+            50,
+            80
+          ],
+          "tolerable": [
+            38,
+            95
+          ],
+          "score": 100.0,
+          "label": "Line length (characters per line)",
+          "pillar": "comfort"
+        },
+        "paragraph_gap": {
+          "value": 0.62,
+          "ideal": [
+            0.5,
+            1.4
+          ],
+          "tolerable": [
+            0.25,
+            2.2
+          ],
+          "score": 100.0,
+          "label": "Space between paragraphs",
+          "pillar": "comfort"
+        },
+        "contrast": {
+          "value": 16.13,
+          "ideal": [
+            7.0,
+            21.0
+          ],
+          "tolerable": [
+            4.5,
+            21.0
+          ],
+          "score": 100.0,
+          "label": "Body text contrast (WCAG)",
+          "pillar": "comfort"
+        },
+        "apca": {
+          "value": 103.1,
+          "ideal": [
+            75,
+            108
+          ],
+          "tolerable": [
+            60,
+            108
+          ],
+          "score": 100.0,
+          "label": "Perceptual contrast (APCA Lc)",
+          "pillar": "comfort"
+        },
+        "justified": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.02
+          ],
+          "tolerable": [
+            0,
+            0.15
+          ],
+          "score": 100.0,
+          "label": "Justified text without hyphenation",
+          "pillar": "comfort"
+        },
+        "uppercase": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.03
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Text set in capitals",
+          "pillar": "comfort"
+        },
+        "type_sizes": {
+          "value": 6,
+          "ideal": [
+            2,
+            8
+          ],
+          "tolerable": [
+            1,
+            12
+          ],
+          "score": 100.0,
+          "label": "Distinct type sizes",
+          "pillar": "comfort"
+        },
+        "occlusion": {
+          "value": 0.2025,
+          "ideal": [
+            0,
+            0.25
+          ],
+          "tolerable": [
+            0,
+            0.45
+          ],
+          "score": 100.0,
+          "label": "First screen covered by fixed chrome",
+          "pillar": "comfort"
+        },
+        "cls": {
+          "value": 0.0008,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Layout shift while loading",
+          "pillar": "comfort"
+        },
+        "mobile_font": {
+          "value": 16,
+          "ideal": [
+            16,
+            20
+          ],
+          "tolerable": [
+            14,
+            22
+          ],
+          "score": 100.0,
+          "label": "Body text size (mobile)",
+          "pillar": "comfort"
+        },
+        "mobile_measure": {
+          "value": 63,
+          "ideal": [
+            32,
+            60
+          ],
+          "tolerable": [
+            24,
+            70
+          ],
+          "score": 88.0,
+          "label": "Line length on mobile",
+          "pillar": "comfort"
+        },
+        "alt_coverage": {
+          "value": 0.55,
+          "ideal": [
+            1.0,
+            1.0
+          ],
+          "tolerable": [
+            0.85,
+            1.0
+          ],
+          "score": 0.0,
+          "label": "Images with alt text",
+          "pillar": "access"
+        },
+        "heading_order": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            2
+          ],
+          "score": 100.0,
+          "label": "Heading level skips",
+          "pillar": "access"
+        },
+        "weak_links": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            3
+          ],
+          "score": 100.0,
+          "label": "Uninformative link text",
+          "pillar": "access"
+        },
+        "acronyms": {
+          "value": 4,
+          "ideal": [
+            0,
+            4
+          ],
+          "tolerable": [
+            0,
+            12
+          ],
+          "score": 100.0,
+          "label": "Acronyms never expanded",
+          "pillar": "access"
+        },
+        "rem_scaling": {
+          "value": 1.0,
+          "ideal": [
+            1,
+            1
+          ],
+          "tolerable": [
+            1,
+            1
+          ],
+          "score": 100.0,
+          "label": "Text follows the browser's font size",
+          "pillar": "access"
+        }
+      }
+    },
+    {
+      "name": "web.dev",
+      "url": "https://web.dev/articles/font-best-practices",
+      "page_type": "doc",
+      "score": 79.0,
+      "grade": "C",
+      "metrics": {
+        "lix": {
+          "value": 45.7,
+          "ideal": [
+            30,
+            45
+          ],
+          "tolerable": [
+            20,
+            55
+          ],
+          "score": 97.2,
+          "label": "Reading difficulty (LIX)",
+          "pillar": "clarity"
+        },
+        "flesch": {
+          "value": 50.9,
+          "ideal": [
+            55,
+            85
+          ],
+          "tolerable": [
+            35,
+            105
+          ],
+          "score": 91.8,
+          "label": "Flesch Reading Ease",
+          "pillar": "clarity"
+        },
+        "asl": {
+          "value": 18.4,
+          "ideal": [
+            12,
+            20
+          ],
+          "tolerable": [
+            8,
+            26
+          ],
+          "score": 100.0,
+          "label": "Average sentence length",
+          "pillar": "clarity"
+        },
+        "long_sentences": {
+          "value": 0.13709677419354838,
+          "ideal": [
+            0,
+            0.18
+          ],
+          "tolerable": [
+            0,
+            0.32
+          ],
+          "score": 100.0,
+          "label": "Sentences over the length cap",
+          "pillar": "clarity"
+        },
+        "rhythm": {
+          "value": 1.29,
+          "ideal": [
+            0.45,
+            1.1
+          ],
+          "tolerable": [
+            0.25,
+            1.6
+          ],
+          "score": 84.8,
+          "label": "Sentence length variation",
+          "pillar": "clarity"
+        },
+        "passive": {
+          "value": 0.1935483870967742,
+          "ideal": [
+            0,
+            0.14
+          ],
+          "tolerable": [
+            0,
+            0.28
+          ],
+          "score": 84.7,
+          "label": "Passive voice",
+          "pillar": "clarity"
+        },
+        "nominalization": {
+          "value": 0.021910604732690624,
+          "ideal": [
+            0,
+            0.05
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Nominalisations",
+          "pillar": "clarity"
+        },
+        "connectives": {
+          "value": 0.22580645161290322,
+          "ideal": [
+            0.18,
+            0.65
+          ],
+          "tolerable": [
+            0.08,
+            0.85
+          ],
+          "score": 100.0,
+          "label": "Transition words",
+          "pillar": "clarity"
+        },
+        "word_rarity": {
+          "value": 4.27,
+          "ideal": [
+            3.3,
+            5.5
+          ],
+          "tolerable": [
+            2.8,
+            6.5
+          ],
+          "score": 100.0,
+          "label": "Vocabulary rarity",
+          "pillar": "clarity"
+        },
+        "hedging": {
+          "value": 0.005173099880620772,
+          "ideal": [
+            0,
+            0.01
+          ],
+          "tolerable": [
+            0,
+            0.025
+          ],
+          "score": 100.0,
+          "label": "Filler and marketing words",
+          "pillar": "clarity"
+        },
+        "diversity": {
+          "value": 0.648041237113402,
+          "ideal": [
+            0.55,
+            0.85
+          ],
+          "tolerable": [
+            0.4,
+            0.95
+          ],
+          "score": 100.0,
+          "label": "Vocabulary diversity",
+          "pillar": "clarity"
+        },
+        "headings_density": {
+          "value": 6.6,
+          "ideal": [
+            4,
+            20
+          ],
+          "tolerable": [
+            2,
+            32
+          ],
+          "score": 100.0,
+          "label": "Headings per 1000 words",
+          "pillar": "structure"
+        },
+        "unbroken_run": {
+          "value": 387,
+          "ideal": [
+            0,
+            400
+          ],
+          "tolerable": [
+            0,
+            800
+          ],
+          "score": 100.0,
+          "label": "Longest stretch without a heading",
+          "pillar": "structure"
+        },
+        "paragraph_length": {
+          "value": 37.8,
+          "ideal": [
+            30,
+            80
+          ],
+          "tolerable": [
+            15,
+            120
+          ],
+          "score": 100.0,
+          "label": "Average paragraph length",
+          "pillar": "structure"
+        },
+        "long_paragraphs": {
+          "value": 0.017241379310344827,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Paragraphs over 120 words",
+          "pillar": "structure"
+        },
+        "link_density": {
+          "value": 0.03128859613009469,
+          "ideal": [
+            0.01,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Link text share of the body",
+          "pillar": "structure"
+        },
+        "scannability": {
+          "value": 0.9026555273207364,
+          "ideal": [
+            0.7,
+            1.0
+          ],
+          "tolerable": [
+            0.45,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Scannability",
+          "pillar": "structure"
+        },
+        "title_length": {
+          "value": 45,
+          "ideal": [
+            25,
+            65
+          ],
+          "tolerable": [
+            10,
+            90
+          ],
+          "score": 100.0,
+          "label": "Title length",
+          "pillar": "structure"
+        },
+        "meta_description": {
+          "value": 58,
+          "ideal": [
+            70,
+            200
+          ],
+          "tolerable": [
+            0,
+            320
+          ],
+          "score": 93.1,
+          "label": "Meta description length",
+          "pillar": "structure"
+        },
+        "boilerplate": {
+          "value": 0.30481243180193396,
+          "ideal": [
+            0,
+            0.45
+          ],
+          "tolerable": [
+            0,
+            0.7
+          ],
+          "score": 100.0,
+          "label": "Boilerplate share of the page text",
+          "pillar": "structure"
+        },
+        "font_size": {
+          "value": 16,
+          "ideal": [
+            16,
+            21
+          ],
+          "tolerable": [
+            14,
+            24
+          ],
+          "score": 100.0,
+          "label": "Body text size (desktop)",
+          "pillar": "comfort"
+        },
+        "small_text": {
+          "value": 0.021111031054110527,
+          "ideal": [
+            0,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.35
+          ],
+          "score": 100.0,
+          "label": "Text rendered below 16px",
+          "pillar": "comfort"
+        },
+        "line_height": {
+          "value": 1.75,
+          "ideal": [
+            1.45,
+            1.75
+          ],
+          "tolerable": [
+            1.25,
+            2.0
+          ],
+          "score": 100.0,
+          "label": "Line height",
+          "pillar": "comfort"
+        },
+        "measure": {
+          "value": 102,
+          "ideal": [
+            50,
+            80
+          ],
+          "tolerable": [
+            38,
+            95
+          ],
+          "score": 32.0,
+          "label": "Line length (characters per line)",
+          "pillar": "comfort"
+        },
+        "paragraph_gap": {
+          "value": 0.57,
+          "ideal": [
+            0.5,
+            1.4
+          ],
+          "tolerable": [
+            0.25,
+            2.2
+          ],
+          "score": 100.0,
+          "label": "Space between paragraphs",
+          "pillar": "comfort"
+        },
+        "contrast": {
+          "value": 16.1,
+          "ideal": [
+            7.0,
+            21.0
+          ],
+          "tolerable": [
+            4.5,
+            21.0
+          ],
+          "score": 100.0,
+          "label": "Body text contrast (WCAG)",
+          "pillar": "comfort"
+        },
+        "apca": {
+          "value": 103.1,
+          "ideal": [
+            75,
+            108
+          ],
+          "tolerable": [
+            60,
+            108
+          ],
+          "score": 100.0,
+          "label": "Perceptual contrast (APCA Lc)",
+          "pillar": "comfort"
+        },
+        "justified": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.02
+          ],
+          "tolerable": [
+            0,
+            0.15
+          ],
+          "score": 100.0,
+          "label": "Justified text without hyphenation",
+          "pillar": "comfort"
+        },
+        "uppercase": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.03
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Text set in capitals",
+          "pillar": "comfort"
+        },
+        "type_sizes": {
+          "value": 6,
+          "ideal": [
+            2,
+            8
+          ],
+          "tolerable": [
+            1,
+            12
+          ],
+          "score": 100.0,
+          "label": "Distinct type sizes",
+          "pillar": "comfort"
+        },
+        "occlusion": {
+          "value": 0.4537,
+          "ideal": [
+            0,
+            0.25
+          ],
+          "tolerable": [
+            0,
+            0.45
+          ],
+          "score": 58.9,
+          "label": "First screen covered by fixed chrome",
+          "pillar": "comfort"
+        },
+        "cls": {
+          "value": 0.1885,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 76.4,
+          "label": "Layout shift while loading",
+          "pillar": "comfort"
+        },
+        "mobile_font": {
+          "value": 16,
+          "ideal": [
+            16,
+            20
+          ],
+          "tolerable": [
+            14,
+            22
+          ],
+          "score": 100.0,
+          "label": "Body text size (mobile)",
+          "pillar": "comfort"
+        },
+        "mobile_measure": {
+          "value": 42,
+          "ideal": [
+            32,
+            60
+          ],
+          "tolerable": [
+            24,
+            70
+          ],
+          "score": 100.0,
+          "label": "Line length on mobile",
+          "pillar": "comfort"
+        },
+        "alt_coverage": {
+          "value": 1.0,
+          "ideal": [
+            1.0,
+            1.0
+          ],
+          "tolerable": [
+            0.85,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Images with alt text",
+          "pillar": "access"
+        },
+        "heading_order": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            2
+          ],
+          "score": 100.0,
+          "label": "Heading level skips",
+          "pillar": "access"
+        },
+        "weak_links": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            3
+          ],
+          "score": 100.0,
+          "label": "Uninformative link text",
+          "pillar": "access"
+        },
+        "acronyms": {
+          "value": 9,
+          "ideal": [
+            0,
+            4
+          ],
+          "tolerable": [
+            0,
+            12
+          ],
+          "score": 75.0,
+          "label": "Acronyms never expanded",
+          "pillar": "access"
+        },
+        "rem_scaling": {
+          "value": 0.0,
+          "ideal": [
+            1,
+            1
+          ],
+          "tolerable": [
+            1,
+            1
+          ],
+          "score": 0.0,
+          "label": "Text follows the browser's font size",
+          "pillar": "access"
+        }
+      }
+    },
+    {
+      "name": "css-tricks",
+      "url": "https://css-tricks.com/typography-for-developers/",
+      "page_type": "doc",
+      "score": 72.4,
+      "grade": "C",
+      "metrics": {
+        "lix": {
+          "value": 39.0,
+          "ideal": [
+            30,
+            45
+          ],
+          "tolerable": [
+            20,
+            55
+          ],
+          "score": 100.0,
+          "label": "Reading difficulty (LIX)",
+          "pillar": "clarity"
+        },
+        "flesch": {
+          "value": 60.5,
+          "ideal": [
+            55,
+            85
+          ],
+          "tolerable": [
+            35,
+            105
+          ],
+          "score": 100.0,
+          "label": "Flesch Reading Ease",
+          "pillar": "clarity"
+        },
+        "asl": {
+          "value": 16.4,
+          "ideal": [
+            12,
+            20
+          ],
+          "tolerable": [
+            8,
+            26
+          ],
+          "score": 100.0,
+          "label": "Average sentence length",
+          "pillar": "clarity"
+        },
+        "long_sentences": {
+          "value": 0.15920398009950248,
+          "ideal": [
+            0,
+            0.18
+          ],
+          "tolerable": [
+            0,
+            0.32
+          ],
+          "score": 100.0,
+          "label": "Sentences over the length cap",
+          "pillar": "clarity"
+        },
+        "rhythm": {
+          "value": 0.5,
+          "ideal": [
+            0.45,
+            1.1
+          ],
+          "tolerable": [
+            0.25,
+            1.6
+          ],
+          "score": 100.0,
+          "label": "Sentence length variation",
+          "pillar": "clarity"
+        },
+        "passive": {
+          "value": 0.0945273631840796,
+          "ideal": [
+            0,
+            0.14
+          ],
+          "tolerable": [
+            0,
+            0.28
+          ],
+          "score": 100.0,
+          "label": "Passive voice",
+          "pillar": "clarity"
+        },
+        "nominalization": {
+          "value": 0.017846339987900785,
+          "ideal": [
+            0,
+            0.05
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Nominalisations",
+          "pillar": "clarity"
+        },
+        "connectives": {
+          "value": 0.27860696517412936,
+          "ideal": [
+            0.18,
+            0.65
+          ],
+          "tolerable": [
+            0.08,
+            0.85
+          ],
+          "score": 100.0,
+          "label": "Transition words",
+          "pillar": "clarity"
+        },
+        "word_rarity": {
+          "value": 4.35,
+          "ideal": [
+            3.3,
+            5.5
+          ],
+          "tolerable": [
+            2.8,
+            6.5
+          ],
+          "score": 100.0,
+          "label": "Vocabulary rarity",
+          "pillar": "clarity"
+        },
+        "hedging": {
+          "value": 0.006524008350730689,
+          "ideal": [
+            0,
+            0.01
+          ],
+          "tolerable": [
+            0,
+            0.025
+          ],
+          "score": 100.0,
+          "label": "Filler and marketing words",
+          "pillar": "clarity"
+        },
+        "diversity": {
+          "value": 0.7386666666666667,
+          "ideal": [
+            0.55,
+            0.85
+          ],
+          "tolerable": [
+            0.4,
+            0.95
+          ],
+          "score": 100.0,
+          "label": "Vocabulary diversity",
+          "pillar": "clarity"
+        },
+        "headings_density": {
+          "value": 0.3,
+          "ideal": [
+            4,
+            20
+          ],
+          "tolerable": [
+            2,
+            32
+          ],
+          "score": 9.0,
+          "label": "Headings per 1000 words",
+          "pillar": "structure"
+        },
+        "unbroken_run": {
+          "value": 3855,
+          "ideal": [
+            0,
+            400
+          ],
+          "tolerable": [
+            0,
+            800
+          ],
+          "score": 0.0,
+          "label": "Longest stretch without a heading",
+          "pillar": "structure"
+        },
+        "paragraph_length": {
+          "value": 40.7,
+          "ideal": [
+            30,
+            80
+          ],
+          "tolerable": [
+            15,
+            120
+          ],
+          "score": 100.0,
+          "label": "Average paragraph length",
+          "pillar": "structure"
+        },
+        "long_paragraphs": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Paragraphs over 120 words",
+          "pillar": "structure"
+        },
+        "link_density": {
+          "value": 0.034670116429495475,
+          "ideal": [
+            0.01,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Link text share of the body",
+          "pillar": "structure"
+        },
+        "scannability": {
+          "value": 0.5611901681759379,
+          "ideal": [
+            0.7,
+            1.0
+          ],
+          "tolerable": [
+            0.45,
+            1.0
+          ],
+          "score": 77.8,
+          "label": "Scannability",
+          "pillar": "structure"
+        },
+        "title_length": {
+          "value": 38,
+          "ideal": [
+            25,
+            65
+          ],
+          "tolerable": [
+            10,
+            90
+          ],
+          "score": 100.0,
+          "label": "Title length",
+          "pillar": "structure"
+        },
+        "meta_description": {
+          "value": 398,
+          "ideal": [
+            70,
+            200
+          ],
+          "tolerable": [
+            0,
+            320
+          ],
+          "score": 21.0,
+          "label": "Meta description length",
+          "pillar": "structure"
+        },
+        "boilerplate": {
+          "value": 0.09291405257688312,
+          "ideal": [
+            0,
+            0.45
+          ],
+          "tolerable": [
+            0,
+            0.7
+          ],
+          "score": 100.0,
+          "label": "Boilerplate share of the page text",
+          "pillar": "structure"
+        },
+        "font_size": {
+          "value": 19.7,
+          "ideal": [
+            16,
+            21
+          ],
+          "tolerable": [
+            14,
+            24
+          ],
+          "score": 100.0,
+          "label": "Body text size (desktop)",
+          "pillar": "comfort"
+        },
+        "small_text": {
+          "value": 0.041148151512398944,
+          "ideal": [
+            0,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.35
+          ],
+          "score": 100.0,
+          "label": "Text rendered below 16px",
+          "pillar": "comfort"
+        },
+        "line_height": {
+          "value": 1.7,
+          "ideal": [
+            1.45,
+            1.75
+          ],
+          "tolerable": [
+            1.25,
+            2.0
+          ],
+          "score": 100.0,
+          "label": "Line height",
+          "pillar": "comfort"
+        },
+        "measure": {
+          "value": 62.5,
+          "ideal": [
+            50,
+            80
+          ],
+          "tolerable": [
+            38,
+            95
+          ],
+          "score": 100.0,
+          "label": "Line length (characters per line)",
+          "pillar": "comfort"
+        },
+        "paragraph_gap": {
+          "value": 0.74,
+          "ideal": [
+            0.5,
+            1.4
+          ],
+          "tolerable": [
+            0.25,
+            2.2
+          ],
+          "score": 100.0,
+          "label": "Space between paragraphs",
+          "pillar": "comfort"
+        },
+        "contrast": {
+          "value": 21.0,
+          "ideal": [
+            7.0,
+            21.0
+          ],
+          "tolerable": [
+            4.5,
+            21.0
+          ],
+          "score": 100.0,
+          "label": "Body text contrast (WCAG)",
+          "pillar": "comfort"
+        },
+        "apca": {
+          "value": 106.0,
+          "ideal": [
+            75,
+            108
+          ],
+          "tolerable": [
+            60,
+            108
+          ],
+          "score": 100.0,
+          "label": "Perceptual contrast (APCA Lc)",
+          "pillar": "comfort"
+        },
+        "justified": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.02
+          ],
+          "tolerable": [
+            0,
+            0.15
+          ],
+          "score": 100.0,
+          "label": "Justified text without hyphenation",
+          "pillar": "comfort"
+        },
+        "uppercase": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.03
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Text set in capitals",
+          "pillar": "comfort"
+        },
+        "type_sizes": {
+          "value": 7,
+          "ideal": [
+            2,
+            8
+          ],
+          "tolerable": [
+            1,
+            12
+          ],
+          "score": 100.0,
+          "label": "Distinct type sizes",
+          "pillar": "comfort"
+        },
+        "occlusion": {
+          "value": 1.0,
+          "ideal": [
+            0,
+            0.25
+          ],
+          "tolerable": [
+            0,
+            0.45
+          ],
+          "score": 0.0,
+          "label": "First screen covered by fixed chrome",
+          "pillar": "comfort"
+        },
+        "cls": {
+          "value": 0.1082,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 97.8,
+          "label": "Layout shift while loading",
+          "pillar": "comfort"
+        },
+        "mobile_font": {
+          "value": 16.8,
+          "ideal": [
+            16,
+            20
+          ],
+          "tolerable": [
+            14,
+            22
+          ],
+          "score": 100.0,
+          "label": "Body text size (mobile)",
+          "pillar": "comfort"
+        },
+        "mobile_measure": {
+          "value": 38.3,
+          "ideal": [
+            32,
+            60
+          ],
+          "tolerable": [
+            24,
+            70
+          ],
+          "score": 100.0,
+          "label": "Line length on mobile",
+          "pillar": "comfort"
+        },
+        "alt_coverage": {
+          "value": 0.9375,
+          "ideal": [
+            1.0,
+            1.0
+          ],
+          "tolerable": [
+            0.85,
+            1.0
+          ],
+          "score": 83.3,
+          "label": "Images with alt text",
+          "pillar": "access"
+        },
+        "heading_order": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            2
+          ],
+          "score": 100.0,
+          "label": "Heading level skips",
+          "pillar": "access"
+        },
+        "weak_links": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            3
+          ],
+          "score": 100.0,
+          "label": "Uninformative link text",
+          "pillar": "access"
+        },
+        "acronyms": {
+          "value": 10,
+          "ideal": [
+            0,
+            4
+          ],
+          "tolerable": [
+            0,
+            12
+          ],
+          "score": 70.0,
+          "label": "Acronyms never expanded",
+          "pillar": "access"
+        },
+        "rem_scaling": {
+          "value": 1.0,
+          "ideal": [
+            1,
+            1
+          ],
+          "tolerable": [
+            1,
+            1
+          ],
+          "score": 100.0,
+          "label": "Text follows the browser's font size",
+          "pillar": "access"
+        }
+      }
+    },
+    {
+      "name": "smashing",
+      "url": "https://www.smashingmagazine.com/2020/07/css-techniques-legibility/",
+      "page_type": "doc",
+      "score": 79.0,
+      "grade": "C",
+      "metrics": {
+        "lix": {
+          "value": 47.6,
+          "ideal": [
+            30,
+            45
+          ],
+          "tolerable": [
+            20,
+            55
+          ],
+          "score": 89.6,
+          "label": "Reading difficulty (LIX)",
+          "pillar": "clarity"
+        },
+        "flesch": {
+          "value": 48.6,
+          "ideal": [
+            55,
+            85
+          ],
+          "tolerable": [
+            35,
+            105
+          ],
+          "score": 87.2,
+          "label": "Flesch Reading Ease",
+          "pillar": "clarity"
+        },
+        "asl": {
+          "value": 20.1,
+          "ideal": [
+            12,
+            20
+          ],
+          "tolerable": [
+            8,
+            26
+          ],
+          "score": 99.3,
+          "label": "Average sentence length",
+          "pillar": "clarity"
+        },
+        "long_sentences": {
+          "value": 0.23529411764705882,
+          "ideal": [
+            0,
+            0.18
+          ],
+          "tolerable": [
+            0,
+            0.32
+          ],
+          "score": 84.2,
+          "label": "Sentences over the length cap",
+          "pillar": "clarity"
+        },
+        "rhythm": {
+          "value": 0.47,
+          "ideal": [
+            0.45,
+            1.1
+          ],
+          "tolerable": [
+            0.25,
+            1.6
+          ],
+          "score": 100.0,
+          "label": "Sentence length variation",
+          "pillar": "clarity"
+        },
+        "passive": {
+          "value": 0.15294117647058825,
+          "ideal": [
+            0,
+            0.14
+          ],
+          "tolerable": [
+            0,
+            0.28
+          ],
+          "score": 96.3,
+          "label": "Passive voice",
+          "pillar": "clarity"
+        },
+        "nominalization": {
+          "value": 0.021675454012888107,
+          "ideal": [
+            0,
+            0.05
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Nominalisations",
+          "pillar": "clarity"
+        },
+        "connectives": {
+          "value": 0.2235294117647059,
+          "ideal": [
+            0.18,
+            0.65
+          ],
+          "tolerable": [
+            0.08,
+            0.85
+          ],
+          "score": 100.0,
+          "label": "Transition words",
+          "pillar": "clarity"
+        },
+        "word_rarity": {
+          "value": 4.35,
+          "ideal": [
+            3.3,
+            5.5
+          ],
+          "tolerable": [
+            2.8,
+            6.5
+          ],
+          "score": 100.0,
+          "label": "Vocabulary rarity",
+          "pillar": "clarity"
+        },
+        "hedging": {
+          "value": 0.007594936708860759,
+          "ideal": [
+            0,
+            0.01
+          ],
+          "tolerable": [
+            0,
+            0.025
+          ],
+          "score": 100.0,
+          "label": "Filler and marketing words",
+          "pillar": "clarity"
+        },
+        "diversity": {
+          "value": 0.7118421052631579,
+          "ideal": [
+            0.55,
+            0.85
+          ],
+          "tolerable": [
+            0.4,
+            0.95
+          ],
+          "score": 100.0,
+          "label": "Vocabulary diversity",
+          "pillar": "clarity"
+        },
+        "headings_density": {
+          "value": 7.5,
+          "ideal": [
+            4,
+            20
+          ],
+          "tolerable": [
+            2,
+            32
+          ],
+          "score": 100.0,
+          "label": "Headings per 1000 words",
+          "pillar": "structure"
+        },
+        "unbroken_run": {
+          "value": 326,
+          "ideal": [
+            0,
+            400
+          ],
+          "tolerable": [
+            0,
+            800
+          ],
+          "score": 100.0,
+          "label": "Longest stretch without a heading",
+          "pillar": "structure"
+        },
+        "paragraph_length": {
+          "value": 50.5,
+          "ideal": [
+            30,
+            80
+          ],
+          "tolerable": [
+            15,
+            120
+          ],
+          "score": 100.0,
+          "label": "Average paragraph length",
+          "pillar": "structure"
+        },
+        "long_paragraphs": {
+          "value": 0.029411764705882353,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Paragraphs over 120 words",
+          "pillar": "structure"
+        },
+        "link_density": {
+          "value": 0.07142857142857142,
+          "ideal": [
+            0.01,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Link text share of the body",
+          "pillar": "structure"
+        },
+        "scannability": {
+          "value": 0.8013097407977275,
+          "ideal": [
+            0.7,
+            1.0
+          ],
+          "tolerable": [
+            0.45,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Scannability",
+          "pillar": "structure"
+        },
+        "title_length": {
+          "value": 63,
+          "ideal": [
+            25,
+            65
+          ],
+          "tolerable": [
+            10,
+            90
+          ],
+          "score": 100.0,
+          "label": "Title length",
+          "pillar": "structure"
+        },
+        "meta_description": {
+          "value": 470,
+          "ideal": [
+            70,
+            200
+          ],
+          "tolerable": [
+            0,
+            320
+          ],
+          "score": 0.0,
+          "label": "Meta description length",
+          "pillar": "structure"
+        },
+        "boilerplate": {
+          "value": 0.1500373227170938,
+          "ideal": [
+            0,
+            0.45
+          ],
+          "tolerable": [
+            0,
+            0.7
+          ],
+          "score": 100.0,
+          "label": "Boilerplate share of the page text",
+          "pillar": "structure"
+        },
+        "font_size": {
+          "value": 20.4,
+          "ideal": [
+            16,
+            21
+          ],
+          "tolerable": [
+            14,
+            24
+          ],
+          "score": 100.0,
+          "label": "Body text size (desktop)",
+          "pillar": "comfort"
+        },
+        "small_text": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.35
+          ],
+          "score": 100.0,
+          "label": "Text rendered below 16px",
+          "pillar": "comfort"
+        },
+        "line_height": {
+          "value": 1.64,
+          "ideal": [
+            1.45,
+            1.75
+          ],
+          "tolerable": [
+            1.25,
+            2.0
+          ],
+          "score": 100.0,
+          "label": "Line height",
+          "pillar": "comfort"
+        },
+        "measure": {
+          "value": 65.8,
+          "ideal": [
+            50,
+            80
+          ],
+          "tolerable": [
+            38,
+            95
+          ],
+          "score": 100.0,
+          "label": "Line length (characters per line)",
+          "pillar": "comfort"
+        },
+        "paragraph_gap": {
+          "value": 0.85,
+          "ideal": [
+            0.5,
+            1.4
+          ],
+          "tolerable": [
+            0.25,
+            2.2
+          ],
+          "score": 100.0,
+          "label": "Space between paragraphs",
+          "pillar": "comfort"
+        },
+        "contrast": {
+          "value": 12.63,
+          "ideal": [
+            7.0,
+            21.0
+          ],
+          "tolerable": [
+            4.5,
+            21.0
+          ],
+          "score": 100.0,
+          "label": "Body text contrast (WCAG)",
+          "pillar": "comfort"
+        },
+        "apca": {
+          "value": 98.7,
+          "ideal": [
+            75,
+            108
+          ],
+          "tolerable": [
+            60,
+            108
+          ],
+          "score": 100.0,
+          "label": "Perceptual contrast (APCA Lc)",
+          "pillar": "comfort"
+        },
+        "justified": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.02
+          ],
+          "tolerable": [
+            0,
+            0.15
+          ],
+          "score": 100.0,
+          "label": "Justified text without hyphenation",
+          "pillar": "comfort"
+        },
+        "uppercase": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.03
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Text set in capitals",
+          "pillar": "comfort"
+        },
+        "type_sizes": {
+          "value": 10,
+          "ideal": [
+            2,
+            8
+          ],
+          "tolerable": [
+            1,
+            12
+          ],
+          "score": 80.0,
+          "label": "Distinct type sizes",
+          "pillar": "comfort"
+        },
+        "occlusion": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.25
+          ],
+          "tolerable": [
+            0,
+            0.45
+          ],
+          "score": 100.0,
+          "label": "First screen covered by fixed chrome",
+          "pillar": "comfort"
+        },
+        "cls": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Layout shift while loading",
+          "pillar": "comfort"
+        },
+        "mobile_font": {
+          "value": 18,
+          "ideal": [
+            16,
+            20
+          ],
+          "tolerable": [
+            14,
+            22
+          ],
+          "score": 100.0,
+          "label": "Body text size (mobile)",
+          "pillar": "comfort"
+        },
+        "mobile_measure": {
+          "value": 37.4,
+          "ideal": [
+            32,
+            60
+          ],
+          "tolerable": [
+            24,
+            70
+          ],
+          "score": 100.0,
+          "label": "Line length on mobile",
+          "pillar": "comfort"
+        },
+        "alt_coverage": {
+          "value": 1.0,
+          "ideal": [
+            1.0,
+            1.0
+          ],
+          "tolerable": [
+            0.85,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Images with alt text",
+          "pillar": "access"
+        },
+        "heading_order": {
+          "value": 1,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            2
+          ],
+          "score": 80.0,
+          "label": "Heading level skips",
+          "pillar": "access"
+        },
+        "weak_links": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            3
+          ],
+          "score": 100.0,
+          "label": "Uninformative link text",
+          "pillar": "access"
+        },
+        "acronyms": {
+          "value": 3,
+          "ideal": [
+            0,
+            4
+          ],
+          "tolerable": [
+            0,
+            12
+          ],
+          "score": 100.0,
+          "label": "Acronyms never expanded",
+          "pillar": "access"
+        },
+        "rem_scaling": {
+          "value": 1.0,
+          "ideal": [
+            1,
+            1
+          ],
+          "tolerable": [
+            1,
+            1
+          ],
+          "score": 100.0,
+          "label": "Text follows the browser's font size",
+          "pillar": "access"
+        }
+      }
+    },
+    {
+      "name": "tailwind docs",
+      "url": "https://tailwindcss.com/docs/font-size",
+      "page_type": "doc",
+      "score": 76.0,
+      "grade": "C",
+      "metrics": {
+        "lix": {
+          "value": 35.4,
+          "ideal": [
+            30,
+            45
+          ],
+          "tolerable": [
+            20,
+            55
+          ],
+          "score": 100.0,
+          "label": "Reading difficulty (LIX)",
+          "pillar": "clarity"
+        },
+        "flesch": {
+          "value": 73.9,
+          "ideal": [
+            55,
+            85
+          ],
+          "tolerable": [
+            35,
+            105
+          ],
+          "score": 100.0,
+          "label": "Flesch Reading Ease",
+          "pillar": "clarity"
+        },
+        "asl": {
+          "value": 12.8,
+          "ideal": [
+            12,
+            20
+          ],
+          "tolerable": [
+            8,
+            26
+          ],
+          "score": 100.0,
+          "label": "Average sentence length",
+          "pillar": "clarity"
+        },
+        "long_sentences": {
+          "value": 0.08333333333333333,
+          "ideal": [
+            0,
+            0.18
+          ],
+          "tolerable": [
+            0,
+            0.32
+          ],
+          "score": 100.0,
+          "label": "Sentences over the length cap",
+          "pillar": "clarity"
+        },
+        "rhythm": {
+          "value": 0.48,
+          "ideal": [
+            0.45,
+            1.1
+          ],
+          "tolerable": [
+            0.25,
+            1.6
+          ],
+          "score": 100.0,
+          "label": "Sentence length variation",
+          "pillar": "clarity"
+        },
+        "passive": {
+          "value": 0.125,
+          "ideal": [
+            0,
+            0.14
+          ],
+          "tolerable": [
+            0,
+            0.28
+          ],
+          "score": 100.0,
+          "label": "Passive voice",
+          "pillar": "clarity"
+        },
+        "nominalization": {
+          "value": 0.01948051948051948,
+          "ideal": [
+            0,
+            0.05
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Nominalisations",
+          "pillar": "clarity"
+        },
+        "connectives": {
+          "value": 0.22916666666666666,
+          "ideal": [
+            0.18,
+            0.65
+          ],
+          "tolerable": [
+            0.08,
+            0.85
+          ],
+          "score": 100.0,
+          "label": "Transition words",
+          "pillar": "clarity"
+        },
+        "word_rarity": {
+          "value": 4.31,
+          "ideal": [
+            3.3,
+            5.5
+          ],
+          "tolerable": [
+            2.8,
+            6.5
+          ],
+          "score": 100.0,
+          "label": "Vocabulary rarity",
+          "pillar": "clarity"
+        },
+        "hedging": {
+          "value": 0.0015748031496062992,
+          "ideal": [
+            0,
+            0.01
+          ],
+          "tolerable": [
+            0,
+            0.025
+          ],
+          "score": 100.0,
+          "label": "Filler and marketing words",
+          "pillar": "clarity"
+        },
+        "diversity": {
+          "value": 0.48772727272727273,
+          "ideal": [
+            0.55,
+            0.85
+          ],
+          "tolerable": [
+            0.4,
+            0.95
+          ],
+          "score": 83.4,
+          "label": "Vocabulary diversity",
+          "pillar": "clarity"
+        },
+        "headings_density": {
+          "value": 12.4,
+          "ideal": [
+            4,
+            20
+          ],
+          "tolerable": [
+            2,
+            32
+          ],
+          "score": 100.0,
+          "label": "Headings per 1000 words",
+          "pillar": "structure"
+        },
+        "unbroken_run": {
+          "value": 212,
+          "ideal": [
+            0,
+            400
+          ],
+          "tolerable": [
+            0,
+            800
+          ],
+          "score": 100.0,
+          "label": "Longest stretch without a heading",
+          "pillar": "structure"
+        },
+        "paragraph_length": {
+          "value": 16.1,
+          "ideal": [
+            30,
+            80
+          ],
+          "tolerable": [
+            15,
+            120
+          ],
+          "score": 62.9,
+          "label": "Average paragraph length",
+          "pillar": "structure"
+        },
+        "long_paragraphs": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Paragraphs over 120 words",
+          "pillar": "structure"
+        },
+        "link_density": {
+          "value": 0.10852713178294573,
+          "ideal": [
+            0.01,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Link text share of the body",
+          "pillar": "structure"
+        },
+        "scannability": {
+          "value": 0.7162790697674419,
+          "ideal": [
+            0.7,
+            1.0
+          ],
+          "tolerable": [
+            0.45,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Scannability",
+          "pillar": "structure"
+        },
+        "title_length": {
+          "value": 37,
+          "ideal": [
+            25,
+            65
+          ],
+          "tolerable": [
+            10,
+            90
+          ],
+          "score": 100.0,
+          "label": "Title length",
+          "pillar": "structure"
+        },
+        "meta_description": {
+          "value": 54,
+          "ideal": [
+            70,
+            200
+          ],
+          "tolerable": [
+            0,
+            320
+          ],
+          "score": 90.9,
+          "label": "Meta description length",
+          "pillar": "structure"
+        },
+        "boilerplate": {
+          "value": 0.3543653705062363,
+          "ideal": [
+            0,
+            0.45
+          ],
+          "tolerable": [
+            0,
+            0.7
+          ],
+          "score": 100.0,
+          "label": "Boilerplate share of the page text",
+          "pillar": "structure"
+        },
+        "font_size": {
+          "value": 14,
+          "ideal": [
+            16,
+            21
+          ],
+          "tolerable": [
+            14,
+            24
+          ],
+          "score": 60.0,
+          "label": "Body text size (desktop)",
+          "pillar": "comfort"
+        },
+        "small_text": {
+          "value": 0.9372270742358079,
+          "ideal": [
+            0,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.35
+          ],
+          "score": 0.0,
+          "label": "Text rendered below 16px",
+          "pillar": "comfort"
+        },
+        "line_height": {
+          "value": 2,
+          "ideal": [
+            1.45,
+            1.75
+          ],
+          "tolerable": [
+            1.25,
+            2.0
+          ],
+          "score": 60.0,
+          "label": "Line height",
+          "pillar": "comfort"
+        },
+        "measure": {
+          "value": 39,
+          "ideal": [
+            50,
+            80
+          ],
+          "tolerable": [
+            38,
+            95
+          ],
+          "score": 63.3,
+          "label": "Line length (characters per line)",
+          "pillar": "comfort"
+        },
+        "paragraph_gap": {
+          "value": 5.57,
+          "ideal": [
+            0.5,
+            1.4
+          ],
+          "tolerable": [
+            0.25,
+            2.2
+          ],
+          "score": 0.0,
+          "label": "Space between paragraphs",
+          "pillar": "comfort"
+        },
+        "contrast": {
+          "value": 17.75,
+          "ideal": [
+            7.0,
+            21.0
+          ],
+          "tolerable": [
+            4.5,
+            21.0
+          ],
+          "score": 100.0,
+          "label": "Body text contrast (WCAG)",
+          "pillar": "comfort"
+        },
+        "apca": {
+          "value": 104.5,
+          "ideal": [
+            75,
+            108
+          ],
+          "tolerable": [
+            60,
+            108
+          ],
+          "score": 100.0,
+          "label": "Perceptual contrast (APCA Lc)",
+          "pillar": "comfort"
+        },
+        "justified": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.02
+          ],
+          "tolerable": [
+            0,
+            0.15
+          ],
+          "score": 100.0,
+          "label": "Justified text without hyphenation",
+          "pillar": "comfort"
+        },
+        "uppercase": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.03
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Text set in capitals",
+          "pillar": "comfort"
+        },
+        "type_sizes": {
+          "value": 8,
+          "ideal": [
+            2,
+            8
+          ],
+          "tolerable": [
+            1,
+            12
+          ],
+          "score": 100.0,
+          "label": "Distinct type sizes",
+          "pillar": "comfort"
+        },
+        "occlusion": {
+          "value": 0.44,
+          "ideal": [
+            0,
+            0.25
+          ],
+          "tolerable": [
+            0,
+            0.45
+          ],
+          "score": 62.0,
+          "label": "First screen covered by fixed chrome",
+          "pillar": "comfort"
+        },
+        "cls": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Layout shift while loading",
+          "pillar": "comfort"
+        },
+        "mobile_font": {
+          "value": 14,
+          "ideal": [
+            16,
+            20
+          ],
+          "tolerable": [
+            14,
+            22
+          ],
+          "score": 60.0,
+          "label": "Body text size (mobile)",
+          "pillar": "comfort"
+        },
+        "mobile_measure": {
+          "value": 38,
+          "ideal": [
+            32,
+            60
+          ],
+          "tolerable": [
+            24,
+            70
+          ],
+          "score": 100.0,
+          "label": "Line length on mobile",
+          "pillar": "comfort"
+        },
+        "alt_coverage": {
+          "value": 1.0,
+          "ideal": [
+            1.0,
+            1.0
+          ],
+          "tolerable": [
+            0.85,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Images with alt text",
+          "pillar": "access"
+        },
+        "heading_order": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            2
+          ],
+          "score": 100.0,
+          "label": "Heading level skips",
+          "pillar": "access"
+        },
+        "weak_links": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            3
+          ],
+          "score": 100.0,
+          "label": "Uninformative link text",
+          "pillar": "access"
+        },
+        "acronyms": {
+          "value": 1,
+          "ideal": [
+            0,
+            4
+          ],
+          "tolerable": [
+            0,
+            12
+          ],
+          "score": 100.0,
+          "label": "Acronyms never expanded",
+          "pillar": "access"
+        },
+        "rem_scaling": {
+          "value": 1.0,
+          "ideal": [
+            1,
+            1
+          ],
+          "tolerable": [
+            1,
+            1
+          ],
+          "score": 100.0,
+          "label": "Text follows the browser's font size",
+          "pillar": "access"
+        }
+      }
+    },
+    {
+      "name": "service-public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1970",
+      "page_type": "article",
+      "score": 77.7,
+      "grade": "C",
+      "metrics": {
+        "paragraph_length": {
+          "value": 12.7,
+          "ideal": [
+            30,
+            80
+          ],
+          "tolerable": [
+            15,
+            120
+          ],
+          "score": 50.8,
+          "label": "Average paragraph length",
+          "pillar": "structure"
+        },
+        "long_paragraphs": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Paragraphs over 120 words",
+          "pillar": "structure"
+        },
+        "link_density": {
+          "value": 0.18867924528301888,
+          "ideal": [
+            0.01,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 78.9,
+          "label": "Link text share of the body",
+          "pillar": "structure"
+        },
+        "scannability": {
+          "value": 0.7572327044025158,
+          "ideal": [
+            0.7,
+            1.0
+          ],
+          "tolerable": [
+            0.45,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Scannability",
+          "pillar": "structure"
+        },
+        "title_length": {
+          "value": 92,
+          "ideal": [
+            25,
+            65
+          ],
+          "tolerable": [
+            10,
+            90
+          ],
+          "score": 55.2,
+          "label": "Title length",
+          "pillar": "structure"
+        },
+        "meta_description": {
+          "value": 118,
+          "ideal": [
+            70,
+            200
+          ],
+          "tolerable": [
+            0,
+            320
+          ],
+          "score": 100.0,
+          "label": "Meta description length",
+          "pillar": "structure"
+        },
+        "boilerplate": {
+          "value": 0.8498349834983498,
+          "ideal": [
+            0,
+            0.45
+          ],
+          "tolerable": [
+            0,
+            0.7
+          ],
+          "score": 24.0,
+          "label": "Boilerplate share of the page text",
+          "pillar": "structure"
+        },
+        "font_size": {
+          "value": 16,
+          "ideal": [
+            16,
+            21
+          ],
+          "tolerable": [
+            14,
+            24
+          ],
+          "score": 100.0,
+          "label": "Body text size (desktop)",
+          "pillar": "comfort"
+        },
+        "small_text": {
+          "value": 0.2734741784037559,
+          "ideal": [
+            0,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.35
+          ],
+          "score": 73.3,
+          "label": "Text rendered below 16px",
+          "pillar": "comfort"
+        },
+        "line_height": {
+          "value": 1.5,
+          "ideal": [
+            1.45,
+            1.75
+          ],
+          "tolerable": [
+            1.25,
+            2.0
+          ],
+          "score": 100.0,
+          "label": "Line height",
+          "pillar": "comfort"
+        },
+        "measure": {
+          "value": 78,
+          "ideal": [
+            50,
+            80
+          ],
+          "tolerable": [
+            38,
+            95
+          ],
+          "score": 100.0,
+          "label": "Line length (characters per line)",
+          "pillar": "comfort"
+        },
+        "contrast": {
+          "value": 11.37,
+          "ideal": [
+            7.0,
+            21.0
+          ],
+          "tolerable": [
+            4.5,
+            21.0
+          ],
+          "score": 100.0,
+          "label": "Body text contrast (WCAG)",
+          "pillar": "comfort"
+        },
+        "apca": {
+          "value": 96.3,
+          "ideal": [
+            75,
+            108
+          ],
+          "tolerable": [
+            60,
+            108
+          ],
+          "score": 100.0,
+          "label": "Perceptual contrast (APCA Lc)",
+          "pillar": "comfort"
+        },
+        "justified": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.02
+          ],
+          "tolerable": [
+            0,
+            0.15
+          ],
+          "score": 100.0,
+          "label": "Justified text without hyphenation",
+          "pillar": "comfort"
+        },
+        "uppercase": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.03
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Text set in capitals",
+          "pillar": "comfort"
+        },
+        "type_sizes": {
+          "value": 4,
+          "ideal": [
+            2,
+            8
+          ],
+          "tolerable": [
+            1,
+            12
+          ],
+          "score": 100.0,
+          "label": "Distinct type sizes",
+          "pillar": "comfort"
+        },
+        "occlusion": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.25
+          ],
+          "tolerable": [
+            0,
+            0.45
+          ],
+          "score": 100.0,
+          "label": "First screen covered by fixed chrome",
+          "pillar": "comfort"
+        },
+        "cls": {
+          "value": 0.0082,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Layout shift while loading",
+          "pillar": "comfort"
+        },
+        "mobile_font": {
+          "value": 16,
+          "ideal": [
+            16,
+            20
+          ],
+          "tolerable": [
+            14,
+            22
+          ],
+          "score": 100.0,
+          "label": "Body text size (mobile)",
+          "pillar": "comfort"
+        },
+        "mobile_measure": {
+          "value": 39,
+          "ideal": [
+            32,
+            60
+          ],
+          "tolerable": [
+            24,
+            70
+          ],
+          "score": 100.0,
+          "label": "Line length on mobile",
+          "pillar": "comfort"
+        },
+        "alt_coverage": {
+          "value": 1.0,
+          "ideal": [
+            1.0,
+            1.0
+          ],
+          "tolerable": [
+            0.85,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Images with alt text",
+          "pillar": "access"
+        },
+        "heading_order": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            2
+          ],
+          "score": 100.0,
+          "label": "Heading level skips",
+          "pillar": "access"
+        },
+        "weak_links": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            3
+          ],
+          "score": 100.0,
+          "label": "Uninformative link text",
+          "pillar": "access"
+        },
+        "acronyms": {
+          "value": 0,
+          "ideal": [
+            0,
+            4
+          ],
+          "tolerable": [
+            0,
+            12
+          ],
+          "score": 100.0,
+          "label": "Acronyms never expanded",
+          "pillar": "access"
+        },
+        "rem_scaling": {
+          "value": 1.0,
+          "ideal": [
+            1,
+            1
+          ],
+          "tolerable": [
+            1,
+            1
+          ],
+          "score": 100.0,
+          "label": "Text follows the browser's font size",
+          "pillar": "access"
+        }
+      }
+    },
+    {
+      "name": "le monde",
+      "url": "https://www.lemonde.fr/",
+      "page_type": "landing",
+      "score": 67.6,
+      "grade": "D",
+      "metrics": {
+        "lix": {
+          "value": 50.9,
+          "ideal": [
+            30,
+            45
+          ],
+          "tolerable": [
+            20,
+            55
+          ],
+          "score": 76.4,
+          "label": "Reading difficulty (LIX)",
+          "pillar": "clarity"
+        },
+        "flesch": {
+          "value": 66.8,
+          "ideal": [
+            55,
+            85
+          ],
+          "tolerable": [
+            35,
+            105
+          ],
+          "score": 100.0,
+          "label": "Kandel-Moles (Flesch FR)",
+          "pillar": "clarity"
+        },
+        "asl": {
+          "value": 7.5,
+          "ideal": [
+            8,
+            20
+          ],
+          "tolerable": [
+            5,
+            26
+          ],
+          "score": 93.3,
+          "label": "Average sentence length",
+          "pillar": "clarity"
+        },
+        "long_sentences": {
+          "value": 0.02416918429003021,
+          "ideal": [
+            0,
+            0.18
+          ],
+          "tolerable": [
+            0,
+            0.32
+          ],
+          "score": 100.0,
+          "label": "Sentences over the length cap",
+          "pillar": "clarity"
+        },
+        "rhythm": {
+          "value": 0.91,
+          "ideal": [
+            0.45,
+            1.1
+          ],
+          "tolerable": [
+            0.25,
+            1.6
+          ],
+          "score": 100.0,
+          "label": "Sentence length variation",
+          "pillar": "clarity"
+        },
+        "passive": {
+          "value": 0.0030211480362537764,
+          "ideal": [
+            0,
+            0.14
+          ],
+          "tolerable": [
+            0,
+            0.28
+          ],
+          "score": 100.0,
+          "label": "Passive voice",
+          "pillar": "clarity"
+        },
+        "nominalization": {
+          "value": 0.022285251215559156,
+          "ideal": [
+            0,
+            0.05
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Nominalisations",
+          "pillar": "clarity"
+        },
+        "connectives": {
+          "value": 0.021148036253776436,
+          "ideal": [
+            0.12,
+            0.6
+          ],
+          "tolerable": [
+            0.04,
+            0.85
+          ],
+          "score": 45.9,
+          "label": "Transition words",
+          "pillar": "clarity"
+        },
+        "polysyllabic": {
+          "value": 0.21253540204408325,
+          "ideal": [
+            0.06,
+            0.18
+          ],
+          "tolerable": [
+            0.06,
+            0.28
+          ],
+          "score": 87.0,
+          "label": "Long-word load",
+          "pillar": "clarity"
+        },
+        "word_rarity": {
+          "value": 3.61,
+          "ideal": [
+            3.6,
+            5.5
+          ],
+          "tolerable": [
+            3.0,
+            6.5
+          ],
+          "score": 100.0,
+          "label": "Vocabulary rarity",
+          "pillar": "clarity"
+        },
+        "hedging": {
+          "value": 0.001600788080285679,
+          "ideal": [
+            0,
+            0.01
+          ],
+          "tolerable": [
+            0,
+            0.025
+          ],
+          "score": 100.0,
+          "label": "Filler and marketing words",
+          "pillar": "clarity"
+        },
+        "diversity": {
+          "value": 0.6694392523364485,
+          "ideal": [
+            0.55,
+            0.85
+          ],
+          "tolerable": [
+            0.4,
+            0.95
+          ],
+          "score": 100.0,
+          "label": "Vocabulary diversity",
+          "pillar": "clarity"
+        },
+        "headings_density": {
+          "value": 46.0,
+          "ideal": [
+            3,
+            25
+          ],
+          "tolerable": [
+            1.5,
+            45
+          ],
+          "score": 57.0,
+          "label": "Headings per 1000 words",
+          "pillar": "structure"
+        },
+        "unbroken_run": {
+          "value": 149,
+          "ideal": [
+            0,
+            400
+          ],
+          "tolerable": [
+            0,
+            800
+          ],
+          "score": 100.0,
+          "label": "Longest stretch without a heading",
+          "pillar": "structure"
+        },
+        "paragraph_length": {
+          "value": 8.0,
+          "ideal": [
+            15,
+            70
+          ],
+          "tolerable": [
+            8,
+            110
+          ],
+          "score": 60.0,
+          "label": "Average paragraph length",
+          "pillar": "structure"
+        },
+        "long_paragraphs": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Paragraphs over 120 words",
+          "pillar": "structure"
+        },
+        "link_density": {
+          "value": 0.6234271333790895,
+          "ideal": [
+            0.02,
+            0.3
+          ],
+          "tolerable": [
+            0,
+            0.5
+          ],
+          "score": 23.0,
+          "label": "Link text share of the body",
+          "pillar": "structure"
+        },
+        "scannability": {
+          "value": 0.7865065202470831,
+          "ideal": [
+            0.7,
+            1.0
+          ],
+          "tolerable": [
+            0.45,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Scannability",
+          "pillar": "structure"
+        },
+        "title_length": {
+          "value": 60,
+          "ideal": [
+            25,
+            65
+          ],
+          "tolerable": [
+            10,
+            90
+          ],
+          "score": 100.0,
+          "label": "Title length",
+          "pillar": "structure"
+        },
+        "meta_description": {
+          "value": 171,
+          "ideal": [
+            70,
+            200
+          ],
+          "tolerable": [
+            0,
+            320
+          ],
+          "score": 100.0,
+          "label": "Meta description length",
+          "pillar": "structure"
+        },
+        "boilerplate": {
+          "value": 0.12948930208863985,
+          "ideal": [
+            0,
+            0.6
+          ],
+          "tolerable": [
+            0,
+            0.8
+          ],
+          "score": 100.0,
+          "label": "Boilerplate share of the page text",
+          "pillar": "structure"
+        },
+        "font_size": {
+          "value": 15,
+          "ideal": [
+            15,
+            21
+          ],
+          "tolerable": [
+            13,
+            24
+          ],
+          "score": 100.0,
+          "label": "Body text size (desktop)",
+          "pillar": "comfort"
+        },
+        "small_text": {
+          "value": 0.6255343402678826,
+          "ideal": [
+            0,
+            0.4
+          ],
+          "tolerable": [
+            0,
+            0.75
+          ],
+          "score": 74.2,
+          "label": "Text rendered below 16px",
+          "pillar": "comfort"
+        },
+        "line_height": {
+          "value": 1.35,
+          "ideal": [
+            1.45,
+            1.75
+          ],
+          "tolerable": [
+            1.25,
+            2.0
+          ],
+          "score": 80.0,
+          "label": "Line height",
+          "pillar": "comfort"
+        },
+        "measure": {
+          "value": 27.1,
+          "ideal": [
+            32,
+            80
+          ],
+          "tolerable": [
+            24,
+            95
+          ],
+          "score": 75.5,
+          "label": "Line length (characters per line)",
+          "pillar": "comfort"
+        },
+        "contrast": {
+          "value": 13.24,
+          "ideal": [
+            7.0,
+            21.0
+          ],
+          "tolerable": [
+            4.5,
+            21.0
+          ],
+          "score": 100.0,
+          "label": "Body text contrast (WCAG)",
+          "pillar": "comfort"
+        },
+        "apca": {
+          "value": 99.6,
+          "ideal": [
+            75,
+            108
+          ],
+          "tolerable": [
+            60,
+            108
+          ],
+          "score": 100.0,
+          "label": "Perceptual contrast (APCA Lc)",
+          "pillar": "comfort"
+        },
+        "justified": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.02
+          ],
+          "tolerable": [
+            0,
+            0.15
+          ],
+          "score": 100.0,
+          "label": "Justified text without hyphenation",
+          "pillar": "comfort"
+        },
+        "uppercase": {
+          "value": 0.00887223974763407,
+          "ideal": [
+            0,
+            0.03
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Text set in capitals",
+          "pillar": "comfort"
+        },
+        "type_sizes": {
+          "value": 9,
+          "ideal": [
+            2,
+            8
+          ],
+          "tolerable": [
+            1,
+            12
+          ],
+          "score": 90.0,
+          "label": "Distinct type sizes",
+          "pillar": "comfort"
+        },
+        "occlusion": {
+          "value": 1.0,
+          "ideal": [
+            0,
+            0.25
+          ],
+          "tolerable": [
+            0,
+            0.45
+          ],
+          "score": 0.0,
+          "label": "First screen covered by fixed chrome",
+          "pillar": "comfort"
+        },
+        "cls": {
+          "value": 0.0067,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Layout shift while loading",
+          "pillar": "comfort"
+        },
+        "mobile_font": {
+          "value": 20,
+          "ideal": [
+            16,
+            20
+          ],
+          "tolerable": [
+            14,
+            22
+          ],
+          "score": 100.0,
+          "label": "Body text size (mobile)",
+          "pillar": "comfort"
+        },
+        "mobile_measure": {
+          "value": 25.7,
+          "ideal": [
+            24,
+            60
+          ],
+          "tolerable": [
+            18,
+            70
+          ],
+          "score": 100.0,
+          "label": "Line length on mobile",
+          "pillar": "comfort"
+        },
+        "alt_coverage": {
+          "value": 1.0,
+          "ideal": [
+            1.0,
+            1.0
+          ],
+          "tolerable": [
+            0.85,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Images with alt text",
+          "pillar": "access"
+        },
+        "heading_order": {
+          "value": 1,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            2
+          ],
+          "score": 80.0,
+          "label": "Heading level skips",
+          "pillar": "access"
+        },
+        "weak_links": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            3
+          ],
+          "score": 100.0,
+          "label": "Uninformative link text",
+          "pillar": "access"
+        },
+        "acronyms": {
+          "value": 10,
+          "ideal": [
+            0,
+            4
+          ],
+          "tolerable": [
+            0,
+            12
+          ],
+          "score": 70.0,
+          "label": "Acronyms never expanded",
+          "pillar": "access"
+        },
+        "rem_scaling": {
+          "value": 1.0,
+          "ideal": [
+            1,
+            1
+          ],
+          "tolerable": [
+            1,
+            1
+          ],
+          "score": 100.0,
+          "label": "Text follows the browser's font size",
+          "pillar": "access"
+        }
+      }
+    },
+    {
+      "name": "stripe docs",
+      "url": "https://docs.stripe.com/payments/quickstart",
+      "page_type": "index",
+      "score": 74.4,
+      "grade": "C",
+      "metrics": {
+        "paragraph_length": {
+          "value": 5.7,
+          "ideal": [
+            10,
+            70
+          ],
+          "tolerable": [
+            5,
+            110
+          ],
+          "score": 65.6,
+          "label": "Average paragraph length",
+          "pillar": "structure"
+        },
+        "long_paragraphs": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Paragraphs over 120 words",
+          "pillar": "structure"
+        },
+        "link_density": {
+          "value": 1.0294117647058822,
+          "ideal": [
+            0.05,
+            0.95
+          ],
+          "tolerable": [
+            0,
+            1.2
+          ],
+          "score": 87.3,
+          "label": "Link text share of the body",
+          "pillar": "structure"
+        },
+        "scannability": {
+          "value": 0.4,
+          "ideal": [
+            0.55,
+            1.0
+          ],
+          "tolerable": [
+            0.35,
+            1.0
+          ],
+          "score": 70.0,
+          "label": "Scannability",
+          "pillar": "structure"
+        },
+        "title_length": {
+          "value": 51,
+          "ideal": [
+            25,
+            65
+          ],
+          "tolerable": [
+            10,
+            90
+          ],
+          "score": 100.0,
+          "label": "Title length",
+          "pillar": "structure"
+        },
+        "meta_description": {
+          "value": 158,
+          "ideal": [
+            70,
+            200
+          ],
+          "tolerable": [
+            0,
+            320
+          ],
+          "score": 100.0,
+          "label": "Meta description length",
+          "pillar": "structure"
+        },
+        "boilerplate": {
+          "value": 0.5152941176470589,
+          "ideal": [
+            0,
+            0.7
+          ],
+          "tolerable": [
+            0,
+            0.9
+          ],
+          "score": 100.0,
+          "label": "Boilerplate share of the page text",
+          "pillar": "structure"
+        },
+        "font_size": {
+          "value": 16,
+          "ideal": [
+            14,
+            21
+          ],
+          "tolerable": [
+            12,
+            24
+          ],
+          "score": 100.0,
+          "label": "Body text size (desktop)",
+          "pillar": "comfort"
+        },
+        "small_text": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.55
+          ],
+          "tolerable": [
+            0,
+            0.9
+          ],
+          "score": 100.0,
+          "label": "Text rendered below 16px",
+          "pillar": "comfort"
+        },
+        "line_height": {
+          "value": 1.63,
+          "ideal": [
+            1.45,
+            1.75
+          ],
+          "tolerable": [
+            1.25,
+            2.0
+          ],
+          "score": 100.0,
+          "label": "Line height",
+          "pillar": "comfort"
+        },
+        "measure": {
+          "value": 43.7,
+          "ideal": [
+            32,
+            80
+          ],
+          "tolerable": [
+            24,
+            95
+          ],
+          "score": 100.0,
+          "label": "Line length (characters per line)",
+          "pillar": "comfort"
+        },
+        "contrast": {
+          "value": 9.96,
+          "ideal": [
+            7.0,
+            21.0
+          ],
+          "tolerable": [
+            4.5,
+            21.0
+          ],
+          "score": 100.0,
+          "label": "Body text contrast (WCAG)",
+          "pillar": "comfort"
+        },
+        "apca": {
+          "value": 93.1,
+          "ideal": [
+            75,
+            108
+          ],
+          "tolerable": [
+            60,
+            108
+          ],
+          "score": 100.0,
+          "label": "Perceptual contrast (APCA Lc)",
+          "pillar": "comfort"
+        },
+        "justified": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.02
+          ],
+          "tolerable": [
+            0,
+            0.15
+          ],
+          "score": 100.0,
+          "label": "Justified text without hyphenation",
+          "pillar": "comfort"
+        },
+        "uppercase": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.03
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Text set in capitals",
+          "pillar": "comfort"
+        },
+        "type_sizes": {
+          "value": 2,
+          "ideal": [
+            2,
+            8
+          ],
+          "tolerable": [
+            1,
+            12
+          ],
+          "score": 100.0,
+          "label": "Distinct type sizes",
+          "pillar": "comfort"
+        },
+        "occlusion": {
+          "value": 0.4919,
+          "ideal": [
+            0,
+            0.25
+          ],
+          "tolerable": [
+            0,
+            0.45
+          ],
+          "score": 47.4,
+          "label": "First screen covered by fixed chrome",
+          "pillar": "comfort"
+        },
+        "cls": {
+          "value": 0.1866,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 76.9,
+          "label": "Layout shift while loading",
+          "pillar": "comfort"
+        },
+        "mobile_font": {
+          "value": 16,
+          "ideal": [
+            16,
+            20
+          ],
+          "tolerable": [
+            14,
+            22
+          ],
+          "score": 100.0,
+          "label": "Body text size (mobile)",
+          "pillar": "comfort"
+        },
+        "mobile_measure": {
+          "value": 32.6,
+          "ideal": [
+            24,
+            60
+          ],
+          "tolerable": [
+            18,
+            70
+          ],
+          "score": 100.0,
+          "label": "Line length on mobile",
+          "pillar": "comfort"
+        },
+        "alt_coverage": {
+          "value": 1.0,
+          "ideal": [
+            1.0,
+            1.0
+          ],
+          "tolerable": [
+            0.85,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Images with alt text",
+          "pillar": "access"
+        },
+        "heading_order": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            2
+          ],
+          "score": 100.0,
+          "label": "Heading level skips",
+          "pillar": "access"
+        },
+        "weak_links": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            3
+          ],
+          "score": 100.0,
+          "label": "Uninformative link text",
+          "pillar": "access"
+        },
+        "acronyms": {
+          "value": 1,
+          "ideal": [
+            0,
+            4
+          ],
+          "tolerable": [
+            0,
+            12
+          ],
+          "score": 100.0,
+          "label": "Acronyms never expanded",
+          "pillar": "access"
+        },
+        "rem_scaling": {
+          "value": 0.0,
+          "ideal": [
+            1,
+            1
+          ],
+          "tolerable": [
+            1,
+            1
+          ],
+          "score": 0.0,
+          "label": "Text follows the browser's font size",
+          "pillar": "access"
+        }
+      }
+    },
+    {
+      "name": "mozilla blog",
+      "url": "https://blog.mozilla.org/en/",
+      "page_type": "landing",
+      "score": 83.5,
+      "grade": "B",
+      "metrics": {
+        "lix": {
+          "value": 41.1,
+          "ideal": [
+            30,
+            45
+          ],
+          "tolerable": [
+            20,
+            55
+          ],
+          "score": 100.0,
+          "label": "Reading difficulty (LIX)",
+          "pillar": "clarity"
+        },
+        "flesch": {
+          "value": 69.0,
+          "ideal": [
+            55,
+            85
+          ],
+          "tolerable": [
+            35,
+            105
+          ],
+          "score": 100.0,
+          "label": "Flesch Reading Ease",
+          "pillar": "clarity"
+        },
+        "asl": {
+          "value": 11.1,
+          "ideal": [
+            8,
+            20
+          ],
+          "tolerable": [
+            5,
+            26
+          ],
+          "score": 100.0,
+          "label": "Average sentence length",
+          "pillar": "clarity"
+        },
+        "long_sentences": {
+          "value": 0.03333333333333333,
+          "ideal": [
+            0,
+            0.18
+          ],
+          "tolerable": [
+            0,
+            0.32
+          ],
+          "score": 100.0,
+          "label": "Sentences over the length cap",
+          "pillar": "clarity"
+        },
+        "rhythm": {
+          "value": 0.46,
+          "ideal": [
+            0.45,
+            1.1
+          ],
+          "tolerable": [
+            0.25,
+            1.6
+          ],
+          "score": 100.0,
+          "label": "Sentence length variation",
+          "pillar": "clarity"
+        },
+        "passive": {
+          "value": 0.03333333333333333,
+          "ideal": [
+            0,
+            0.14
+          ],
+          "tolerable": [
+            0,
+            0.28
+          ],
+          "score": 100.0,
+          "label": "Passive voice",
+          "pillar": "clarity"
+        },
+        "nominalization": {
+          "value": 0.006006006006006006,
+          "ideal": [
+            0,
+            0.05
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Nominalisations",
+          "pillar": "clarity"
+        },
+        "connectives": {
+          "value": 0.1,
+          "ideal": [
+            0.12,
+            0.6
+          ],
+          "tolerable": [
+            0.04,
+            0.85
+          ],
+          "score": 90.0,
+          "label": "Transition words",
+          "pillar": "clarity"
+        },
+        "polysyllabic": {
+          "value": 0.09615384615384616,
+          "ideal": [
+            0.06,
+            0.18
+          ],
+          "tolerable": [
+            0.06,
+            0.28
+          ],
+          "score": 100.0,
+          "label": "Long-word load",
+          "pillar": "clarity"
+        },
+        "word_rarity": {
+          "value": 4.53,
+          "ideal": [
+            3.6,
+            5.5
+          ],
+          "tolerable": [
+            3.0,
+            6.5
+          ],
+          "score": 100.0,
+          "label": "Vocabulary rarity",
+          "pillar": "clarity"
+        },
+        "hedging": {
+          "value": 0.006993006993006993,
+          "ideal": [
+            0,
+            0.01
+          ],
+          "tolerable": [
+            0,
+            0.025
+          ],
+          "score": 100.0,
+          "label": "Filler and marketing words",
+          "pillar": "clarity"
+        },
+        "diversity": {
+          "value": 0.4931578947368421,
+          "ideal": [
+            0.55,
+            0.85
+          ],
+          "tolerable": [
+            0.4,
+            0.95
+          ],
+          "score": 84.8,
+          "label": "Vocabulary diversity",
+          "pillar": "clarity"
+        },
+        "headings_density": {
+          "value": 49.0,
+          "ideal": [
+            3,
+            25
+          ],
+          "tolerable": [
+            1.5,
+            45
+          ],
+          "score": 48.0,
+          "label": "Headings per 1000 words",
+          "pillar": "structure"
+        },
+        "unbroken_run": {
+          "value": 69,
+          "ideal": [
+            0,
+            400
+          ],
+          "tolerable": [
+            0,
+            800
+          ],
+          "score": 100.0,
+          "label": "Longest stretch without a heading",
+          "pillar": "structure"
+        },
+        "paragraph_length": {
+          "value": 13.6,
+          "ideal": [
+            15,
+            70
+          ],
+          "tolerable": [
+            8,
+            110
+          ],
+          "score": 92.0,
+          "label": "Average paragraph length",
+          "pillar": "structure"
+        },
+        "long_paragraphs": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Paragraphs over 120 words",
+          "pillar": "structure"
+        },
+        "link_density": {
+          "value": 0.4816112084063047,
+          "ideal": [
+            0.02,
+            0.3
+          ],
+          "tolerable": [
+            0,
+            0.5
+          ],
+          "score": 63.7,
+          "label": "Link text share of the body",
+          "pillar": "structure"
+        },
+        "scannability": {
+          "value": 0.6,
+          "ideal": [
+            0.7,
+            1.0
+          ],
+          "tolerable": [
+            0.45,
+            1.0
+          ],
+          "score": 84.0,
+          "label": "Scannability",
+          "pillar": "structure"
+        },
+        "title_length": {
+          "value": 16,
+          "ideal": [
+            25,
+            65
+          ],
+          "tolerable": [
+            10,
+            90
+          ],
+          "score": 76.0,
+          "label": "Title length",
+          "pillar": "structure"
+        },
+        "meta_description": {
+          "value": 41,
+          "ideal": [
+            70,
+            200
+          ],
+          "tolerable": [
+            0,
+            320
+          ],
+          "score": 83.4,
+          "label": "Meta description length",
+          "pillar": "structure"
+        },
+        "boilerplate": {
+          "value": 0.5492974954184484,
+          "ideal": [
+            0,
+            0.6
+          ],
+          "tolerable": [
+            0,
+            0.8
+          ],
+          "score": 100.0,
+          "label": "Boilerplate share of the page text",
+          "pillar": "structure"
+        },
+        "font_size": {
+          "value": 20,
+          "ideal": [
+            15,
+            21
+          ],
+          "tolerable": [
+            13,
+            24
+          ],
+          "score": 100.0,
+          "label": "Body text size (desktop)",
+          "pillar": "comfort"
+        },
+        "small_text": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.4
+          ],
+          "tolerable": [
+            0,
+            0.75
+          ],
+          "score": 100.0,
+          "label": "Text rendered below 16px",
+          "pillar": "comfort"
+        },
+        "line_height": {
+          "value": 1.2,
+          "ideal": [
+            1.45,
+            1.75
+          ],
+          "tolerable": [
+            1.25,
+            2.0
+          ],
+          "score": 45.0,
+          "label": "Line height",
+          "pillar": "comfort"
+        },
+        "measure": {
+          "value": 34,
+          "ideal": [
+            32,
+            80
+          ],
+          "tolerable": [
+            24,
+            95
+          ],
+          "score": 100.0,
+          "label": "Line length (characters per line)",
+          "pillar": "comfort"
+        },
+        "contrast": {
+          "value": 21.0,
+          "ideal": [
+            7.0,
+            21.0
+          ],
+          "tolerable": [
+            4.5,
+            21.0
+          ],
+          "score": 100.0,
+          "label": "Body text contrast (WCAG)",
+          "pillar": "comfort"
+        },
+        "apca": {
+          "value": 106.0,
+          "ideal": [
+            75,
+            108
+          ],
+          "tolerable": [
+            60,
+            108
+          ],
+          "score": 100.0,
+          "label": "Perceptual contrast (APCA Lc)",
+          "pillar": "comfort"
+        },
+        "justified": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.02
+          ],
+          "tolerable": [
+            0,
+            0.15
+          ],
+          "score": 100.0,
+          "label": "Justified text without hyphenation",
+          "pillar": "comfort"
+        },
+        "uppercase": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.03
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Text set in capitals",
+          "pillar": "comfort"
+        },
+        "occlusion": {
+          "value": 0.075,
+          "ideal": [
+            0,
+            0.25
+          ],
+          "tolerable": [
+            0,
+            0.45
+          ],
+          "score": 100.0,
+          "label": "First screen covered by fixed chrome",
+          "pillar": "comfort"
+        },
+        "cls": {
+          "value": 0.0003,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Layout shift while loading",
+          "pillar": "comfort"
+        },
+        "mobile_font": {
+          "value": 20,
+          "ideal": [
+            16,
+            20
+          ],
+          "tolerable": [
+            14,
+            22
+          ],
+          "score": 100.0,
+          "label": "Body text size (mobile)",
+          "pillar": "comfort"
+        },
+        "mobile_measure": {
+          "value": 17,
+          "ideal": [
+            24,
+            60
+          ],
+          "tolerable": [
+            18,
+            70
+          ],
+          "score": 50.0,
+          "label": "Line length on mobile",
+          "pillar": "comfort"
+        },
+        "alt_coverage": {
+          "value": 1.0,
+          "ideal": [
+            1.0,
+            1.0
+          ],
+          "tolerable": [
+            0.85,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Images with alt text",
+          "pillar": "access"
+        },
+        "heading_order": {
+          "value": 1,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            2
+          ],
+          "score": 80.0,
+          "label": "Heading level skips",
+          "pillar": "access"
+        },
+        "weak_links": {
+          "value": 2,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            3
+          ],
+          "score": 73.3,
+          "label": "Uninformative link text",
+          "pillar": "access"
+        },
+        "acronyms": {
+          "value": 2,
+          "ideal": [
+            0,
+            4
+          ],
+          "tolerable": [
+            0,
+            12
+          ],
+          "score": 100.0,
+          "label": "Acronyms never expanded",
+          "pillar": "access"
+        },
+        "rem_scaling": {
+          "value": 1.0,
+          "ideal": [
+            1,
+            1
+          ],
+          "tolerable": [
+            1,
+            1
+          ],
+          "score": 100.0,
+          "label": "Text follows the browser's font size",
+          "pillar": "access"
+        }
+      }
+    },
+    {
+      "name": "a list apart",
+      "url": "https://alistapart.com/article/on-web-typography/",
+      "page_type": "article",
+      "score": 76.6,
+      "grade": "C",
+      "metrics": {
+        "lix": {
+          "value": 41.2,
+          "ideal": [
+            30,
+            45
+          ],
+          "tolerable": [
+            20,
+            55
+          ],
+          "score": 100.0,
+          "label": "Reading difficulty (LIX)",
+          "pillar": "clarity"
+        },
+        "flesch": {
+          "value": 56.1,
+          "ideal": [
+            55,
+            85
+          ],
+          "tolerable": [
+            35,
+            105
+          ],
+          "score": 100.0,
+          "label": "Flesch Reading Ease",
+          "pillar": "clarity"
+        },
+        "asl": {
+          "value": 17.5,
+          "ideal": [
+            12,
+            20
+          ],
+          "tolerable": [
+            8,
+            26
+          ],
+          "score": 100.0,
+          "label": "Average sentence length",
+          "pillar": "clarity"
+        },
+        "long_sentences": {
+          "value": 0.21645021645021645,
+          "ideal": [
+            0,
+            0.18
+          ],
+          "tolerable": [
+            0,
+            0.32
+          ],
+          "score": 89.6,
+          "label": "Sentences over the length cap",
+          "pillar": "clarity"
+        },
+        "rhythm": {
+          "value": 0.57,
+          "ideal": [
+            0.45,
+            1.1
+          ],
+          "tolerable": [
+            0.25,
+            1.6
+          ],
+          "score": 100.0,
+          "label": "Sentence length variation",
+          "pillar": "clarity"
+        },
+        "passive": {
+          "value": 0.12121212121212122,
+          "ideal": [
+            0,
+            0.14
+          ],
+          "tolerable": [
+            0,
+            0.28
+          ],
+          "score": 100.0,
+          "label": "Passive voice",
+          "pillar": "clarity"
+        },
+        "nominalization": {
+          "value": 0.01776461880088823,
+          "ideal": [
+            0,
+            0.05
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Nominalisations",
+          "pillar": "clarity"
+        },
+        "connectives": {
+          "value": 0.3333333333333333,
+          "ideal": [
+            0.18,
+            0.65
+          ],
+          "tolerable": [
+            0.08,
+            0.85
+          ],
+          "score": 100.0,
+          "label": "Transition words",
+          "pillar": "clarity"
+        },
+        "polysyllabic": {
+          "value": 0.15527202696196438,
+          "ideal": [
+            0.06,
+            0.18
+          ],
+          "tolerable": [
+            0.06,
+            0.28
+          ],
+          "score": 100.0,
+          "label": "Long-word load",
+          "pillar": "clarity"
+        },
+        "word_rarity": {
+          "value": 4.36,
+          "ideal": [
+            3.6,
+            5.5
+          ],
+          "tolerable": [
+            3.0,
+            6.5
+          ],
+          "score": 100.0,
+          "label": "Vocabulary rarity",
+          "pillar": "clarity"
+        },
+        "hedging": {
+          "value": 0.010110736639383727,
+          "ideal": [
+            0,
+            0.01
+          ],
+          "tolerable": [
+            0,
+            0.025
+          ],
+          "score": 99.7,
+          "label": "Filler and marketing words",
+          "pillar": "clarity"
+        },
+        "diversity": {
+          "value": 0.7599386503067485,
+          "ideal": [
+            0.55,
+            0.85
+          ],
+          "tolerable": [
+            0.4,
+            0.95
+          ],
+          "score": 100.0,
+          "label": "Vocabulary diversity",
+          "pillar": "clarity"
+        },
+        "headings_density": {
+          "value": 4.6,
+          "ideal": [
+            3,
+            15
+          ],
+          "tolerable": [
+            1.5,
+            30
+          ],
+          "score": 100.0,
+          "label": "Headings per 1000 words",
+          "pillar": "structure"
+        },
+        "unbroken_run": {
+          "value": 1769,
+          "ideal": [
+            0,
+            400
+          ],
+          "tolerable": [
+            0,
+            800
+          ],
+          "score": 0.0,
+          "label": "Longest stretch without a heading",
+          "pillar": "structure"
+        },
+        "paragraph_length": {
+          "value": 42.0,
+          "ideal": [
+            30,
+            80
+          ],
+          "tolerable": [
+            15,
+            120
+          ],
+          "score": 100.0,
+          "label": "Average paragraph length",
+          "pillar": "structure"
+        },
+        "long_paragraphs": {
+          "value": 0.010416666666666666,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Paragraphs over 120 words",
+          "pillar": "structure"
+        },
+        "link_density": {
+          "value": 0.03593105122602573,
+          "ideal": [
+            0.01,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Link text share of the body",
+          "pillar": "structure"
+        },
+        "scannability": {
+          "value": 0.5269525370235494,
+          "ideal": [
+            0.7,
+            1.0
+          ],
+          "tolerable": [
+            0.45,
+            1.0
+          ],
+          "score": 72.3,
+          "label": "Scannability",
+          "pillar": "structure"
+        },
+        "title_length": {
+          "value": 32,
+          "ideal": [
+            25,
+            65
+          ],
+          "tolerable": [
+            10,
+            90
+          ],
+          "score": 100.0,
+          "label": "Title length",
+          "pillar": "structure"
+        },
+        "meta_description": {
+          "value": 291,
+          "ideal": [
+            70,
+            200
+          ],
+          "tolerable": [
+            0,
+            320
+          ],
+          "score": 69.7,
+          "label": "Meta description length",
+          "pillar": "structure"
+        },
+        "boilerplate": {
+          "value": 0.2107112062082841,
+          "ideal": [
+            0,
+            0.45
+          ],
+          "tolerable": [
+            0,
+            0.7
+          ],
+          "score": 100.0,
+          "label": "Boilerplate share of the page text",
+          "pillar": "structure"
+        },
+        "font_size": {
+          "value": 14,
+          "ideal": [
+            16,
+            21
+          ],
+          "tolerable": [
+            14,
+            24
+          ],
+          "score": 60.0,
+          "label": "Body text size (desktop)",
+          "pillar": "comfort"
+        },
+        "small_text": {
+          "value": 0.5022843085573713,
+          "ideal": [
+            0,
+            0.12
+          ],
+          "tolerable": [
+            0,
+            0.35
+          ],
+          "score": 20.3,
+          "label": "Text rendered below 16px",
+          "pillar": "comfort"
+        },
+        "line_height": {
+          "value": 1.7,
+          "ideal": [
+            1.45,
+            1.75
+          ],
+          "tolerable": [
+            1.25,
+            2.0
+          ],
+          "score": 100.0,
+          "label": "Line height",
+          "pillar": "comfort"
+        },
+        "measure": {
+          "value": 71.8,
+          "ideal": [
+            50,
+            80
+          ],
+          "tolerable": [
+            38,
+            95
+          ],
+          "score": 100.0,
+          "label": "Line length (characters per line)",
+          "pillar": "comfort"
+        },
+        "paragraph_gap": {
+          "value": 0.88,
+          "ideal": [
+            0.5,
+            1.4
+          ],
+          "tolerable": [
+            0.25,
+            2.2
+          ],
+          "score": 100.0,
+          "label": "Space between paragraphs",
+          "pillar": "comfort"
+        },
+        "contrast": {
+          "value": 15.91,
+          "ideal": [
+            7.0,
+            21.0
+          ],
+          "tolerable": [
+            4.5,
+            21.0
+          ],
+          "score": 100.0,
+          "label": "Body text contrast (WCAG)",
+          "pillar": "comfort"
+        },
+        "apca": {
+          "value": 102.9,
+          "ideal": [
+            75,
+            108
+          ],
+          "tolerable": [
+            60,
+            108
+          ],
+          "score": 100.0,
+          "label": "Perceptual contrast (APCA Lc)",
+          "pillar": "comfort"
+        },
+        "justified": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.02
+          ],
+          "tolerable": [
+            0,
+            0.15
+          ],
+          "score": 100.0,
+          "label": "Justified text without hyphenation",
+          "pillar": "comfort"
+        },
+        "uppercase": {
+          "value": 0.006730487855858868,
+          "ideal": [
+            0,
+            0.03
+          ],
+          "tolerable": [
+            0,
+            0.1
+          ],
+          "score": 100.0,
+          "label": "Text set in capitals",
+          "pillar": "comfort"
+        },
+        "type_sizes": {
+          "value": 5,
+          "ideal": [
+            2,
+            8
+          ],
+          "tolerable": [
+            1,
+            12
+          ],
+          "score": 100.0,
+          "label": "Distinct type sizes",
+          "pillar": "comfort"
+        },
+        "occlusion": {
+          "value": 0.0,
+          "ideal": [
+            0,
+            0.25
+          ],
+          "tolerable": [
+            0,
+            0.45
+          ],
+          "score": 100.0,
+          "label": "First screen covered by fixed chrome",
+          "pillar": "comfort"
+        },
+        "cls": {
+          "value": 0.0012,
+          "ideal": [
+            0,
+            0.1
+          ],
+          "tolerable": [
+            0,
+            0.25
+          ],
+          "score": 100.0,
+          "label": "Layout shift while loading",
+          "pillar": "comfort"
+        },
+        "mobile_font": {
+          "value": 14,
+          "ideal": [
+            16,
+            20
+          ],
+          "tolerable": [
+            14,
+            22
+          ],
+          "score": 60.0,
+          "label": "Body text size (mobile)",
+          "pillar": "comfort"
+        },
+        "mobile_measure": {
+          "value": 47.6,
+          "ideal": [
+            32,
+            60
+          ],
+          "tolerable": [
+            24,
+            70
+          ],
+          "score": 100.0,
+          "label": "Line length on mobile",
+          "pillar": "comfort"
+        },
+        "alt_coverage": {
+          "value": 1.0,
+          "ideal": [
+            1.0,
+            1.0
+          ],
+          "tolerable": [
+            0.85,
+            1.0
+          ],
+          "score": 100.0,
+          "label": "Images with alt text",
+          "pillar": "access"
+        },
+        "heading_order": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            2
+          ],
+          "score": 100.0,
+          "label": "Heading level skips",
+          "pillar": "access"
+        },
+        "weak_links": {
+          "value": 0,
+          "ideal": [
+            0,
+            0
+          ],
+          "tolerable": [
+            0,
+            3
+          ],
+          "score": 100.0,
+          "label": "Uninformative link text",
+          "pillar": "access"
+        },
+        "acronyms": {
+          "value": 3,
+          "ideal": [
+            0,
+            4
+          ],
+          "tolerable": [
+            0,
+            12
+          ],
+          "score": 100.0,
+          "label": "Acronyms never expanded",
+          "pillar": "access"
+        },
+        "rem_scaling": {
+          "value": 1.0,
+          "ideal": [
+            1,
+            1
+          ],
+          "tolerable": [
+            1,
+            1
+          ],
+          "score": 100.0,
+          "label": "Text follows the browser's font size",
+          "pillar": "access"
+        }
+      }
+    }
+  ],
+  "metrics": [
+    {
+      "key": "meta_description",
+      "label": "Meta description length",
+      "pillar": "structure",
+      "ideal": [
+        70,
+        200
+      ],
+      "tolerable": [
+        0,
+        320
+      ],
+      "values": [
+        32,
+        171,
+        159,
+        0,
+        58,
+        398,
+        470,
+        54,
+        118,
+        171,
+        158,
+        41,
+        291
+      ],
+      "by_site": {
+        "practicaltypography.com": 32,
+        "mdn": 171,
+        "nngroup": 159,
+        "wikipedia": 0,
+        "web.dev": 58,
+        "css-tricks": 398,
+        "smashing": 470,
+        "tailwind docs": 54,
+        "service-public.fr": 118,
+        "le monde": 171,
+        "stripe docs": 158,
+        "mozilla blog": 41,
+        "a list apart": 291
+      },
+      "n": 13,
+      "min": 0,
+      "max": 470,
+      "median": 158,
+      "p10": 0,
+      "p90": 398,
+      "in_ideal": 0.38461538461538464,
+      "in_tolerable": 0.8461538461538461,
+      "mean_score": 76.6
+    },
+    {
+      "key": "measure",
+      "label": "Line length (characters per line)",
+      "pillar": "comfort",
+      "ideal": [
+        50,
+        80
+      ],
+      "tolerable": [
+        38,
+        95
+      ],
+      "values": [
+        51.8,
+        48.3,
+        82.7,
+        79.5,
+        102,
+        62.5,
+        65.8,
+        39,
+        78,
+        27.1,
+        43.7,
+        34,
+        71.8
+      ],
+      "by_site": {
+        "practicaltypography.com": 51.8,
+        "mdn": 48.3,
+        "nngroup": 82.7,
+        "wikipedia": 79.5,
+        "web.dev": 102,
+        "css-tricks": 62.5,
+        "smashing": 65.8,
+        "tailwind docs": 39,
+        "service-public.fr": 78,
+        "le monde": 27.1,
+        "stripe docs": 43.7,
+        "mozilla blog": 34,
+        "a list apart": 71.8
+      },
+      "n": 13,
+      "min": 27.1,
+      "max": 102,
+      "median": 62.5,
+      "p10": 27.1,
+      "p90": 82.7,
+      "in_ideal": 0.46153846153846156,
+      "in_tolerable": 0.7692307692307693,
+      "mean_score": 77.5
+    },
+    {
+      "key": "scannability",
+      "label": "Scannability",
+      "pillar": "structure",
+      "ideal": [
+        0.7,
+        1.0
+      ],
+      "tolerable": [
+        0.45,
+        1.0
+      ],
+      "values": [
+        0.5382857142857143,
+        0.8374792043399639,
+        0.9852924145917777,
+        0.6840389289239358,
+        0.9026555273207364,
+        0.5611901681759379,
+        0.8013097407977275,
+        0.7162790697674419,
+        0.7572327044025158,
+        0.7865065202470831,
+        0.4,
+        0.6,
+        0.5269525370235494
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.5382857142857143,
+        "mdn": 0.8374792043399639,
+        "nngroup": 0.9852924145917777,
+        "wikipedia": 0.6840389289239358,
+        "web.dev": 0.9026555273207364,
+        "css-tricks": 0.5611901681759379,
+        "smashing": 0.8013097407977275,
+        "tailwind docs": 0.7162790697674419,
+        "service-public.fr": 0.7572327044025158,
+        "le monde": 0.7865065202470831,
+        "stripe docs": 0.4,
+        "mozilla blog": 0.6,
+        "a list apart": 0.5269525370235494
+      },
+      "n": 13,
+      "min": 0.4,
+      "max": 0.985,
+      "median": 0.716,
+      "p10": 0.4,
+      "p90": 0.903,
+      "in_ideal": 0.5384615384615384,
+      "in_tolerable": 0.9230769230769231,
+      "mean_score": 88.7
+    },
+    {
+      "key": "occlusion",
+      "label": "First screen covered by fixed chrome",
+      "pillar": "comfort",
+      "ideal": [
+        0,
+        0.25
+      ],
+      "tolerable": [
+        0,
+        0.45
+      ],
+      "values": [
+        0.2,
+        0.44,
+        0.1563,
+        0.2025,
+        0.4537,
+        1.0,
+        0.0,
+        0.44,
+        0.0,
+        1.0,
+        0.4919,
+        0.075,
+        0.0
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.2,
+        "mdn": 0.44,
+        "nngroup": 0.1563,
+        "wikipedia": 0.2025,
+        "web.dev": 0.4537,
+        "css-tricks": 1.0,
+        "smashing": 0.0,
+        "tailwind docs": 0.44,
+        "service-public.fr": 0.0,
+        "le monde": 1.0,
+        "stripe docs": 0.4919,
+        "mozilla blog": 0.075,
+        "a list apart": 0.0
+      },
+      "n": 13,
+      "min": 0.0,
+      "max": 1.0,
+      "median": 0.203,
+      "p10": 0.0,
+      "p90": 1.0,
+      "in_ideal": 0.5384615384615384,
+      "in_tolerable": 0.6923076923076923,
+      "mean_score": 71.6
+    },
+    {
+      "key": "asl",
+      "label": "Average sentence length",
+      "pillar": "clarity",
+      "ideal": [
+        12,
+        20
+      ],
+      "tolerable": [
+        8,
+        26
+      ],
+      "values": [
+        11.6,
+        17.2,
+        19.0,
+        26.7,
+        18.4,
+        16.4,
+        20.1,
+        12.8,
+        7.5,
+        11.1,
+        17.5
+      ],
+      "by_site": {
+        "practicaltypography.com": 11.6,
+        "mdn": 17.2,
+        "nngroup": 19.0,
+        "wikipedia": 26.7,
+        "web.dev": 18.4,
+        "css-tricks": 16.4,
+        "smashing": 20.1,
+        "tailwind docs": 12.8,
+        "le monde": 7.5,
+        "mozilla blog": 11.1,
+        "a list apart": 17.5
+      },
+      "n": 11,
+      "min": 7.5,
+      "max": 26.7,
+      "median": 17.2,
+      "p10": 7.5,
+      "p90": 20.1,
+      "in_ideal": 0.5454545454545454,
+      "in_tolerable": 0.8181818181818182,
+      "mean_score": 90.2
+    },
+    {
+      "key": "headings_density",
+      "label": "Headings per 1000 words",
+      "pillar": "structure",
+      "ideal": [
+        3,
+        15
+      ],
+      "tolerable": [
+        1.5,
+        30
+      ],
+      "values": [
+        0.0,
+        19.5,
+        4.6,
+        3.3,
+        6.6,
+        0.3,
+        7.5,
+        12.4,
+        46.0,
+        49.0,
+        4.6
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.0,
+        "mdn": 19.5,
+        "nngroup": 4.6,
+        "wikipedia": 3.3,
+        "web.dev": 6.6,
+        "css-tricks": 0.3,
+        "smashing": 7.5,
+        "tailwind docs": 12.4,
+        "le monde": 46.0,
+        "mozilla blog": 49.0,
+        "a list apart": 4.6
+      },
+      "n": 11,
+      "min": 0.0,
+      "max": 49.0,
+      "median": 6.6,
+      "p10": 0.0,
+      "p90": 46.0,
+      "in_ideal": 0.5454545454545454,
+      "in_tolerable": 0.6363636363636364,
+      "mean_score": 63.6
+    },
+    {
+      "key": "paragraph_length",
+      "label": "Average paragraph length",
+      "pillar": "structure",
+      "ideal": [
+        30,
+        80
+      ],
+      "tolerable": [
+        15,
+        120
+      ],
+      "values": [
+        32.2,
+        32.8,
+        46.3,
+        67.3,
+        37.8,
+        40.7,
+        50.5,
+        16.1,
+        12.7,
+        8.0,
+        5.7,
+        13.6,
+        42.0
+      ],
+      "by_site": {
+        "practicaltypography.com": 32.2,
+        "mdn": 32.8,
+        "nngroup": 46.3,
+        "wikipedia": 67.3,
+        "web.dev": 37.8,
+        "css-tricks": 40.7,
+        "smashing": 50.5,
+        "tailwind docs": 16.1,
+        "service-public.fr": 12.7,
+        "le monde": 8.0,
+        "stripe docs": 5.7,
+        "mozilla blog": 13.6,
+        "a list apart": 42.0
+      },
+      "n": 13,
+      "min": 5.7,
+      "max": 67.3,
+      "median": 32.8,
+      "p10": 5.7,
+      "p90": 50.5,
+      "in_ideal": 0.6153846153846154,
+      "in_tolerable": 0.6923076923076923,
+      "mean_score": 78.7
+    },
+    {
+      "key": "link_density",
+      "label": "Link text share of the body",
+      "pillar": "structure",
+      "ideal": [
+        0.01,
+        0.12
+      ],
+      "tolerable": [
+        0,
+        0.25
+      ],
+      "values": [
+        0.07364341085271318,
+        0.08763388510223953,
+        0.07527504342790967,
+        0.2644020037570445,
+        0.03128859613009469,
+        0.034670116429495475,
+        0.07142857142857142,
+        0.10852713178294573,
+        0.18867924528301888,
+        0.6234271333790895,
+        1.0294117647058822,
+        0.4816112084063047,
+        0.03593105122602573
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.07364341085271318,
+        "mdn": 0.08763388510223953,
+        "nngroup": 0.07527504342790967,
+        "wikipedia": 0.2644020037570445,
+        "web.dev": 0.03128859613009469,
+        "css-tricks": 0.034670116429495475,
+        "smashing": 0.07142857142857142,
+        "tailwind docs": 0.10852713178294573,
+        "service-public.fr": 0.18867924528301888,
+        "le monde": 0.6234271333790895,
+        "stripe docs": 1.0294117647058822,
+        "mozilla blog": 0.4816112084063047,
+        "a list apart": 0.03593105122602573
+      },
+      "n": 13,
+      "min": 0.031,
+      "max": 1.029,
+      "median": 0.088,
+      "p10": 0.031,
+      "p90": 0.623,
+      "in_ideal": 0.6153846153846154,
+      "in_tolerable": 0.6923076923076923,
+      "mean_score": 71.7
+    },
+    {
+      "key": "small_text",
+      "label": "Text rendered below 16px",
+      "pillar": "comfort",
+      "ideal": [
+        0,
+        0.12
+      ],
+      "tolerable": [
+        0,
+        0.35
+      ],
+      "values": [
+        0.0,
+        0.01094017094017094,
+        0.0,
+        0.35244523331309263,
+        0.021111031054110527,
+        0.041148151512398944,
+        0.0,
+        0.9372270742358079,
+        0.2734741784037559,
+        0.6255343402678826,
+        0.0,
+        0.0,
+        0.5022843085573713
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.0,
+        "mdn": 0.01094017094017094,
+        "nngroup": 0.0,
+        "wikipedia": 0.35244523331309263,
+        "web.dev": 0.021111031054110527,
+        "css-tricks": 0.041148151512398944,
+        "smashing": 0.0,
+        "tailwind docs": 0.9372270742358079,
+        "service-public.fr": 0.2734741784037559,
+        "le monde": 0.6255343402678826,
+        "stripe docs": 0.0,
+        "mozilla blog": 0.0,
+        "a list apart": 0.5022843085573713
+      },
+      "n": 13,
+      "min": 0.0,
+      "max": 0.937,
+      "median": 0.021,
+      "p10": 0.0,
+      "p90": 0.626,
+      "in_ideal": 0.6153846153846154,
+      "in_tolerable": 0.6923076923076923,
+      "mean_score": 73.3
+    },
+    {
+      "key": "lix",
+      "label": "Reading difficulty (LIX)",
+      "pillar": "clarity",
+      "ideal": [
+        30,
+        45
+      ],
+      "tolerable": [
+        20,
+        55
+      ],
+      "values": [
+        32.3,
+        40.8,
+        44.8,
+        61.1,
+        45.7,
+        39.0,
+        47.6,
+        35.4,
+        50.9,
+        41.1,
+        41.2
+      ],
+      "by_site": {
+        "practicaltypography.com": 32.3,
+        "mdn": 40.8,
+        "nngroup": 44.8,
+        "wikipedia": 61.1,
+        "web.dev": 45.7,
+        "css-tricks": 39.0,
+        "smashing": 47.6,
+        "tailwind docs": 35.4,
+        "le monde": 50.9,
+        "mozilla blog": 41.1,
+        "a list apart": 41.2
+      },
+      "n": 11,
+      "min": 32.3,
+      "max": 61.1,
+      "median": 41.2,
+      "p10": 32.3,
+      "p90": 50.9,
+      "in_ideal": 0.6363636363636364,
+      "in_tolerable": 0.9090909090909091,
+      "mean_score": 89.7
+    },
+    {
+      "key": "flesch",
+      "label": "Flesch Reading Ease",
+      "pillar": "clarity",
+      "ideal": [
+        55,
+        85
+      ],
+      "tolerable": [
+        35,
+        105
+      ],
+      "values": [
+        64.7,
+        59.1,
+        48.1,
+        23.6,
+        50.9,
+        60.5,
+        48.6,
+        73.9,
+        66.8,
+        69.0,
+        56.1
+      ],
+      "by_site": {
+        "practicaltypography.com": 64.7,
+        "mdn": 59.1,
+        "nngroup": 48.1,
+        "wikipedia": 23.6,
+        "web.dev": 50.9,
+        "css-tricks": 60.5,
+        "smashing": 48.6,
+        "tailwind docs": 73.9,
+        "le monde": 66.8,
+        "mozilla blog": 69.0,
+        "a list apart": 56.1
+      },
+      "n": 11,
+      "min": 23.6,
+      "max": 73.9,
+      "median": 59.1,
+      "p10": 23.6,
+      "p90": 69.0,
+      "in_ideal": 0.6363636363636364,
+      "in_tolerable": 0.9090909090909091,
+      "mean_score": 90.1
+    },
+    {
+      "key": "long_sentences",
+      "label": "Sentences over the length cap",
+      "pillar": "clarity",
+      "ideal": [
+        0,
+        0.18
+      ],
+      "tolerable": [
+        0,
+        0.32
+      ],
+      "values": [
+        0.045454545454545456,
+        0.19298245614035087,
+        0.15517241379310345,
+        0.436241610738255,
+        0.13709677419354838,
+        0.15920398009950248,
+        0.23529411764705882,
+        0.08333333333333333,
+        0.02416918429003021,
+        0.03333333333333333,
+        0.21645021645021645
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.045454545454545456,
+        "mdn": 0.19298245614035087,
+        "nngroup": 0.15517241379310345,
+        "wikipedia": 0.436241610738255,
+        "web.dev": 0.13709677419354838,
+        "css-tricks": 0.15920398009950248,
+        "smashing": 0.23529411764705882,
+        "tailwind docs": 0.08333333333333333,
+        "le monde": 0.02416918429003021,
+        "mozilla blog": 0.03333333333333333,
+        "a list apart": 0.21645021645021645
+      },
+      "n": 11,
+      "min": 0.024,
+      "max": 0.436,
+      "median": 0.155,
+      "p10": 0.024,
+      "p90": 0.235,
+      "in_ideal": 0.6363636363636364,
+      "in_tolerable": 0.9090909090909091,
+      "mean_score": 89.1
+    },
+    {
+      "key": "passive",
+      "label": "Passive voice",
+      "pillar": "clarity",
+      "ideal": [
+        0,
+        0.14
+      ],
+      "tolerable": [
+        0,
+        0.28
+      ],
+      "values": [
+        0.09090909090909091,
+        0.24561403508771928,
+        0.06896551724137931,
+        0.40268456375838924,
+        0.1935483870967742,
+        0.0945273631840796,
+        0.15294117647058825,
+        0.125,
+        0.0030211480362537764,
+        0.03333333333333333,
+        0.12121212121212122
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.09090909090909091,
+        "mdn": 0.24561403508771928,
+        "nngroup": 0.06896551724137931,
+        "wikipedia": 0.40268456375838924,
+        "web.dev": 0.1935483870967742,
+        "css-tricks": 0.0945273631840796,
+        "smashing": 0.15294117647058825,
+        "tailwind docs": 0.125,
+        "le monde": 0.0030211480362537764,
+        "mozilla blog": 0.03333333333333333,
+        "a list apart": 0.12121212121212122
+      },
+      "n": 11,
+      "min": 0.003,
+      "max": 0.403,
+      "median": 0.121,
+      "p10": 0.003,
+      "p90": 0.246,
+      "in_ideal": 0.6363636363636364,
+      "in_tolerable": 0.9090909090909091,
+      "mean_score": 87.1
+    },
+    {
+      "key": "unbroken_run",
+      "label": "Longest stretch without a heading",
+      "pillar": "structure",
+      "ideal": [
+        0,
+        400
+      ],
+      "tolerable": [
+        0,
+        800
+      ],
+      "values": [
+        516,
+        323,
+        297,
+        1485,
+        387,
+        3855,
+        326,
+        212,
+        149,
+        69,
+        1769
+      ],
+      "by_site": {
+        "practicaltypography.com": 516,
+        "mdn": 323,
+        "nngroup": 297,
+        "wikipedia": 1485,
+        "web.dev": 387,
+        "css-tricks": 3855,
+        "smashing": 326,
+        "tailwind docs": 212,
+        "le monde": 149,
+        "mozilla blog": 69,
+        "a list apart": 1769
+      },
+      "n": 11,
+      "min": 69,
+      "max": 3855,
+      "median": 326,
+      "p10": 69,
+      "p90": 1769,
+      "in_ideal": 0.6363636363636364,
+      "in_tolerable": 0.7272727272727273,
+      "mean_score": 71.7
+    },
+    {
+      "key": "polysyllabic",
+      "label": "Long-word load",
+      "pillar": "clarity",
+      "ideal": [
+        0.06,
+        0.18
+      ],
+      "tolerable": [
+        0.06,
+        0.28
+      ],
+      "values": [
+        0.146484375,
+        0.17151162790697674,
+        0.2652188219809148,
+        0.21253540204408325,
+        0.09615384615384616,
+        0.15527202696196438
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.146484375,
+        "nngroup": 0.17151162790697674,
+        "wikipedia": 0.2652188219809148,
+        "le monde": 0.21253540204408325,
+        "mozilla blog": 0.09615384615384616,
+        "a list apart": 0.15527202696196438
+      },
+      "n": 6,
+      "min": 0.096,
+      "max": 0.265,
+      "median": 0.163,
+      "p10": 0.096,
+      "p90": 0.265,
+      "in_ideal": 0.6666666666666666,
+      "in_tolerable": 1.0,
+      "mean_score": 92.1
+    },
+    {
+      "key": "title_length",
+      "label": "Title length",
+      "pillar": "structure",
+      "ideal": [
+        25,
+        65
+      ],
+      "tolerable": [
+        10,
+        90
+      ],
+      "values": [
+        60,
+        34,
+        79,
+        22,
+        45,
+        38,
+        63,
+        37,
+        92,
+        60,
+        51,
+        16,
+        32
+      ],
+      "by_site": {
+        "practicaltypography.com": 60,
+        "mdn": 34,
+        "nngroup": 79,
+        "wikipedia": 22,
+        "web.dev": 45,
+        "css-tricks": 38,
+        "smashing": 63,
+        "tailwind docs": 37,
+        "service-public.fr": 92,
+        "le monde": 60,
+        "stripe docs": 51,
+        "mozilla blog": 16,
+        "a list apart": 32
+      },
+      "n": 13,
+      "min": 16,
+      "max": 92,
+      "median": 45,
+      "p10": 16,
+      "p90": 79,
+      "in_ideal": 0.6923076923076923,
+      "in_tolerable": 0.9230769230769231,
+      "mean_score": 92.4
+    },
+    {
+      "key": "boilerplate",
+      "label": "Boilerplate share of the page text",
+      "pillar": "structure",
+      "ideal": [
+        0,
+        0.45
+      ],
+      "tolerable": [
+        0,
+        0.7
+      ],
+      "values": [
+        0.0,
+        0.7397642286728356,
+        0.27234418541425953,
+        0.18525819347469652,
+        0.30481243180193396,
+        0.09291405257688312,
+        0.1500373227170938,
+        0.3543653705062363,
+        0.8498349834983498,
+        0.12948930208863985,
+        0.5152941176470589,
+        0.5492974954184484,
+        0.2107112062082841
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.0,
+        "mdn": 0.7397642286728356,
+        "nngroup": 0.27234418541425953,
+        "wikipedia": 0.18525819347469652,
+        "web.dev": 0.30481243180193396,
+        "css-tricks": 0.09291405257688312,
+        "smashing": 0.1500373227170938,
+        "tailwind docs": 0.3543653705062363,
+        "service-public.fr": 0.8498349834983498,
+        "le monde": 0.12948930208863985,
+        "stripe docs": 0.5152941176470589,
+        "mozilla blog": 0.5492974954184484,
+        "a list apart": 0.2107112062082841
+      },
+      "n": 13,
+      "min": 0.0,
+      "max": 0.85,
+      "median": 0.272,
+      "p10": 0.0,
+      "p90": 0.74,
+      "in_ideal": 0.6923076923076923,
+      "in_tolerable": 0.8461538461538461,
+      "mean_score": 88.3
+    },
+    {
+      "key": "font_size",
+      "label": "Body text size (desktop)",
+      "pillar": "comfort",
+      "ideal": [
+        16,
+        21
+      ],
+      "tolerable": [
+        14,
+        24
+      ],
+      "values": [
+        21.8,
+        16,
+        20,
+        16,
+        16,
+        19.7,
+        20.4,
+        14,
+        16,
+        15,
+        16,
+        20,
+        14
+      ],
+      "by_site": {
+        "practicaltypography.com": 21.8,
+        "mdn": 16,
+        "nngroup": 20,
+        "wikipedia": 16,
+        "web.dev": 16,
+        "css-tricks": 19.7,
+        "smashing": 20.4,
+        "tailwind docs": 14,
+        "service-public.fr": 16,
+        "le monde": 15,
+        "stripe docs": 16,
+        "mozilla blog": 20,
+        "a list apart": 14
+      },
+      "n": 13,
+      "min": 14,
+      "max": 21.8,
+      "median": 16,
+      "p10": 14,
+      "p90": 20.4,
+      "in_ideal": 0.6923076923076923,
+      "in_tolerable": 1.0,
+      "mean_score": 91.5
+    },
+    {
+      "key": "line_height",
+      "label": "Line height",
+      "pillar": "comfort",
+      "ideal": [
+        1.45,
+        1.75
+      ],
+      "tolerable": [
+        1.25,
+        2.0
+      ],
+      "values": [
+        1.45,
+        1.75,
+        1.85,
+        1.63,
+        1.75,
+        1.7,
+        1.64,
+        2,
+        1.5,
+        1.35,
+        1.63,
+        1.2,
+        1.7
+      ],
+      "by_site": {
+        "practicaltypography.com": 1.45,
+        "mdn": 1.75,
+        "nngroup": 1.85,
+        "wikipedia": 1.63,
+        "web.dev": 1.75,
+        "css-tricks": 1.7,
+        "smashing": 1.64,
+        "tailwind docs": 2,
+        "service-public.fr": 1.5,
+        "le monde": 1.35,
+        "stripe docs": 1.63,
+        "mozilla blog": 1.2,
+        "a list apart": 1.7
+      },
+      "n": 13,
+      "min": 1.2,
+      "max": 2,
+      "median": 1.64,
+      "p10": 1.2,
+      "p90": 1.85,
+      "in_ideal": 0.6923076923076923,
+      "in_tolerable": 0.9230769230769231,
+      "mean_score": 89.9
+    },
+    {
+      "key": "mobile_measure",
+      "label": "Line length on mobile",
+      "pillar": "comfort",
+      "ideal": [
+        32,
+        60
+      ],
+      "tolerable": [
+        24,
+        70
+      ],
+      "values": [
+        35.7,
+        29.7,
+        34,
+        63,
+        42,
+        38.3,
+        37.4,
+        38,
+        39,
+        25.7,
+        32.6,
+        17,
+        47.6
+      ],
+      "by_site": {
+        "practicaltypography.com": 35.7,
+        "mdn": 29.7,
+        "nngroup": 34,
+        "wikipedia": 63,
+        "web.dev": 42,
+        "css-tricks": 38.3,
+        "smashing": 37.4,
+        "tailwind docs": 38,
+        "service-public.fr": 39,
+        "le monde": 25.7,
+        "stripe docs": 32.6,
+        "mozilla blog": 17,
+        "a list apart": 47.6
+      },
+      "n": 13,
+      "min": 17,
+      "max": 63,
+      "median": 37.4,
+      "p10": 17,
+      "p90": 47.6,
+      "in_ideal": 0.6923076923076923,
+      "in_tolerable": 0.9230769230769231,
+      "mean_score": 88.7
+    },
+    {
+      "key": "cls",
+      "label": "Layout shift while loading",
+      "pillar": "comfort",
+      "ideal": [
+        0,
+        0.1
+      ],
+      "tolerable": [
+        0,
+        0.25
+      ],
+      "values": [
+        0.0,
+        0.0004,
+        0.0528,
+        0.0008,
+        0.1885,
+        0.1082,
+        0.0,
+        0.0,
+        0.0082,
+        0.0067,
+        0.1866,
+        0.0003,
+        0.0012
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.0,
+        "mdn": 0.0004,
+        "nngroup": 0.0528,
+        "wikipedia": 0.0008,
+        "web.dev": 0.1885,
+        "css-tricks": 0.1082,
+        "smashing": 0.0,
+        "tailwind docs": 0.0,
+        "service-public.fr": 0.0082,
+        "le monde": 0.0067,
+        "stripe docs": 0.1866,
+        "mozilla blog": 0.0003,
+        "a list apart": 0.0012
+      },
+      "n": 13,
+      "min": 0.0,
+      "max": 0.189,
+      "median": 0.001,
+      "p10": 0.0,
+      "p90": 0.187,
+      "in_ideal": 0.7692307692307693,
+      "in_tolerable": 1.0,
+      "mean_score": 96.2
+    },
+    {
+      "key": "heading_order",
+      "label": "Heading level skips",
+      "pillar": "access",
+      "ideal": [
+        0,
+        0
+      ],
+      "tolerable": [
+        0,
+        2
+      ],
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "by_site": {
+        "practicaltypography.com": 0,
+        "mdn": 0,
+        "nngroup": 0,
+        "wikipedia": 0,
+        "web.dev": 0,
+        "css-tricks": 0,
+        "smashing": 1,
+        "tailwind docs": 0,
+        "service-public.fr": 0,
+        "le monde": 1,
+        "stripe docs": 0,
+        "mozilla blog": 1,
+        "a list apart": 0
+      },
+      "n": 13,
+      "min": 0,
+      "max": 1,
+      "median": 0,
+      "p10": 0,
+      "p90": 1,
+      "in_ideal": 0.7692307692307693,
+      "in_tolerable": 1.0,
+      "mean_score": 95.4
+    },
+    {
+      "key": "acronyms",
+      "label": "Acronyms never expanded",
+      "pillar": "access",
+      "ideal": [
+        0,
+        4
+      ],
+      "tolerable": [
+        0,
+        12
+      ],
+      "values": [
+        1,
+        2,
+        0,
+        4,
+        9,
+        10,
+        3,
+        1,
+        0,
+        10,
+        1,
+        2,
+        3
+      ],
+      "by_site": {
+        "practicaltypography.com": 1,
+        "mdn": 2,
+        "nngroup": 0,
+        "wikipedia": 4,
+        "web.dev": 9,
+        "css-tricks": 10,
+        "smashing": 3,
+        "tailwind docs": 1,
+        "service-public.fr": 0,
+        "le monde": 10,
+        "stripe docs": 1,
+        "mozilla blog": 2,
+        "a list apart": 3
+      },
+      "n": 13,
+      "min": 0,
+      "max": 10,
+      "median": 2,
+      "p10": 0,
+      "p90": 10,
+      "in_ideal": 0.7692307692307693,
+      "in_tolerable": 1.0,
+      "mean_score": 93.5
+    },
+    {
+      "key": "rem_scaling",
+      "label": "Text follows the browser's font size",
+      "pillar": "access",
+      "ideal": [
+        1,
+        1
+      ],
+      "tolerable": [
+        1,
+        1
+      ],
+      "values": [
+        0.0,
+        1.0,
+        1.0,
+        1.0,
+        0.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.0,
+        "mdn": 1.0,
+        "nngroup": 1.0,
+        "wikipedia": 1.0,
+        "web.dev": 0.0,
+        "css-tricks": 1.0,
+        "smashing": 1.0,
+        "tailwind docs": 1.0,
+        "service-public.fr": 1.0,
+        "le monde": 1.0,
+        "stripe docs": 0.0,
+        "mozilla blog": 1.0,
+        "a list apart": 1.0
+      },
+      "n": 13,
+      "min": 0.0,
+      "max": 1.0,
+      "median": 1.0,
+      "p10": 0.0,
+      "p90": 1.0,
+      "in_ideal": 0.7692307692307693,
+      "in_tolerable": 0.7692307692307693,
+      "mean_score": 76.9
+    },
+    {
+      "key": "paragraph_gap",
+      "label": "Space between paragraphs",
+      "pillar": "comfort",
+      "ideal": [
+        0.5,
+        1.4
+      ],
+      "tolerable": [
+        0.25,
+        2.2
+      ],
+      "values": [
+        0.69,
+        0.57,
+        0.43,
+        0.62,
+        0.57,
+        0.74,
+        0.85,
+        5.57,
+        0.88
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.69,
+        "mdn": 0.57,
+        "nngroup": 0.43,
+        "wikipedia": 0.62,
+        "web.dev": 0.57,
+        "css-tricks": 0.74,
+        "smashing": 0.85,
+        "tailwind docs": 5.57,
+        "a list apart": 0.88
+      },
+      "n": 9,
+      "min": 0.43,
+      "max": 5.57,
+      "median": 0.69,
+      "p10": 0.43,
+      "p90": 5.57,
+      "in_ideal": 0.7777777777777778,
+      "in_tolerable": 0.8888888888888888,
+      "mean_score": 87.6
+    },
+    {
+      "key": "connectives",
+      "label": "Transition words",
+      "pillar": "clarity",
+      "ideal": [
+        0.18,
+        0.65
+      ],
+      "tolerable": [
+        0.08,
+        0.85
+      ],
+      "values": [
+        0.25,
+        0.22807017543859648,
+        0.39655172413793105,
+        0.28187919463087246,
+        0.22580645161290322,
+        0.27860696517412936,
+        0.2235294117647059,
+        0.22916666666666666,
+        0.021148036253776436,
+        0.1,
+        0.3333333333333333
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.25,
+        "mdn": 0.22807017543859648,
+        "nngroup": 0.39655172413793105,
+        "wikipedia": 0.28187919463087246,
+        "web.dev": 0.22580645161290322,
+        "css-tricks": 0.27860696517412936,
+        "smashing": 0.2235294117647059,
+        "tailwind docs": 0.22916666666666666,
+        "le monde": 0.021148036253776436,
+        "mozilla blog": 0.1,
+        "a list apart": 0.3333333333333333
+      },
+      "n": 11,
+      "min": 0.021,
+      "max": 0.397,
+      "median": 0.229,
+      "p10": 0.021,
+      "p90": 0.333,
+      "in_ideal": 0.8181818181818182,
+      "in_tolerable": 0.9090909090909091,
+      "mean_score": 90.2
+    },
+    {
+      "key": "diversity",
+      "label": "Vocabulary diversity",
+      "pillar": "clarity",
+      "ideal": [
+        0.55,
+        0.85
+      ],
+      "tolerable": [
+        0.4,
+        0.95
+      ],
+      "values": [
+        0.7029411764705882,
+        0.6102702702702703,
+        0.7270769230769231,
+        0.7230416666666667,
+        0.648041237113402,
+        0.7386666666666667,
+        0.7118421052631579,
+        0.48772727272727273,
+        0.6694392523364485,
+        0.4931578947368421,
+        0.7599386503067485
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.7029411764705882,
+        "mdn": 0.6102702702702703,
+        "nngroup": 0.7270769230769231,
+        "wikipedia": 0.7230416666666667,
+        "web.dev": 0.648041237113402,
+        "css-tricks": 0.7386666666666667,
+        "smashing": 0.7118421052631579,
+        "tailwind docs": 0.48772727272727273,
+        "le monde": 0.6694392523364485,
+        "mozilla blog": 0.4931578947368421,
+        "a list apart": 0.7599386503067485
+      },
+      "n": 11,
+      "min": 0.488,
+      "max": 0.76,
+      "median": 0.703,
+      "p10": 0.488,
+      "p90": 0.739,
+      "in_ideal": 0.8181818181818182,
+      "in_tolerable": 1.0,
+      "mean_score": 97.1
+    },
+    {
+      "key": "type_sizes",
+      "label": "Distinct type sizes",
+      "pillar": "comfort",
+      "ideal": [
+        2,
+        8
+      ],
+      "tolerable": [
+        1,
+        12
+      ],
+      "values": [
+        3,
+        4,
+        6,
+        6,
+        6,
+        7,
+        10,
+        8,
+        4,
+        9,
+        2,
+        5
+      ],
+      "by_site": {
+        "practicaltypography.com": 3,
+        "mdn": 4,
+        "nngroup": 6,
+        "wikipedia": 6,
+        "web.dev": 6,
+        "css-tricks": 7,
+        "smashing": 10,
+        "tailwind docs": 8,
+        "service-public.fr": 4,
+        "le monde": 9,
+        "stripe docs": 2,
+        "a list apart": 5
+      },
+      "n": 12,
+      "min": 2,
+      "max": 10,
+      "median": 6.0,
+      "p10": 2,
+      "p90": 9,
+      "in_ideal": 0.8333333333333334,
+      "in_tolerable": 1.0,
+      "mean_score": 97.5
+    },
+    {
+      "key": "mobile_font",
+      "label": "Body text size (mobile)",
+      "pillar": "comfort",
+      "ideal": [
+        16,
+        20
+      ],
+      "tolerable": [
+        14,
+        22
+      ],
+      "values": [
+        16.4,
+        16,
+        20,
+        16,
+        16,
+        16.8,
+        18,
+        14,
+        16,
+        20,
+        16,
+        20,
+        14
+      ],
+      "by_site": {
+        "practicaltypography.com": 16.4,
+        "mdn": 16,
+        "nngroup": 20,
+        "wikipedia": 16,
+        "web.dev": 16,
+        "css-tricks": 16.8,
+        "smashing": 18,
+        "tailwind docs": 14,
+        "service-public.fr": 16,
+        "le monde": 20,
+        "stripe docs": 16,
+        "mozilla blog": 20,
+        "a list apart": 14
+      },
+      "n": 13,
+      "min": 14,
+      "max": 20,
+      "median": 16,
+      "p10": 14,
+      "p90": 20,
+      "in_ideal": 0.8461538461538461,
+      "in_tolerable": 1.0,
+      "mean_score": 93.8
+    },
+    {
+      "key": "alt_coverage",
+      "label": "Images with alt text",
+      "pillar": "access",
+      "ideal": [
+        1.0,
+        1.0
+      ],
+      "tolerable": [
+        0.85,
+        1.0
+      ],
+      "values": [
+        1.0,
+        1.0,
+        1.0,
+        0.55,
+        1.0,
+        0.9375,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "by_site": {
+        "practicaltypography.com": 1.0,
+        "mdn": 1.0,
+        "nngroup": 1.0,
+        "wikipedia": 0.55,
+        "web.dev": 1.0,
+        "css-tricks": 0.9375,
+        "smashing": 1.0,
+        "tailwind docs": 1.0,
+        "service-public.fr": 1.0,
+        "le monde": 1.0,
+        "stripe docs": 1.0,
+        "mozilla blog": 1.0,
+        "a list apart": 1.0
+      },
+      "n": 13,
+      "min": 0.55,
+      "max": 1.0,
+      "median": 1.0,
+      "p10": 0.55,
+      "p90": 1.0,
+      "in_ideal": 0.8461538461538461,
+      "in_tolerable": 0.9230769230769231,
+      "mean_score": 91.0
+    },
+    {
+      "key": "weak_links",
+      "label": "Uninformative link text",
+      "pillar": "access",
+      "ideal": [
+        0,
+        0
+      ],
+      "tolerable": [
+        0,
+        3
+      ],
+      "values": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      "by_site": {
+        "practicaltypography.com": 0,
+        "mdn": 1,
+        "nngroup": 0,
+        "wikipedia": 0,
+        "web.dev": 0,
+        "css-tricks": 0,
+        "smashing": 0,
+        "tailwind docs": 0,
+        "service-public.fr": 0,
+        "le monde": 0,
+        "stripe docs": 0,
+        "mozilla blog": 2,
+        "a list apart": 0
+      },
+      "n": 13,
+      "min": 0,
+      "max": 2,
+      "median": 0,
+      "p10": 0,
+      "p90": 1,
+      "in_ideal": 0.8461538461538461,
+      "in_tolerable": 1.0,
+      "mean_score": 96.9
+    },
+    {
+      "key": "rhythm",
+      "label": "Sentence length variation",
+      "pillar": "clarity",
+      "ideal": [
+        0.45,
+        1.1
+      ],
+      "tolerable": [
+        0.25,
+        1.6
+      ],
+      "values": [
+        0.62,
+        0.47,
+        0.45,
+        0.65,
+        1.29,
+        0.5,
+        0.47,
+        0.48,
+        0.91,
+        0.46,
+        0.57
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.62,
+        "mdn": 0.47,
+        "nngroup": 0.45,
+        "wikipedia": 0.65,
+        "web.dev": 1.29,
+        "css-tricks": 0.5,
+        "smashing": 0.47,
+        "tailwind docs": 0.48,
+        "le monde": 0.91,
+        "mozilla blog": 0.46,
+        "a list apart": 0.57
+      },
+      "n": 11,
+      "min": 0.45,
+      "max": 1.29,
+      "median": 0.5,
+      "p10": 0.45,
+      "p90": 0.91,
+      "in_ideal": 0.9090909090909091,
+      "in_tolerable": 1.0,
+      "mean_score": 98.6
+    },
+    {
+      "key": "hedging",
+      "label": "Filler and marketing words",
+      "pillar": "clarity",
+      "ideal": [
+        0,
+        0.01
+      ],
+      "tolerable": [
+        0,
+        0.025
+      ],
+      "values": [
+        0.001953125,
+        0.002938295788442703,
+        0.004651162790697674,
+        0.0018098058571898651,
+        0.005173099880620772,
+        0.006524008350730689,
+        0.007594936708860759,
+        0.0015748031496062992,
+        0.001600788080285679,
+        0.006993006993006993,
+        0.010110736639383727
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.001953125,
+        "mdn": 0.002938295788442703,
+        "nngroup": 0.004651162790697674,
+        "wikipedia": 0.0018098058571898651,
+        "web.dev": 0.005173099880620772,
+        "css-tricks": 0.006524008350730689,
+        "smashing": 0.007594936708860759,
+        "tailwind docs": 0.0015748031496062992,
+        "le monde": 0.001600788080285679,
+        "mozilla blog": 0.006993006993006993,
+        "a list apart": 0.010110736639383727
+      },
+      "n": 11,
+      "min": 0.002,
+      "max": 0.01,
+      "median": 0.005,
+      "p10": 0.002,
+      "p90": 0.008,
+      "in_ideal": 0.9090909090909091,
+      "in_tolerable": 1.0,
+      "mean_score": 100.0
+    },
+    {
+      "key": "long_paragraphs",
+      "label": "Paragraphs over 120 words",
+      "pillar": "structure",
+      "ideal": [
+        0,
+        0.1
+      ],
+      "tolerable": [
+        0,
+        0.25
+      ],
+      "values": [
+        0.0,
+        0.0,
+        0.0,
+        0.11864406779661017,
+        0.017241379310344827,
+        0.0,
+        0.029411764705882353,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.010416666666666666
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.0,
+        "mdn": 0.0,
+        "nngroup": 0.0,
+        "wikipedia": 0.11864406779661017,
+        "web.dev": 0.017241379310344827,
+        "css-tricks": 0.0,
+        "smashing": 0.029411764705882353,
+        "tailwind docs": 0.0,
+        "service-public.fr": 0.0,
+        "le monde": 0.0,
+        "stripe docs": 0.0,
+        "mozilla blog": 0.0,
+        "a list apart": 0.010416666666666666
+      },
+      "n": 13,
+      "min": 0.0,
+      "max": 0.119,
+      "median": 0.0,
+      "p10": 0.0,
+      "p90": 0.029,
+      "in_ideal": 0.9230769230769231,
+      "in_tolerable": 1.0,
+      "mean_score": 99.6
+    },
+    {
+      "key": "nominalization",
+      "label": "Nominalisations",
+      "pillar": "clarity",
+      "ideal": [
+        0,
+        0.05
+      ],
+      "tolerable": [
+        0,
+        0.1
+      ],
+      "values": [
+        0.017578125,
+        0.018404907975460124,
+        0.043596730245231606,
+        0.04027183488547697,
+        0.021910604732690624,
+        0.017846339987900785,
+        0.021675454012888107,
+        0.01948051948051948,
+        0.022285251215559156,
+        0.006006006006006006,
+        0.01776461880088823
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.017578125,
+        "mdn": 0.018404907975460124,
+        "nngroup": 0.043596730245231606,
+        "wikipedia": 0.04027183488547697,
+        "web.dev": 0.021910604732690624,
+        "css-tricks": 0.017846339987900785,
+        "smashing": 0.021675454012888107,
+        "tailwind docs": 0.01948051948051948,
+        "le monde": 0.022285251215559156,
+        "mozilla blog": 0.006006006006006006,
+        "a list apart": 0.01776461880088823
+      },
+      "n": 11,
+      "min": 0.006,
+      "max": 0.044,
+      "median": 0.019,
+      "p10": 0.006,
+      "p90": 0.04,
+      "in_ideal": 1.0,
+      "in_tolerable": 1.0,
+      "mean_score": 100.0
+    },
+    {
+      "key": "word_rarity",
+      "label": "Vocabulary rarity",
+      "pillar": "clarity",
+      "ideal": [
+        3.6,
+        5.5
+      ],
+      "tolerable": [
+        3.0,
+        6.5
+      ],
+      "values": [
+        4.62,
+        4.53,
+        4.58,
+        3.9,
+        4.27,
+        4.35,
+        4.35,
+        4.31,
+        3.61,
+        4.53,
+        4.36
+      ],
+      "by_site": {
+        "practicaltypography.com": 4.62,
+        "mdn": 4.53,
+        "nngroup": 4.58,
+        "wikipedia": 3.9,
+        "web.dev": 4.27,
+        "css-tricks": 4.35,
+        "smashing": 4.35,
+        "tailwind docs": 4.31,
+        "le monde": 3.61,
+        "mozilla blog": 4.53,
+        "a list apart": 4.36
+      },
+      "n": 11,
+      "min": 3.61,
+      "max": 4.62,
+      "median": 4.35,
+      "p10": 3.61,
+      "p90": 4.58,
+      "in_ideal": 1.0,
+      "in_tolerable": 1.0,
+      "mean_score": 100.0
+    },
+    {
+      "key": "contrast",
+      "label": "Body text contrast (WCAG)",
+      "pillar": "comfort",
+      "ideal": [
+        7.0,
+        21.0
+      ],
+      "tolerable": [
+        4.5,
+        21.0
+      ],
+      "values": [
+        21.0,
+        21.0,
+        21.0,
+        16.13,
+        16.1,
+        21.0,
+        12.63,
+        17.75,
+        11.37,
+        13.24,
+        9.96,
+        21.0,
+        15.91
+      ],
+      "by_site": {
+        "practicaltypography.com": 21.0,
+        "mdn": 21.0,
+        "nngroup": 21.0,
+        "wikipedia": 16.13,
+        "web.dev": 16.1,
+        "css-tricks": 21.0,
+        "smashing": 12.63,
+        "tailwind docs": 17.75,
+        "service-public.fr": 11.37,
+        "le monde": 13.24,
+        "stripe docs": 9.96,
+        "mozilla blog": 21.0,
+        "a list apart": 15.91
+      },
+      "n": 13,
+      "min": 9.96,
+      "max": 21.0,
+      "median": 16.13,
+      "p10": 9.96,
+      "p90": 21.0,
+      "in_ideal": 1.0,
+      "in_tolerable": 1.0,
+      "mean_score": 100.0
+    },
+    {
+      "key": "apca",
+      "label": "Perceptual contrast (APCA Lc)",
+      "pillar": "comfort",
+      "ideal": [
+        75,
+        108
+      ],
+      "tolerable": [
+        60,
+        108
+      ],
+      "values": [
+        106.0,
+        106.0,
+        106.0,
+        103.1,
+        103.1,
+        106.0,
+        98.7,
+        104.5,
+        96.3,
+        99.6,
+        93.1,
+        106.0,
+        102.9
+      ],
+      "by_site": {
+        "practicaltypography.com": 106.0,
+        "mdn": 106.0,
+        "nngroup": 106.0,
+        "wikipedia": 103.1,
+        "web.dev": 103.1,
+        "css-tricks": 106.0,
+        "smashing": 98.7,
+        "tailwind docs": 104.5,
+        "service-public.fr": 96.3,
+        "le monde": 99.6,
+        "stripe docs": 93.1,
+        "mozilla blog": 106.0,
+        "a list apart": 102.9
+      },
+      "n": 13,
+      "min": 93.1,
+      "max": 106.0,
+      "median": 103.1,
+      "p10": 93.1,
+      "p90": 106.0,
+      "in_ideal": 1.0,
+      "in_tolerable": 1.0,
+      "mean_score": 100.0
+    },
+    {
+      "key": "justified",
+      "label": "Justified text without hyphenation",
+      "pillar": "comfort",
+      "ideal": [
+        0,
+        0.02
+      ],
+      "tolerable": [
+        0,
+        0.15
+      ],
+      "values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.0,
+        "mdn": 0.0,
+        "nngroup": 0.0,
+        "wikipedia": 0.0,
+        "web.dev": 0.0,
+        "css-tricks": 0.0,
+        "smashing": 0.0,
+        "tailwind docs": 0.0,
+        "service-public.fr": 0.0,
+        "le monde": 0.0,
+        "stripe docs": 0.0,
+        "mozilla blog": 0.0,
+        "a list apart": 0.0
+      },
+      "n": 13,
+      "min": 0.0,
+      "max": 0.0,
+      "median": 0.0,
+      "p10": 0.0,
+      "p90": 0.0,
+      "in_ideal": 1.0,
+      "in_tolerable": 1.0,
+      "mean_score": 100.0
+    },
+    {
+      "key": "uppercase",
+      "label": "Text set in capitals",
+      "pillar": "comfort",
+      "ideal": [
+        0,
+        0.03
+      ],
+      "tolerable": [
+        0,
+        0.1
+      ],
+      "values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.00887223974763407,
+        0.0,
+        0.0,
+        0.006730487855858868
+      ],
+      "by_site": {
+        "practicaltypography.com": 0.0,
+        "mdn": 0.0,
+        "nngroup": 0.0,
+        "wikipedia": 0.0,
+        "web.dev": 0.0,
+        "css-tricks": 0.0,
+        "smashing": 0.0,
+        "tailwind docs": 0.0,
+        "service-public.fr": 0.0,
+        "le monde": 0.00887223974763407,
+        "stripe docs": 0.0,
+        "mozilla blog": 0.0,
+        "a list apart": 0.006730487855858868
+      },
+      "n": 13,
+      "min": 0.0,
+      "max": 0.009,
+      "median": 0.0,
+      "p10": 0.0,
+      "p90": 0.007,
+      "in_ideal": 1.0,
+      "in_tolerable": 1.0,
+      "mean_score": 100.0
+    }
+  ]
+}

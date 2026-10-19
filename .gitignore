@@ -1,0 +1,13 @@
+.venv/
+.cache/
+.readlens-cache/
+out*/
+report/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.tokenade/
+.hermes.md
+.cursor/
+.claude/
+FAUX-POSITIFS-*.md

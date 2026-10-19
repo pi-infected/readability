@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>A sample page for testing readability</title>
+<meta name="description" content="A short description used by the structure metrics in the test suite.">
+<style>
+ body{margin:0;font:16px/1.6 system-ui,sans-serif;color:#333;background:#fff}
+ main{max-width:38rem;margin:2rem auto;padding:0 1rem}
+ p{margin:0 0 1.2em}
+ .faint{color:#bbb;font-size:12px}
+</style></head><body>
+<nav><a href="/">Home</a> <a href="/blog">Blog</a></nav>
+<main>
+<h1>How a page earns a reader</h1>
+<p>A reader decides in seconds. The page either shows what it is about or it does not.
+Short sentences help. So does a heading that says something.</p>
+<h2>What gets measured</h2>
+<p>Sentence length, word length and vocabulary rarity are the levers every classic formula pulls.
+None of them measure whether the argument is any good, and that limit is worth stating out loud.</p>
+<ul><li>Line length, measured on the rendered page</li><li>Contrast, resolved through the background stack</li></ul>
+<h2>Why the rendered page matters</h2>
+<p>A formula reads the words and stops there. It never sees the twelve pixel caption, the line that runs
+to a hundred and forty characters, or the grey that sits at two and a half to one against white.
+Those are the things a reader actually feels, and they are only visible once the page is rendered
+in a browser at a real width.</p>
+<p>So the measurement happens twice. The text is pulled out of the markup and scored for sentence
+length, word rarity and voice. Then the same page is loaded at fourteen hundred pixels and again at
+three hundred and ninety, and the type is read back from the computed styles: size, leading, measure,
+and the contrast of every block against the background it truly sits on.</p>
+<p>Neither half is sufficient alone. Clear prose set in grey nine pixel type is unreadable, and a
+beautiful column of text that says nothing is a waste of the reader's afternoon. The score here is a
+weighted mean of both, minus a penalty for every concrete defect that was found.</p>
+<p class="faint">This caption is deliberately faint and small so the contrast check has something to find.</p>
+</main>
+<footer><p>Footer text that should not count as content.</p></footer>
+</body></html>

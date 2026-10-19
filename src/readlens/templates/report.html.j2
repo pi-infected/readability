@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="{{ ui_lang }}">
+<head>
+<meta charset="utf-8">
+<title>{{ t.title }} — {{ data.base_url }}</title>
+<style>
+  @page { size: A4; margin: 16mm 14mm 18mm 14mm;
+    @bottom-center { content: "{{ t.page }} " counter(page) " / " counter(pages);
+      font: 8pt/1 -apple-system, 'Helvetica Neue', Arial, sans-serif; color: #8a8f98; } }
+  @page :first { margin-top: 20mm; }
+  * { box-sizing: border-box; }
+  body { font: 10pt/1.55 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+         color: #1c1e21; margin: 0; }
+  h1 { font-size: 22pt; line-height: 1.15; margin: 0 0 4mm; letter-spacing: -0.4pt; }
+  h2 { font-size: 14pt; margin: 9mm 0 3mm; padding-bottom: 1.5mm; border-bottom: 1.2pt solid #1c1e21;
+       letter-spacing: -0.2pt; break-after: avoid; }
+  h3 { font-size: 11pt; margin: 5mm 0 2mm; break-after: avoid; }
+  h4 { font-size: 9.5pt; margin: 3mm 0 1mm; color: #3d4148; break-after: avoid; }
+  p { margin: 0 0 2.5mm; }
+  a { color: #1a4fa0; text-decoration: none; word-break: break-all; }
+  .muted { color: #6b7078; }
+  .small { font-size: 8.5pt; }
+  .mono { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; font-size: 8pt; }
+  .cover { border-bottom: 2pt solid #1c1e21; padding-bottom: 6mm; margin-bottom: 6mm; }
+  .cover .sub { font-size: 11pt; color: #4a4f57; }
+  .scoreblock { display: flex; gap: 8mm; align-items: center; margin: 6mm 0; }
+  .bigscore { font-size: 46pt; font-weight: 700; line-height: 1; letter-spacing: -2pt; }
+  .grade { font-size: 15pt; font-weight: 700; padding: 1.2mm 3.5mm; border-radius: 2mm; color: #fff; }
+  .g-A { background: #1a7f4b; } .g-B { background: #4b8f2f; } .g-C { background: #b8860b; }
+  .g-D { background: #c2701c; } .g-E { background: #bf4a25; } .g-F { background: #a51f1f; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
+  thead { display: table-header-group; }
+  th { text-align: left; font-weight: 600; border-bottom: 1pt solid #1c1e21; padding: 1.6mm 2mm; }
+  td { border-bottom: 0.4pt solid #dcdee2; padding: 1.4mm 2mm; vertical-align: top; }
+  tr { break-inside: avoid; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .bar { height: 2.4mm; background: #e8eaed; border-radius: 1.2mm; overflow: hidden; min-width: 22mm; }
+  .bar > i { display: block; height: 100%; }
+  .sev { display: inline-block; font-size: 7pt; font-weight: 700; text-transform: uppercase;
+         letter-spacing: 0.3pt; padding: 0.6mm 1.8mm; border-radius: 1mm; color: #fff; white-space: nowrap; }
+  .s-critical { background: #a51f1f; } .s-high { background: #bf4a25; }
+  .s-medium { background: #b8860b; } .s-low { background: #5b636e; } .s-info { background: #8a8f98; }
+  .s-ok { background: #1a7f4b; }
+  .finding { break-inside: avoid; border-left: 2.5pt solid #dcdee2; padding: 0 0 0 3mm; margin: 0 0 4mm; }
+  .finding.critical { border-color: #a51f1f; } .finding.high { border-color: #bf4a25; }
+  .finding.medium { border-color: #b8860b; } .finding.low { border-color: #b0b5bd; }
+  .finding h4 { margin: 0 0 1mm; font-size: 10pt; color: #1c1e21; }
+  .fix { background: #f4f6f8; border-radius: 1.5mm; padding: 2mm 2.5mm; margin-top: 1.5mm; font-size: 8.5pt; }
+  .fix b { font-weight: 600; }
+  .pillars { display: flex; gap: 4mm; margin: 4mm 0 0; }
+  .pillar { flex: 1; border: 0.5pt solid #dcdee2; border-radius: 2mm; padding: 3mm; }
+  .pillar .v { font-size: 17pt; font-weight: 700; line-height: 1.1; }
+  .pillar .n { font-size: 8pt; color: #6b7078; text-transform: uppercase; letter-spacing: 0.4pt; }
+  .kv { display: flex; flex-wrap: wrap; gap: 2mm 6mm; margin: 3mm 0; }
+  .kv div { font-size: 8.5pt; } .kv b { display: block; font-size: 11pt; font-weight: 700; }
+  .swatch { display: inline-block; width: 3.4mm; height: 3.4mm; border: 0.4pt solid #9aa0a8;
+            vertical-align: -0.5mm; border-radius: 0.7mm; }
+  .page-sec { break-before: page; }
+  .quote { font-size: 8.5pt; color: #3d4148; border-left: 1.5pt solid #dcdee2; padding-left: 2.5mm;
+           margin: 1.5mm 0; }
+  .shot { width: 100%; border: 0.4pt solid #dcdee2; border-radius: 1.5mm; margin: 2mm 0 0; }
+  .shots { display: flex; gap: 4mm; align-items: flex-start; break-inside: avoid; }
+  .shots > div { flex: 1 1 auto; min-width: 0; }
+  .shots > .shot-mobile { flex: 0 0 34mm; }
+  .legend { font-size: 8pt; color: #6b7078; margin-top: 1.5mm; }
+  .avoid { break-inside: avoid; }
+</style>
+</head>
+<body>
+
+{% macro bar(score) -%}
+<div class="bar"><i style="width:{{ '%.0f'|format(score) }}%;background:{{ color_for(score) }}"></i></div>
+{%- endmacro %}
+
+{% macro sev(s) -%}<span class="sev s-{{ s }}">{{ t.sev[s] if s in t.sev else s }}</span>{%- endmacro %}
+
+<div class="cover">
+  <div class="sub muted small">{{ t.report_kind }}</div>
+  <h1>{{ data.base_url }}</h1>
+  <div class="sub">{{ t.generated }} {{ data.started_at }} · {{ data.summary.pages_analysed }} {{ t.pages }}
+    · {{ data.summary.total_words }} {{ t.words }} · {{ t.audience }}: {{ data.options.audience }}</div>
+  {% if data.summary.coverage %}
+  <div class="sub small muted">{{ t.coverage }}:
+    {{ data.summary.coverage.analysed }}/{{ data.summary.coverage.discovered }} {{ t.cov_analysed }} ·
+    {{ data.summary.coverage.scored }} {{ t.cov_scored }} ·
+    {{ data.summary.coverage.rendered }} {{ t.cov_rendered }} ·
+    {{ detail_pages|length }} {{ t.cov_detailed }}
+    {%- if data.summary.coverage.unscorable %} · {{ data.summary.coverage.unscorable }} {{ t.cov_unscorable }}{% endif %}
+    {%- if data.summary.coverage.failed %} · {{ data.summary.coverage.failed }} {{ t.cov_failed }}{% endif %}
+  </div>{% endif %}
+</div>
+
+<div class="scoreblock">
+  <div class="bigscore">{{ data.summary.score }}</div>
+  <div><span class="grade g-{{ data.summary.grade }}">{{ t.grade }} {{ data.summary.grade }}</span></div>
+  <div class="small muted" style="flex:1">{{ t.score_explainer }}<br>
+    {{ t.mean }} {{ data.summary.mean_page_score }} · {{ t.worst }} {{ data.summary.worst_page_score }}
+    · {{ t.best }} {{ data.summary.best_page_score }} · {{ t.consistency }} {{ data.summary.consistency_score }}</div>
+</div>
+
+<div class="pillars">
+{% for key, p in data.summary.pillars.items() %}
+  <div class="pillar">
+    <div class="n">{{ t.pillar[key] if key in t.pillar else key }}</div>
+    <div class="v">{{ p }}</div>
+    {{ bar(p) }}
+  </div>
+{% endfor %}
+</div>
+
+<div class="kv">
+  <div><b>{{ data.summary.reading_time_min }} min</b>{{ t.reading_time }}</div>
+  <div><b>{{ data.summary.severity_counts.get('critical', 0) }}</b>{{ t.critical_issues }}</div>
+  <div><b>{{ data.summary.severity_counts.get('high', 0) }}</b>{{ t.high_issues }}</div>
+  <div><b>{{ data.summary.rendered }}</b>{{ t.rendered_pages }}</div>
+  {% for k, v in data.summary.page_types.items() %}<div><b>{{ v }}</b>{{ k }}</div>{% endfor %}
+</div>
+
+<h2>{{ t.fix_first }}</h2>
+{% if not data.top_findings %}<p class="muted">{{ t.no_findings }}</p>{% endif %}
+{% for f in data.top_findings[:show_findings] %}
+<div class="finding {{ f.severity }}">
+  <h4>{{ sev(f.severity) }} {{ f.title }}</h4>
+  <p class="small">{{ f.example.detail if f.example else '' }}</p>
+  <p class="small muted">{{ t.affects }} {{ f.affected_pages }} {{ t.of }}
+     {{ data.summary.pages_analysed }} {{ t.pages }} ({{ (f.share * 100)|round|int }}%) ·
+     {{ t.pillar[f.pillar] if f.pillar in t.pillar else f.pillar }}</p>
+  {% if f.fix %}<div class="fix"><b>{{ t.fix }}:</b> {{ f.fix }}</div>{% endif %}
+  {% if f.example and f.example.evidence %}
+    {% for e in f.example.evidence[:3] %}
+      {% if e.ratio is defined %}<div class="quote">
+        <span class="swatch" style="background:{{ e.color }}"></span>
+        <span class="swatch" style="background:{{ e.background }}"></span>
+        {{ e.ratio }}:1 · APCA Lc {{ e.apca_lc }} · {{ e.font_px }}px {{ e.tag }}
+        {% if e.text %}— “{{ e.text|truncate(90) }}”{% endif %}</div>
+      {% elif e.text %}<div class="quote">“{{ e.text|truncate(200) }}”{% if e.words is defined %}
+        <span class="muted">— {{ e.words }} {{ t.words }}</span>{% endif %}</div>
+      {% elif e.word is defined %}<span class="mono">{{ e.word }} ({{ e.zipf }})</span>&nbsp;
+      {% elif e.term is defined %}<span class="mono">{{ e.term }}×{{ e.count }}</span>&nbsp;
+      {% elif e.acronym is defined %}<span class="mono">{{ e.acronym }}</span>&nbsp;
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+</div>
+{% endfor %}
+
+<h2>{{ t.pages_table }}</h2>
+<table>
+<thead><tr>
+  <th>{{ t.page_col }}</th><th>{{ t.type }}</th><th class="num">{{ t.score }}</th>
+  <th style="width:24mm">{{ t.profile }}</th><th class="num">{{ t.words }}</th>
+  <th class="num">LIX</th><th class="num">{{ t.font }}</th><th class="num">{{ t.contrast }}</th>
+  <th class="num">{{ t.measure }}</th>
+</tr></thead>
+<tbody>
+{% for p in pages %}
+<tr>
+  <td><a href="{{ p.final_url }}">{{ p.path }}</a><div class="muted small">{{ p.title|truncate(58) }}</div></td>
+  <td class="small">{{ p.page_type }}</td>
+  <td class="num" style="white-space:nowrap"><b>{{ p.score if p.score is not none else '—' }}</b> <span class="sev s-{{ p.sevclass }}">{{ p.grade }}</span></td>
+  <td>{% if p.score is not none %}{{ bar(p.score) }}{% endif %}</td>
+  <td class="num">{{ p.words }}</td>
+  <td class="num">{{ p.lix if p.lix is not none else '—' }}</td>
+  <td class="num">{{ p.font_px if p.font_px else '—' }}</td>
+  <td class="num">{{ p.contrast if p.contrast else '—' }}</td>
+  <td class="num">{{ p.cpl if p.cpl else '—' }}</td>
+</tr>
+{% endfor %}
+</tbody></table>
+<div class="legend">{{ t.table_legend }}</div>
+
+<h2>{{ t.consistency_h }}</h2>
+<p class="small">{{ t.consistency_intro }}</p>
+<table>
+<tbody>
+<tr><td>{{ t.body_sizes }}</td><td class="mono">{{ data.consistency.body_font_px['values']|join(', ') }} px</td>
+    <td class="num">{{ data.consistency.body_font_px.score }}</td><td>{{ bar(data.consistency.body_font_px.score) }}</td></tr>
+<tr><td>{{ t.line_heights }}</td><td class="mono">{{ data.consistency.line_height['values']|join(', ') }}</td>
+    <td class="num">{{ data.consistency.line_height.score }}</td><td>{{ bar(data.consistency.line_height.score) }}</td></tr>
+<tr><td>{{ t.measure_range }}</td><td class="mono">{{ data.consistency.chars_per_line.min }}–{{ data.consistency.chars_per_line.max }} {{ t.chars }}</td>
+    <td class="num">{{ data.consistency.chars_per_line.score }}</td><td>{{ bar(data.consistency.chars_per_line.score) }}</td></tr>
+<tr><td>{{ t.reading_level }}</td><td class="mono">LIX {{ data.consistency.reading_level.lix_min }}–{{ data.consistency.reading_level.lix_max }} (σ {{ data.consistency.reading_level.lix_stdev }})</td>
+    <td class="num">{{ data.consistency.reading_level.score }}</td><td>{{ bar(data.consistency.reading_level.score) }}</td></tr>
+</tbody></table>
+<p class="small" style="margin-top:2mm">{{ t.fonts_used }}
+  {% for f in data.consistency.font_families %}<span class="mono">{{ f.family }}</span>{% if not loop.last %} · {% endif %}{% endfor %}
+</p>
+{% if data.consistency.duplicate_titles %}
+<p class="small">{{ t.dupe_titles }} {% for x in data.consistency.duplicate_titles %}“{{ x|truncate(50) }}”{% if not loop.last %}, {% endif %}{% endfor %}</p>
+{% endif %}
+{% if data.consistency.languages_declared|length > 0 %}
+<p class="small">{{ t.lang_declared }} <span class="mono">{{ data.consistency.languages_declared }}</span> ·
+   {{ t.lang_measured }} <span class="mono">{{ data.consistency.languages_measured }}</span></p>
+{% endif %}
+
+{% if detail_pages %}
+{% for p in detail_pages %}
+<div class="page-sec">
+<h2>{{ p.path }}</h2>
+<p class="small"><a href="{{ p.final_url }}">{{ p.final_url }}</a><br>
+  <b>{{ p.title }}</b> · {{ p.page_type }} · {{ p.words }} {{ t.words }} ·
+  {{ t.lang }} {{ p.lang_used }}{% if p.lang_declared and p.lang_declared != p.lang_used %}
+  <span class="sev s-high">{{ t.lang_mismatch }} {{ p.lang_declared }}</span>
+  {%- if p.lang_after_render %} <span class="small muted">{{ t.lang_after_render }} {{ p.lang_after_render }}</span>{% endif %}
+  {%- endif %}</p>
+
+<div class="scoreblock" style="margin:3mm 0">
+  <div class="bigscore" style="font-size:26pt">{{ p.score if p.score is not none else '—' }}</div>
+  <div><span class="grade g-{{ p.grade }}">{{ p.grade }}</span></div>
+  <div style="flex:1" class="small">
+    {% for k, v in p.pillars.items() %}<span class="muted">{{ t.pillar[k] if k in t.pillar else k }}</span>
+      <b>{{ v.score }}</b>{% if not loop.last %} · {% endif %}{% endfor %}
+  </div>
+</div>
+
+{% if p.screenshot or p.screenshot_mobile %}
+<div class="shots">
+  {% if p.screenshot %}<div><img class="shot" src="{{ p.screenshot }}" alt="">
+    <div class="legend">{{ t.desktop }}</div></div>{% endif %}
+  {% if p.screenshot_mobile %}<div class="shot-mobile"><img class="shot" src="{{ p.screenshot_mobile }}" alt="">
+    <div class="legend">{{ t.mobile }}</div></div>{% endif %}
+</div>
+{% endif %}
+
+<h3>{{ t.formulas }}</h3>
+<table><thead><tr><th>{{ t.metric }}</th><th class="num">{{ t.value }}</th><th>{{ t.interpretation }}</th></tr></thead>
+<tbody>
+{% for k, f in p.formulas.items() %}
+<tr><td>{{ f.name }}</td><td class="num">{{ f.value }}</td>
+    <td class="small muted">{{ f.band }}{% if f.band and f.note %} — {% endif %}{{ f.note }}</td></tr>
+{% endfor %}
+</tbody></table>
+
+<h3>{{ t.measured }}</h3>
+<table><thead><tr><th>{{ t.metric }}</th><th class="num">{{ t.value }}</th><th class="num">{{ t.target }}</th>
+  <th class="num">{{ t.score }}</th><th style="width:22mm"></th></tr></thead>
+<tbody>
+{% for m in p.metrics %}
+<tr>
+  <td>{{ m.label }}<div class="muted small">{{ t.pillar[m.pillar] if m.pillar in t.pillar else m.pillar }}</div></td>
+  <td class="num">{{ m.display }}</td>
+  <td class="num small muted">{{ m.target_display }}</td>
+  <td class="num">{{ m.score }}</td>
+  <td>{{ bar(m.score) }}</td>
+</tr>
+{% endfor %}
+</tbody></table>
+
+{% if p.findings %}
+<h3>{{ t.page_findings }}</h3>
+{% for f in p.findings[:10] %}
+<div class="finding {{ f.severity }}">
+  <h4>{{ sev(f.severity) }} {{ f.title }}</h4>
+  <p class="small">{{ f.detail }}</p>
+  {% if f.fix %}<div class="fix"><b>{{ t.fix }}:</b> {{ f.fix }}</div>{% endif %}
+</div>
+{% endfor %}
+{% endif %}
+
+{% if p.hints %}
+<h3>{{ t.hints }}</h3>
+<table><tbody>
+{% for h in p.hints[:8] %}
+<tr><td style="width:18mm"><span class="sev s-{{ h.severity }}">{{ t.sev[h.severity] if h.severity in t.sev else h.severity }}</span></td>
+    <td>{{ h.text }}{% if h.sentence %}<div class="quote">“{{ h.sentence|truncate(200) }}”</div>{% endif %}</td></tr>
+{% endfor %}
+</tbody></table>
+{% endif %}
+
+{% if p.hardest_paragraphs %}
+<h3>{{ t.hardest }}</h3>
+{% for h in p.hardest_paragraphs[:3] %}
+<div class="quote">LIX {{ h.lix }} · {{ h.words }} {{ t.words }} · {{ t.asl }} {{ h.avg_sentence_length }}<br>
+  “{{ h.text|truncate(260) }}”</div>
+{% endfor %}
+{% endif %}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="page-sec">
+<h2>{{ t.methodology }}</h2>
+<p class="small">{{ t.method_intro }}</p>
+<table><thead><tr><th>{{ t.metric }}</th><th>{{ t.pillar_col }}</th><th class="num">{{ t.target }}</th><th>{{ t.why }}</th></tr></thead>
+<tbody>
+{% for m in methodology %}
+<tr><td>{{ m.label }}</td>
+    <td class="small">{{ t.pillar[m.pillar] if m.pillar in t.pillar else m.pillar }}</td>
+    <td class="num small">{{ m.target_display }}</td>
+    <td class="small muted">{{ m.why or m.advice }}</td></tr>
+{% endfor %}
+</tbody></table>
+<h3>{{ t.limits }}</h3>
+<p class="small muted">{{ t.limits_text }}</p>
+</div>
+
+</body></html>

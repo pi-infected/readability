@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Hidden text fixture</title>
+<style>
+ body{margin:0;font:16px/1.6 system-ui;color:#111;background:#fff}
+ main{max-width:40rem;margin:2rem auto;padding:0 1rem}
+ .card{position:relative}
+ .reveal{max-height:0;opacity:0;overflow:hidden}
+ .card:hover .reveal{max-height:200px;opacity:1}
+ .reveal p{font-size:12px}
+ .dark-card{background:#000;color:#fff;padding:1rem}
+ @font-face{font-family:"Fake Local Fallback";src:local("Arial");size-adjust:105%}
+</style></head><body>
+<main>
+<h1>What a reader actually sees</h1>
+<p>This paragraph is visible and sets the body copy for the page, long enough for the
+measurement to have a dominant block of running text to work from here.</p>
+<div class="dark-card"><p>White text on a black card. The contrast here is twenty-one to one
+and must not be reported as a failure against the page background.</p></div>
+<div class="card"><span>Tool name</span>
+  <div class="reveal"><p>This description is only revealed on hover, at twelve pixels, and a
+  touch screen never shows it at all, so it must not count as page text.</p></div>
+</div>
+</main></body></html>
