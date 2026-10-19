@@ -241,7 +241,7 @@ How each number is produced, calibrated and validated: [docs/METHODOLOGY.md](doc
 
 [Playwright](https://playwright.dev) (rendering) · [trafilatura](https://github.com/adbar/trafilatura)
 and [readability-lxml](https://github.com/buriy/python-readability) (content extraction) ·
-[textstat](https://github.com/textstat/textstat) (cross-check) · [pyphen](https://github.com/Kozea/Pyphen)
+[textstat](https://github.com/textstat/textstat) (cross-check) · [wordfreq](https://github.com/rspeer/wordfreq) (vocabulary rarity) · [pyphen](https://github.com/Kozea/Pyphen)
 and [syllapy](https://github.com/mholtzscher/syllapy) (syllables) · [WeasyPrint](https://weasyprint.org) (PDF) ·
 WCAG 2.2 contrast and [APCA](https://github.com/Myndex/apca-w3) implemented from the specifications.
 

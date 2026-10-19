@@ -16,7 +16,10 @@ def load_config(path: str | None) -> dict | None:
     f = Path(path)
     text = f.read_text(encoding="utf8")
     if f.suffix.lower() == ".toml":
-        import tomllib
+        try:
+            import tomllib
+        except ModuleNotFoundError:          # Python 3.10
+            import tomli as tomllib
         return tomllib.loads(text)
     return json.loads(text)
 

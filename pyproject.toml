@@ -25,6 +25,8 @@ dependencies = [
   "weasyprint>=60",
   "numpy>=1.26",
   "syllapy>=0.7",
+  "wordfreq>=3.0",
+  "tomli>=2.0; python_version < '3.11'",
 ]
 
 [project.urls]

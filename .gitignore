@@ -1,8 +1,8 @@
 .venv/
-.cache/
+/.cache/
 .readlens-cache/
-out*/
-report/
+/out*/
+/report/
 __pycache__/
 *.egg-info/
 .pytest_cache/
