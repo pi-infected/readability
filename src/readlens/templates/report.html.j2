@@ -173,14 +173,14 @@
 <p class="small">{{ t.consistency_intro }}</p>
 <table>
 <tbody>
-<tr><td>{{ t.body_sizes }}</td><td class="mono">{{ data.consistency.body_font_px['values']|join(', ') }} px</td>
-    <td class="num">{{ data.consistency.body_font_px.score }}</td><td>{{ bar(data.consistency.body_font_px.score) }}</td></tr>
-<tr><td>{{ t.line_heights }}</td><td class="mono">{{ data.consistency.line_height['values']|join(', ') }}</td>
-    <td class="num">{{ data.consistency.line_height.score }}</td><td>{{ bar(data.consistency.line_height.score) }}</td></tr>
-<tr><td>{{ t.measure_range }}</td><td class="mono">{{ data.consistency.chars_per_line.min }}–{{ data.consistency.chars_per_line.max }} {{ t.chars }}</td>
-    <td class="num">{{ data.consistency.chars_per_line.score }}</td><td>{{ bar(data.consistency.chars_per_line.score) }}</td></tr>
-<tr><td>{{ t.reading_level }}</td><td class="mono">LIX {{ data.consistency.reading_level.lix_min }}–{{ data.consistency.reading_level.lix_max }} (σ {{ data.consistency.reading_level.lix_stdev }})</td>
-    <td class="num">{{ data.consistency.reading_level.score }}</td><td>{{ bar(data.consistency.reading_level.score) }}</td></tr>
+{% if data.consistency.body_font_px.measured is not defined or data.consistency.body_font_px.measured %}<tr><td>{{ t.body_sizes }}</td><td class="mono">{{ data.consistency.body_font_px['values']|join(', ') }} px</td>
+    <td class="num">{{ data.consistency.body_font_px.score }}</td><td>{{ bar(data.consistency.body_font_px.score) }}</td></tr>{% endif %}
+{% if data.consistency.line_height.measured is not defined or data.consistency.line_height.measured %}<tr><td>{{ t.line_heights }}</td><td class="mono">{{ data.consistency.line_height['values']|join(', ') }}</td>
+    <td class="num">{{ data.consistency.line_height.score }}</td><td>{{ bar(data.consistency.line_height.score) }}</td></tr>{% endif %}
+{% if data.consistency.chars_per_line.measured is not defined or data.consistency.chars_per_line.measured %}<tr><td>{{ t.measure_range }}</td><td class="mono">{{ data.consistency.chars_per_line.min }}–{{ data.consistency.chars_per_line.max }} {{ t.chars }}</td>
+    <td class="num">{{ data.consistency.chars_per_line.score }}</td><td>{{ bar(data.consistency.chars_per_line.score) }}</td></tr>{% endif %}
+{% if data.consistency.reading_level.measured is not defined or data.consistency.reading_level.measured %}<tr><td>{{ t.reading_level }}</td><td class="mono">LIX {{ data.consistency.reading_level.lix_min }}–{{ data.consistency.reading_level.lix_max }} (σ {{ data.consistency.reading_level.lix_stdev }})</td>
+    <td class="num">{{ data.consistency.reading_level.score }}</td><td>{{ bar(data.consistency.reading_level.score) }}</td></tr>{% endif %}
 </tbody></table>
 <p class="small" style="margin-top:2mm">{{ t.fonts_used }}
   {% for f in data.consistency.font_families %}<span class="mono">{{ f.family }}</span>{% if not loop.last %} · {% endif %}{% endfor %}

@@ -59,3 +59,21 @@ def test_catalog_matches_scoring():
     import re
     src = (Path(__file__).parents[1] / "src/readlens/scoring.py").read_text()
     assert set(re.findall(r'_m\("([a-z_]+)"', src)) == set(METRICS)
+
+
+def test_diff_ignores_pillars_one_run_did_not_measure():
+    from readlens.compare import diff
+
+    def run(pillars, findings, sel):
+        return {"summary": {"score": 80, "pillars": pillars}, "options": {"selection": sel},
+                "top_findings": [{"key": k, "pillar": p, "title": k, "affected_pages": 1,
+                                  "severity": "high"} for k, p in findings],
+                "pages": [{"url": "u", "score": 80,
+                           "pillars": {k: {"score": v} for k, v in pillars.items()}}]}
+    full = run({"clarity": 80, "structure": 90}, [("lix", "clarity"), ("title_length", "structure")],
+               {"only": [], "skip": []})
+    narrow = run({"clarity": 85}, [], {"only": ["clarity"], "skip": []})
+    d = diff(full, narrow)
+    assert d["pillar_delta"] == {"clarity": 5} and d["pillars_not_compared"] == ["structure"]
+    assert [r["key"] for r in d["resolved"]] == ["lix"] and d["selection_changed"]
+    assert d["pages"][0]["pillars"] == {"clarity": 5}

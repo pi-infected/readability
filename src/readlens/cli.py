@@ -32,7 +32,7 @@ def _regex(parts: list[str] | None) -> str | None:
 
 def setup(a) -> tuple[dict, object]:
     """Config file + --only/--skip -> (config carrying the selection, selection)."""
-    from .select import Selection, SelectionError
+    from .select import METRICS, Selection, SelectionError
     cfg = load_config(getattr(a, "config", None)) or {}
     try:
         sel = Selection.parse(list(cfg.get("only") or []) + list(a.only or []),
@@ -40,6 +40,10 @@ def setup(a) -> tuple[dict, object]:
     except SelectionError as e:
         sys.stderr.write(f"readlens: {e}\n")
         raise SystemExit(64)
+    if getattr(a, "no_render", False) and sel.needs_render and not any(
+            sel.metric_ok(k, p) for k, (p, _, n) in METRICS.items() if not n):
+        sys.stderr.write("readlens: every selected metric needs the browser, and --no-render "
+                         "turns it off: nothing will be measured\n")
     return {**cfg, "_selection": sel}, sel
 
 
@@ -249,12 +253,18 @@ def _print_page(pa, a, color: bool) -> None:
     for k, v in pa.scores.pillars.items():
         print(f"  {k:<14}{v['score']:>5.1f}  {_bar(v['score'])}")
     print(f"\n{_c('metrics', 'bold', color)}")
+    if not pa.scores.metrics:
+        why = ("the selection needs the browser and the page was not rendered"
+               if not pa.rendered else "no selected metric applies to this page")
+        print(_c(f"  none measured: {why}", "dim", color))
     for m in sorted(pa.scores.metrics, key=lambda m: m.score):
         col = SEV_COLOR.get(m.severity, "green")
         label = _c(f"{m.label[:34]:<34}", col, color)
         target = _c(f"target {m.target_display}", "dim", color)
         print(f"  {m.score:>5.1f} {label} {m.display:>16}  {target}")
     print(f"\n{_c('findings', 'bold', color)}")
+    if not pa.findings:
+        print(_c("  none", "dim", color))
     for x in pa.findings[:a.top]:
         print(f"  {_c(f'{x.severity:<8}', SEV_COLOR.get(x.severity, 'dim'), color)} {x.title}")
         print(f"           {_c(x.detail[:150], 'dim', color)}")
@@ -397,6 +407,11 @@ def cmd_diff(a) -> int:
           f"   {d['before']['grade']} -> {d['after']['grade']}")
     if d["pillar_delta"]:
         print("  " + " · ".join(f"{k} {v:+.1f}" for k, v in d["pillar_delta"].items()))
+    if d["selection_changed"]:
+        print(_c("  the two runs measured different things (--only/--skip); the overall "
+                 "scores are not comparable", "yellow", color))
+    if d["pillars_not_compared"]:
+        print(_c("  not compared: " + ", ".join(d["pillars_not_compared"]), "dim", color))
     if d["resolved"]:
         print("\n" + _c("resolved", "green", color))
         for r in d["resolved"][:12]:

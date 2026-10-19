@@ -112,8 +112,12 @@ def consistency(pages: list[PageAnalysis]) -> dict:
     out["pages_without_meta_description"] = no_desc[:20]
     out["languages_declared"] = dict(declared)
     out["languages_measured"] = dict(used)
-    sub = [out["body_font_px"]["score"], out["line_height"]["score"],
-           out["chars_per_line"]["score"], out["reading_level"]["score"]]
+    # Only what was measured on these pages can agree or disagree.
+    for k, vals in (("body_font_px", fonts), ("line_height", lhs), ("chars_per_line", cprl),
+                    ("reading_level", lix)):
+        out[k]["measured"] = bool(vals)
+    sub = [out[k]["score"] for k in ("body_font_px", "line_height", "chars_per_line",
+                                     "reading_level") if out[k]["measured"]] or [100.0]
     penalty = 6 * len(dupes) + 2 * len(no_desc) + (10 if len(used) > 1 and len(declared) == 1 else 0)
     out["score"] = round(max(0.0, sum(sub) / len(sub) - penalty), 1)
     return out
@@ -169,7 +173,9 @@ def audit(base_url: str, *, max_pages: int = 10, render: bool = True, audience: 
     fetcher = Fetcher(cache=Cache(Path(cache_dir) if cache_dir else None), delay=delay,
                       respect_robots=respect_robots)
     try:
-        targets = urls or fetcher.discover(base_url, max_pages=max_pages, include=include,
+        # Ask for spare candidates: redirects, canonicals and duplicates are dropped below,
+        # and they should not eat into the page budget.
+        targets = urls or fetcher.discover(base_url, max_pages=max_pages * 2, include=include,
                                            exclude=exclude, use_sitemap=use_sitemap,
                                            max_depth=max_depth)
 
@@ -178,9 +184,12 @@ def audit(base_url: str, *, max_pages: int = 10, render: bool = True, audience: 
         seen_final: set[str] = set()
         seen_canonical: dict[str, str] = {}
         seen_body: dict[str, str] = {}
+        budget = len(targets) if urls else max_pages
         for i, url in enumerate(targets, 1):
+            if len(fetched) >= budget:
+                break
             if progress:
-                progress(i, len(targets), url, "fetch")
+                progress(min(i, budget), budget, url, "fetch")
             page = fetcher.get(url)
             # An affiliate or outbound redirect leaves the site. Auditing where it lands
             # would put someone else's pages in this site's report and in its score.

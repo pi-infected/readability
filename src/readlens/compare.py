@@ -29,15 +29,19 @@ def diff(old: dict, new: dict) -> dict:
             "before": a.get("score"), "after": b.get("score"), "delta": delta,
             "grade_before": a.get("grade"), "grade_after": b.get("grade"),
             "fixed": sorted(fa - fb), "new": sorted(fb - fa),
-            "pillars": {k: round((b.get("pillars", {}).get(k, {}).get("score", 0)
-                                  - a.get("pillars", {}).get(k, {}).get("score", 0)), 1)
-                        for k in set(a.get("pillars", {})) | set(b.get("pillars", {}))},
+            # A pillar only one run measured has no delta: it was not compared.
+            "pillars": {k: round(b["pillars"][k]["score"] - a["pillars"][k]["score"], 1)
+                        for k in set(a.get("pillars") or {}) & set(b.get("pillars") or {})},
         })
     rows.sort(key=lambda r: r["delta"])
 
-    fa = {f["key"]: f for f in old.get("top_findings", [])}
-    fb = {f["key"]: f for f in new.get("top_findings", [])}
     so, sn = old.get("summary", {}), new.get("summary", {})
+    # A finding about a pillar the other run did not measure is neither resolved nor new.
+    both = set(so.get("pillars") or {}) & set(sn.get("pillars") or {})
+    fa = {f["key"]: f for f in old.get("top_findings", []) if f.get("pillar") in both}
+    fb = {f["key"]: f for f in new.get("top_findings", []) if f.get("pillar") in both}
+    sel_a = (old.get("options") or {}).get("selection")
+    sel_b = (new.get("options") or {}).get("selection")
     return {
         "base_url": new.get("base_url"),
         "before": {"at": old.get("started_at"), "score": so.get("score"), "grade": so.get("grade"),
@@ -45,8 +49,10 @@ def diff(old: dict, new: dict) -> dict:
         "after": {"at": new.get("started_at"), "score": sn.get("score"), "grade": sn.get("grade"),
                   "pages": sn.get("pages_analysed")},
         "delta": round((sn.get("score") or 0) - (so.get("score") or 0), 1),
-        "pillar_delta": {k: round(sn.get("pillars", {}).get(k, 0) - v, 1)
-                         for k, v in (so.get("pillars") or {}).items()},
+        "pillar_delta": {k: round(sn["pillars"][k] - so["pillars"][k], 1) for k in sorted(both)},
+        "pillars_not_compared": sorted(set(so.get("pillars") or {}) ^ set(sn.get("pillars") or {})),
+        "selection_changed": sel_a != sel_b,
+        "selection": {"before": sel_a, "after": sel_b},
         "resolved": [{"key": k, "title": v["title"], "was": v["affected_pages"]}
                      for k, v in fa.items() if k not in fb],
         "introduced": [{"key": k, "title": v["title"], "severity": v["severity"],
