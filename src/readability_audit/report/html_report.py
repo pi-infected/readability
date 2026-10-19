@@ -172,12 +172,15 @@ def build_html(report, *, lang: str = "en", detail: int = 6, show_findings: int 
         for r in rows:
             r["screenshot"] = r["screenshot_mobile"] = None
 
+    stated = {e["key"]: e for e in data.get("methodology") or []}
     methodology, seen = [], set()
     for p in ok_pages:
         for m in p.get("metrics", []):
             if m["key"] not in seen:
                 seen.add(m["key"])
-                methodology.append(m)
+                e = stated.get(m["key"], {})
+                methodology.append({**m, "why": m.get("why") or e.get("why", ""),
+                                    "advice": m.get("advice") or e.get("advice", "")})
     methodology.sort(key=lambda m: (m["pillar"], m["label"]))
 
     return tpl.render(

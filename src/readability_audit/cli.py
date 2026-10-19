@@ -123,7 +123,10 @@ def print_report(rep, color: bool = True, top: int = 10) -> None:
         w("\n" + _c("what to fix first", "bold", color) + "\n")
         for f in rep.top_findings[:top]:
             tag = _c(f"{f['severity']:<8}", SEV_COLOR.get(f["severity"], "dim"), color)
-            w(f"  {tag} {f['title'][:52]:<52} {f['affected_pages']}/{s['pages_analysed']} pages\n")
+            worst = (f.get("pages_by_severity") or {}).get(f["severity"], f["affected_pages"])
+            spread = (f"{worst} {f['severity']}, {f['affected_pages']} in all"
+                      if worst != f["affected_pages"] else f"{f['affected_pages']}")
+            w(f"  {tag} {f['title'][:52]:<52} {spread}/{s['pages_analysed']} pages\n")
 
     w("\n" + _c("pages", "bold", color) + "\n")
     rows = sorted([p for p in rep.pages if p.ok and p.scores],
@@ -207,6 +210,9 @@ def cmd_audit(a) -> int:
 
     # Every report is rendered from the one `data` above, so the languages can never
     # describe different crawls.
+    # A PDF of every page of a large site is slow to build and nobody pages through it:
+    # it details the worst pages, the HTML and the JSON keep every one.
+    pdf_detail = detail if a.pdf_detail == 0 else min(detail, a.pdf_detail)
     for lang in langs:
         html = None
         if a.html or a.pdf or out_dir:
@@ -224,8 +230,11 @@ def cmd_audit(a) -> int:
             p = (Path(a.pdf) if (a.pdf and lang == langs[0])
                  else (Path(a.pdf).with_suffix(f"{suffix(lang)}.pdf") if a.pdf
                        else out_dir / f"readability{suffix(lang)}.pdf"))
+            pdf_html = html if pdf_detail == detail else build_html(
+                rep, lang=lang, detail=pdf_detail, screenshots=bool(shots),
+                data=json.loads(json.dumps(data)))
             try:
-                write_pdf(html, p, base_url=a.url)
+                write_pdf(pdf_html, p, base_url=a.url)
                 written.append(p)
             except Exception as e:
                 sys.stderr.write(f"pdf failed ({lang}): {type(e).__name__}: {e}\n")
@@ -538,6 +547,8 @@ def main(argv=None) -> int:
                     help="one or more report languages, all built from the same crawl")
     a1.add_argument("--detail", type=int, default=0,
                     help="per-page detail sections; 0 (the default) means every page")
+    a1.add_argument("--pdf-detail", type=int, default=40, metavar="N",
+                    help="per-page sections in the PDF, worst pages first (default 40, 0 = all)")
     a1.add_argument("--screenshots", action="store_true", help="embed a screenshot per page")
     a1.add_argument("--compact", action="store_true", help="drop evidence from the JSON")
     a1.add_argument("--fail-under", type=float, help="exit 2 if the site score is below this")

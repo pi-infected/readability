@@ -111,11 +111,17 @@ def _analyse_viewport(name: str, data: dict) -> ViewportTypography:
     multi = [e for e in pool if e["lines"] >= 2]
     if multi:
         mchars = sum(e["chars"] for e in multi)
-        # The page's measure is the measure of its main body of text. A char-weighted
-        # median let a grid of narrow cards decide for a page whose prose column is fine,
-        # and buried a narrow block inside a healthy page. Outliers are listed instead.
-        dominant = max(multi, key=lambda e: e["chars"])
-        v.chars_per_line = round(dominant["charsPerLine"], 1)
+        # The page's measure is the measure of its main body of text: the column width
+        # that carries the most characters. A char-weighted median over every block let
+        # a grid of narrow cards decide for a page whose prose column is fine; the single
+        # longest block let one full-width intro paragraph decide for a 420px column.
+        # Outliers are listed instead.
+        by_width: dict = {}
+        for e in multi:
+            by_width.setdefault(round(e["widthPx"] / 24), []).append(e)
+        column = max(by_width.values(), key=lambda es: sum(e["chars"] for e in es))
+        v.chars_per_line = round(_wmedian([(e["charsPerLine"], e["chars"]) for e in column]), 1)
+        dominant = max(column, key=lambda e: e["chars"])
         v.dominant_block = {"tag": dominant["tag"], "chars": dominant["chars"],
                             "width_px": dominant["widthPx"],
                             "chars_per_line": dominant["charsPerLine"],

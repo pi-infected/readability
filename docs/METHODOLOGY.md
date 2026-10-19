@@ -101,8 +101,10 @@ language at all, and say so.
 
 One crawl produces one set of artifacts. `--out DIR` writes `readability.json`,
 `readability.csv`, and an HTML and PDF report **per report language**, all rendered from the
-same measurement pass — two languages can never describe two different crawls. Every page
-gets a detail section by default (`--detail N` limits it), and the report opens with its
+same measurement pass — two languages can never describe two different crawls. In the HTML
+every page gets a detail section by default (`--detail N` limits it); the PDF details the
+40 worst pages (`--pdf-detail N`, 0 for all), because a 500-page PDF is slow to build and
+nobody pages through it. Each report opens with its
 own coverage line: pages analysed, scored, measured in a browser, detailed below, plus any
 that had no readable content or were unreachable.
 `--json`, `--html`, `--pdf`, `--csv` write to explicit paths. `--report-lang fr` produces

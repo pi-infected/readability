@@ -125,17 +125,20 @@ def consistency(pages: list[PageAnalysis]) -> dict:
 
 def aggregate_findings(pages: list[PageAnalysis]) -> list[dict]:
     bykey: dict[str, dict] = defaultdict(lambda: {"pages": [], "severity": "info", "title": "",
-                                                  "pillar": "", "fix": "", "example": None})
+                                                  "pillar": "", "fix": "", "example": None,
+                                                  "by_severity": defaultdict(set)})
     for p in pages:
         for f in p.findings:
             e = bykey[f.key]
-            e["title"] = f.title
             e["pillar"] = f.pillar
-            e["fix"] = f.fix
             e["pages"].append(p.final_url or p.url)
-            if SEVERITY_ORDER.get(f.severity, 9) < SEVERITY_ORDER.get(e["severity"], 9):
+            e["by_severity"][f.severity].add(p.final_url or p.url)
+            # The example shows the worst occurrence, so it matches the severity shown.
+            worse = SEVERITY_ORDER.get(f.severity, 9) < SEVERITY_ORDER.get(e["severity"], 9)
+            if worse:
                 e["severity"] = f.severity
-            if e["example"] is None:
+            if e["example"] is None or worse:
+                e["title"], e["fix"] = f.title, f.fix
                 e["example"] = {"url": p.final_url or p.url, "detail": f.detail,
                                 "evidence": f.evidence[:4], "params": f.params}
     out = []
@@ -144,6 +147,9 @@ def aggregate_findings(pages: list[PageAnalysis]) -> list[dict]:
         out.append({"key": key, "title": e["title"], "severity": e["severity"],
                     "pillar": e["pillar"], "fix": e["fix"],
                     "affected_pages": len(set(e["pages"])),
+                    # The headline severity is the worst page's; this says how many share it.
+                    "pages_by_severity": {sev: len(us) for sev, us in sorted(
+                        e["by_severity"].items(), key=lambda kv: SEVERITY_ORDER.get(kv[0], 9))},
                     "share": round(len(set(e["pages"])) / n, 3),
                     "example": e["example"], "pages": sorted(set(e["pages"]))[:25]})
     out.sort(key=lambda d: (SEVERITY_ORDER.get(d["severity"], 9), -d["affected_pages"]))

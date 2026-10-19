@@ -108,6 +108,12 @@ FINDINGS = {
     "lang_mismatch": ("La langue déclarée n'est pas celle du texte",
                       "Déclarez lang=\"{detected}\" sur cette page. Les lecteurs d'écran y prennent "
                       "leur voix, et les moteurs de recherche leur public."),
+    "machine_output": ("Du texte machine se trouve dans la page",
+                       "Rien à corriger si c'est une démo de terminal voulue. Placez-la dans un "
+                       "<pre> pour que chaque outil et chaque lecteur d'écran la traite comme du code."),
+    "extraction_doubt": ("La zone de contenu de cette page est incertaine",
+                         "Vérifiez que la zone retenue est bien l'article. Si la page a déjà un "
+                         "<main>, l'écart vient en général d'éléments d'interface placés dedans."),
     "lang_missing": ("Aucun attribut lang sur <html>", "Ajoutez lang=\"…\" à l'élément <html>."),
     "no_h1": ("La page n'a pas de h1", "Donnez à la page un seul h1 qui nomme son sujet."),
     "many_h1": ("Plusieurs h1", "Gardez un seul h1 et rétrogradez les autres en h2."),
@@ -140,6 +146,9 @@ FINDINGS = {
 
 DETAIL = {
     "metric": "{display} — cible {target}.",
+    "machine_output": ("{n} blocs ressemblent à du JSON, des journaux ou des sessions de "
+                       "terminal plutôt qu'à de la prose. Ils sont exclus des métriques de langue "
+                       "pour que la démo ne soit pas notée comme un texte."),
     "little_prose": ("Seuls {n} mots sont dans des paragraphes ; le reste est titres, listes et "
                      "libellés. Les métriques de langue ne sont pas notées sur cette page."),
 }

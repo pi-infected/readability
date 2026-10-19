@@ -163,6 +163,7 @@ output      --format json       machine-readable result on stdout
             --out DIR           readability.{json,csv,html,pdf} in DIR
             --json/--csv/--html/--pdf PATH
             --report-lang en fr reports in one or more languages, one crawl
+            --pdf-detail N      pages detailed in the PDF, worst first (default 40, 0 = all)
             --screenshots       desktop screenshot per page in the report
             --evidence N        evidence lines per finding (page, default 2)
             --fail-under N      exit 2 below this score (CI gate)

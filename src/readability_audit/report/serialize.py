@@ -87,6 +87,13 @@ def site_to_dict(rep, *, include_evidence: bool = True, artifacts: list | None =
     from ..validation import PROVENANCE
 
     pages = [page_to_dict(p, include_evidence=include_evidence) for p in rep.pages]
+    meth = methodology(pages)
+    # A metric's advice and rationale are the same on every page: they are stated once,
+    # in `methodology`, instead of 500 times (a third of a large site's JSON).
+    for p in pages:
+        for m in p.get("metrics") or []:
+            m.pop("advice", None)
+            m.pop("why", None)
     return {
         "schema_version": SCHEMA_VERSION,
         "tool": {"name": "readability", "version": rep.options.get("version", "0.1.0")},
@@ -113,7 +120,7 @@ def site_to_dict(rep, *, include_evidence: bool = True, artifacts: list | None =
             "site_score": "70% mean page score, 20% worst page, 10% consistency. Pages "
                           "with no readable content are unscorable and left out.",
         },
-        "methodology": methodology(pages),
+        "methodology": meth,
         "validation": PROVENANCE,
         "artifacts": artifacts or [],
     }

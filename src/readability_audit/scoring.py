@@ -160,6 +160,8 @@ class Metric:
     def _fmt(self, v: float) -> str:
         if self.unit == "%":
             return f"{v:.0%}"
+        if isinstance(v, float) and v != int(v):
+            return f"{v:.3g}" if abs(v) < 10 else f"{v:.1f}".rstrip("0").rstrip(".")
         return f"{v:g}"
 
     def finalise(self) -> "Metric":
@@ -169,7 +171,7 @@ class Metric:
         if not self.display:
             self.display = ("n/a" if self.value is None else
                             (f"{self.value:.0%}" if self.unit == "%" else
-                             f"{self.value:g}{(' ' + self.unit) if self.unit and self.unit != '%' else ''}"))
+                             f"{self._fmt(self.value)}{(' ' + self.unit) if self.unit and self.unit != '%' else ''}"))
         return self
 
     @property
@@ -407,7 +409,9 @@ def build_metrics(pa, audience: str = "general", page_type: str = "article") -> 
         ms.append(_m("measure", "Line length (characters per line)", "comfort",
                      vp.chars_per_line, "chars", (50, 80), (38, 95), 1.5,
                      "Cap the text column near 65 characters (about 34em).",
-                     "Bringhurst's 45-75 character measure; beyond ~90 the return sweep fails."))
+                     "Bringhurst's 45-75 character measure; beyond ~90 the return sweep fails.",
+                     evidence=[dict(vp.dominant_block, column_width_px=vp.content_width_px)]
+                     if getattr(vp, "dominant_block", None) else []))
         if vp.paragraph_gap_ratio > 0:
             ms.append(_m("paragraph_gap", "Space between paragraphs", "comfort",
                          vp.paragraph_gap_ratio, "line-heights", (0.5, 1.4), (0.25, 2.2), 0.9,
@@ -552,7 +556,8 @@ def discrete_findings(pa) -> list[Finding]:
             "rather than prose. They are excluded from the language metrics so the demo is "
             "not scored as writing.",
             "Nothing to fix if this is a deliberate terminal demo. Wrap it in <pre> so "
-            "every tool and every screen reader treats it as code."))
+            "every tool and every screen reader treats it as code.",
+            params={"n": ex["machine_blocks_dropped"]}))
     if ex.get("note"):
         cov = ex.get("coverage")
         out.append(Finding(
@@ -642,7 +647,7 @@ def discrete_findings(pa) -> list[Finding]:
     if vp and vp.contrast_failures:
         worst = vp.contrast_failures[0]
         out.append(Finding(
-            "contrast_fail", f"{len(vp.contrast_failures)} text blocks fail WCAG AA contrast",
+            "contrast_fail", f"{len(vp.contrast_failures)} text block{'s' if len(vp.contrast_failures) != 1 else ''} fail{'' if len(vp.contrast_failures) != 1 else 's'} WCAG AA contrast",
             "critical" if worst["ratio"] < 3 else "high", "comfort",
             f"The worst is {worst['ratio']}:1 at {worst['font_px']:g}px "
             f"({worst['color']} on {worst['background']}); AA needs 4.5:1.",
@@ -650,7 +655,7 @@ def discrete_findings(pa) -> list[Finding]:
             evidence=vp.contrast_failures[:6]))
     if vp and vp.apca_failures and not vp.contrast_failures:
         out.append(Finding(
-            "apca_fail", f"{len(vp.apca_failures)} text blocks are perceptually thin", "medium",
+            "apca_fail", f"{len(vp.apca_failures)} text block{'s are' if len(vp.apca_failures) != 1 else ' is'} perceptually thin", "medium",
             "comfort",
             "They pass WCAG 2 but fall short of the APCA level for their size and weight.",
             "Raise the contrast or the font size for these blocks.",

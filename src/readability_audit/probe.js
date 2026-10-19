@@ -69,14 +69,39 @@
     return { layers, image };
   }
 
-  function lineCount(el) {
+  // Lines are rect groups: inline code, badges and links sit a few pixels off the text's
+  // own top, so a new line starts only once a rect has moved down by more than half a
+  // line. A line's width runs from its leftmost to its rightmost fragment.
+  function lineStats(el, lhPx) {
     try {
       const r = document.createRange();
       r.selectNodeContents(el);
-      const rects = Array.from(r.getClientRects()).filter(x => x.width > 0 && x.height > 0);
-      const tops = new Set(rects.map(x => Math.round(x.top / 2)));
-      return Math.max(1, tops.size);
-    } catch (e) { return 1; }
+      const rects = Array.from(r.getClientRects()).filter(x => x.width > 0 && x.height > 0)
+        .sort((a, b) => a.top - b.top);
+      const step = Math.max(4, (lhPx || 16) * 0.5);
+      const lines = [];
+      for (const x of rects) {
+        const cur = lines[lines.length - 1];
+        if (!cur || x.top > cur.top + step) lines.push({top: x.top, left: x.left, right: x.right});
+        else { cur.left = Math.min(cur.left, x.left); cur.right = Math.max(cur.right, x.right); }
+      }
+      return {lines: Math.max(1, lines.length),
+              widest: lines.reduce((m, l) => Math.max(m, l.right - l.left), 0)};
+    } catch (e) { return {lines: 1, widest: 0}; }
+  }
+
+  // Average advance of this text in its own font. Characters per line is then the
+  // widest line over that advance: it does not depend on where one paragraph happened
+  // to wrap, which a chars/lines ratio does (a 5-line paragraph that wraps into 4 lines
+  // under different font hinting moves that ratio by 25%).
+  const canvas = document.createElement('canvas').getContext('2d');
+  function charAdvance(cs, txt) {
+    try {
+      canvas.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+      const sample = txt.slice(0, 600);
+      const ls = cs.letterSpacing === 'normal' ? 0 : parseFloat(cs.letterSpacing) || 0;
+      return canvas.measureText(sample).width / Math.max(1, sample.length) + ls;
+    } catch (e) { return 0; }
   }
 
   const root = document.querySelector('main, [role="main"], article') || document.body;
@@ -93,9 +118,13 @@
     if (!vis(el, cs)) continue;
     const rect = el.getBoundingClientRect();
     const bg = bgChain(el);
-    const lines = lineCount(el);
     const fontPx = px(cs.fontSize);
     const lhPx = cs.lineHeight === 'normal' ? fontPx * 1.2 : px(cs.lineHeight);
+    const ls = lineStats(el, lhPx);
+    const lines = ls.lines;
+    const adv = lines > 1 ? charAdvance(cs, txt) : 0;
+    const cpl = lines > 1 ? (adv > 0 && ls.widest > 0 ? ls.widest / adv : txt.length / (lines - 0.5))
+                          : txt.length;
     const links = Array.from(el.querySelectorAll('a')).slice(0, 6).map(a => {
       const acs = getComputedStyle(a);
       return { color: toRGBA(acs.color), decoration: acs.textDecorationLine, weight: acs.fontWeight,
@@ -127,7 +156,7 @@
       hyphens: cs.hyphens, textWrap: cs.textWrap || cs.textWrapStyle || '',
       widthPx: Math.round(rect.width), heightPx: Math.round(rect.height),
       top: Math.round(rect.top + window.scrollY),
-      lines, charsPerLine: +(txt.length / lines).toFixed(1),
+      lines, charsPerLine: +cpl.toFixed(1),
       marginTop: px(cs.marginTop), marginBottom: px(cs.marginBottom),
       links,
       opacity: px(cs.opacity),
@@ -139,7 +168,9 @@
   let gaps = [];
   for (let i = 1; i < nodes.length; i++) {
     const a = nodes[i - 1], b = nodes[i];
-    if (a.tagName !== 'P' || b.tagName !== 'P' || a.parentElement !== b.parentElement) continue;
+    // Adjacent siblings only: a code block, an image or a table between two paragraphs
+    // is not in the node list, and its height is not the paragraph spacing.
+    if (a.tagName !== 'P' || b.tagName !== 'P' || a.nextElementSibling !== b) continue;
     const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
     const lh = px(getComputedStyle(b).lineHeight) || px(getComputedStyle(b).fontSize) * 1.2;
     const g = rb.top - ra.bottom;
