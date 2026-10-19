@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/hero.svg" alt="readability — a lens sweeps a web page and flags thin contrast (APCA Lc 66, needs 92.5), small text and line length, while the terminal prints the same findings." width="900" />
+  <img src="docs/assets/hero.svg" alt="readability — an AI agent is asked whether a page is easy to read, calls readability, reports contrast, typography, line length and clarity findings with evidence, fixes the CSS and re-checks." width="900" />
 </p>
 
 <h1 align="center">readability</h1>
