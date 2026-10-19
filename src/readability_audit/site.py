@@ -10,7 +10,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from .analysis import PageAnalysis, analyse_page
-from .fetch import Cache, Fetcher, normalize, same_site
+from .fetch import Cache, Fetcher, normalize, resolve_base, same_site
 from .scoring import SEVERITY_ORDER, grade_of
 
 __version__ = "0.1.0"
@@ -29,6 +29,7 @@ class SiteReport:
     errors: list = field(default_factory=list)
     offsite: list = field(default_factory=list)
     duplicates: list = field(default_factory=list)
+    skipped: list = field(default_factory=list)
 
 
 CANONICAL_RE = re.compile(
@@ -162,7 +163,8 @@ def audit(base_url: str, *, max_pages: int = 10, render: bool = True, audience: 
           lang: str | None = None, urls: list[str] | None = None, respect_robots: bool = True,
           use_sitemap: bool = True, progress=None, viewports: dict | None = None,
           config: dict | None = None, concurrency: int = 4, selection=None,
-          max_depth: int = 2) -> SiteReport:
+          max_depth: int = 2, per_section: int = 0,
+          user_agent: str | None = None) -> SiteReport:
     from .render import DEFAULT_VIEWPORTS
     from .select import Selection
     t0 = time.time()
@@ -175,15 +177,23 @@ def audit(base_url: str, *, max_pages: int = 10, render: bool = True, audience: 
                      options={"max_pages": max_pages, "render": render, "audience": audience,
                               "include": include, "exclude": exclude, "lang": lang,
                               "respect_robots": respect_robots, "version": __version__,
-                              "selection": sel.as_config(), "viewports": sorted(viewports)})
+                              "selection": sel.as_config(), "viewports": sorted(viewports),
+                              "per_section": per_section})
     fetcher = Fetcher(cache=Cache(Path(cache_dir) if cache_dir else None), delay=delay,
-                      respect_robots=respect_robots)
+                      respect_robots=respect_robots, user_agent=user_agent)
     try:
+        # A site that moved (www.a.fr -> a.gouv.fr) is audited where it lives; otherwise
+        # every page it serves counts as an offsite redirect and nothing is measured.
+        if not urls:
+            moved = resolve_base(fetcher, base_url)
+            if moved != base_url:
+                rep.options["redirected_from"] = base_url
+                base_url = rep.base_url = moved
         # Ask for spare candidates: redirects, canonicals and duplicates are dropped below,
         # and they should not eat into the page budget.
         targets = urls or fetcher.discover(base_url, max_pages=max_pages * 2, include=include,
                                            exclude=exclude, use_sitemap=use_sitemap,
-                                           max_depth=max_depth)
+                                           max_depth=max_depth, per_section=per_section)
 
         # Fetch first (cheap, cached, polite), then render the whole batch concurrently.
         fetched: list = []
@@ -197,6 +207,10 @@ def audit(base_url: str, *, max_pages: int = 10, render: bool = True, audience: 
             if progress:
                 progress(min(i, budget), budget, url, "fetch")
             page = fetcher.get(url)
+            # A stylesheet or a PDF reached by a link is not a page, nor a failed one.
+            if (page.error or "").startswith("not html"):
+                rep.skipped.append({"url": url, "reason": page.error})
+                continue
             # An affiliate or outbound redirect leaves the site. Auditing where it lands
             # would put someone else's pages in this site's report and in its score.
             if page.ok and not same_site(base_url, page.final_url):
@@ -315,7 +329,9 @@ def audit(base_url: str, *, max_pages: int = 10, render: bool = True, audience: 
     # only ever visible in `errors`. It belongs at the top of the list.
     fails = rep.summary.get("fetch_failures", {})
     for cause in fails.get("by_cause", []):
-        if not cause["cause"].startswith("HTTP 4"):
+        # Only "not found" is a broken link. A 403 or 429 is the server refusing this
+        # client, which says nothing about the reader's experience.
+        if not cause["cause"].startswith(("HTTP 404", "HTTP 410")):
             continue
         rep.top_findings.insert(0, {
             "key": "broken_internal_links",

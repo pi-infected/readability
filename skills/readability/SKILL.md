@@ -13,6 +13,8 @@ description: Audit a web page or site for readability and reading comfort with t
 - Several pages: `readability page URL1 URL2 --only typography --skip mobile --format json`
 - Writing only (no browser, ~1s/page): `--only clarity` or `--only clarity,structure`
 - A draft file: `readability text draft.md --only readability`
+- A quick site overview: `readability audit SITE --per-section 1 --pages 30 --format json`
+  (one page of each template)
 - A site: `readability urls SITE --pages 100` first, then
   `readability audit SITE --pages N --include RE --exclude RE --only ... --format json`
 - Every selector: `readability metrics --format json`

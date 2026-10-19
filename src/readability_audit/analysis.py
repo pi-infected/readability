@@ -12,6 +12,11 @@ from .metrics import a11y, formulas, lexical, structure, suggest, syntax
 from .text import sentences
 
 
+# Statuses that mean "not for this client" rather than "this page is broken".
+REFUSED = {401: "login required", 402: "paywall: refused to automated clients",
+           403: "refused: bot protection or access rules", 429: "rate limited: raise --delay"}
+
+
 @dataclass
 class PageAnalysis:
     url: str
@@ -22,6 +27,7 @@ class PageAnalysis:
     lang_declared: str | None = None          # what the served HTML declares
     lang_declared_rendered: str | None = None  # what it declares after scripts run
     lang_used: str = "en"
+    lang_rules: str = "en"                     # the rule set applied (falls back to en)
     clarity_supported: bool = True
     clarity_note: str = ""
     counts: dict = field(default_factory=dict)
@@ -94,6 +100,8 @@ def analyse_page(page: Page, *, render_result=None, lang_override: str | None = 
             pa.error = page.error
         elif not (page.html or "").strip():
             pa.error = f"empty response body (HTTP {page.status})"
+        elif page.status in REFUSED:
+            pa.error = f"HTTP {page.status} ({REFUSED[page.status]})"
         else:
             pa.error = f"HTTP {page.status}"
         return pa
@@ -161,7 +169,10 @@ def analyse_page(page: Page, *, render_result=None, lang_override: str | None = 
     pa.lang_declared = served_doc.lang
     if rendered_doc is not None and rendered_doc.lang != served_doc.lang:
         pa.lang_declared_rendered = rendered_doc.lang
-    pa.lang_used = lp.code
+    # The page's language, even where no rule set exists for it (Arabic, Japanese): those
+    # pages are measured with neutral rules, which is not the same as being English.
+    pa.lang_used = (code or lp.code).split("-")[0].lower()
+    pa.lang_rules = lp.code
     pa.title = doc.title
     pa.clarity_supported = clarity_ok
     pa.clarity_note = clarity_note

@@ -127,3 +127,31 @@ def test_the_served_language_declaration_is_the_one_reported():
     finding = [f for f in pa.findings if f.key == "lang_mismatch"]
     assert finding, "hydration must not hide a wrong served lang attribute"
     assert "after hydration" in finding[0].fix
+
+
+def test_bot_challenge_pages_are_not_scored():
+    from readability_audit.fetch import challenge_of
+    wall = ("<html><head><title>Client Challenge</title></head><body>JavaScript is disabled "
+            "in your browser. Please enable JavaScript to proceed.</body></html>")
+    assert challenge_of(wall) == "client challenge"
+    assert challenge_of("<html><body><p>Just a normal article.</p></body></html>") == ""
+
+
+def test_transport_errors_are_retried_not_replayed(tmp_path):
+    from readability_audit.fetch import Cache, Fetcher
+    c = Cache(tmp_path)
+    c.put("GET https://example.invalid/", {"url": "https://example.invalid/",
+          "final_url": "https://example.invalid/", "status": 0, "html": "",
+          "error": "ReadTimeout: The read operation timed out"})
+    f = Fetcher(cache=c, respect_robots=False, timeout=2)
+    page = f.get("https://example.invalid/")
+    assert not page.from_cache
+
+
+def test_unsupported_language_keeps_its_name():
+    from readability_audit.analysis import analyse_page
+    from readability_audit.fetch import Page
+    ar = "<p>" + "هذا نص عربي طويل عن قراءة الصفحات على الإنترنت وكيف نجعلها أسهل للقارئ. " * 30 + "</p>"
+    html = f"<html lang='ar'><body><main><h1>عنوان</h1>{ar}</main></body></html>"
+    pa = analyse_page(Page("https://a.com/", "https://a.com/", 200, html))
+    assert pa.lang_used == "ar" and pa.lang_rules == "en"

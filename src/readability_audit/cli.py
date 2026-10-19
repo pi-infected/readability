@@ -140,6 +140,9 @@ def print_report(rep, color: bool = True, top: int = 10) -> None:
           f" {_c(str(len(p.findings)) + ' findings', 'dim', color)}\n")
     for e in rep.errors[:5]:
         w(_c(f"  ! {e}\n", "red", color))
+    if not s["pages_analysed"] and any(("HTTP 40" in e or "HTTP 429" in e or "bot challenge" in e) for e in rep.errors):
+        w(_c("  the server refuses automated clients. If the site is yours, retry with "
+             "--user-agent '<your browser's UA>'.\n", "yellow", color))
     w("\n")
 
 
@@ -162,6 +165,7 @@ def cmd_audit(a) -> int:
         lang=a.lang, urls=a.url_list or None, respect_robots=not a.ignore_robots,
         use_sitemap=not a.no_sitemap, progress=None if quiet else progress,
         config=config, concurrency=a.concurrency, selection=sel, max_depth=a.depth,
+        per_section=a.per_section, user_agent=a.user_agent,
     )
     if not quiet:
         sys.stderr.write("\r" + " " * 84 + "\r")
@@ -341,13 +345,14 @@ def cmd_page(a) -> int:
 
 
 def cmd_urls(a) -> int:
-    from .fetch import Cache, Fetcher, same_site
+    from .fetch import Cache, Fetcher, resolve_base, same_site
     f = Fetcher(cache=Cache(None if a.no_cache else Path(a.cache)), delay=a.delay,
-                respect_robots=not a.ignore_robots)
+                respect_robots=not a.ignore_robots, user_agent=a.user_agent)
     try:
+        a.url = resolve_base(f, a.url)
         urls = f.discover(a.url, max_pages=a.pages, include=_regex(a.include),
                           exclude=_regex(a.exclude), use_sitemap=not a.no_sitemap,
-                          max_depth=a.depth)
+                          max_depth=a.depth, per_section=a.per_section)
     finally:
         f.close()
     urls = [u for u in urls if same_site(a.url, u)]
@@ -526,9 +531,14 @@ def main(argv=None) -> int:
         sp.add_argument("--exclude", action="append", metavar="REGEX",
                         help="a URL matching any of these is dropped (repeatable)")
         sp.add_argument("--depth", type=int, default=2, help="link-crawl depth (default 2)")
+        sp.add_argument("--per-section", type=int, default=0, metavar="N",
+                        help="keep N pages per site section (index and detail pages apart): "
+                             "one of each template, fast")
         sp.add_argument("--no-sitemap", action="store_true", help="crawl links only")
         sp.add_argument("--ignore-robots", action="store_true")
         sp.add_argument("--delay", type=float, default=0.4, help="seconds between requests")
+        sp.add_argument("--user-agent", metavar="UA",
+                        help="User-Agent for page requests (for sites you own that block bots)")
 
     a1 = sub.add_parser("audit", help="crawl a site and produce a report",
                         formatter_class=argparse.RawDescriptionHelpFormatter, epilog=EPILOG)

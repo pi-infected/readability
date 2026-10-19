@@ -72,11 +72,16 @@
   // Lines are rect groups: inline code, badges and links sit a few pixels off the text's
   // own top, so a new line starts only once a rect has moved down by more than half a
   // line. A line's width runs from its leftmost to its rightmost fragment.
+  // Text that overflows a clipped box (a collapsed stepper, a truncated card) and 1px
+  // screen-reader-only text are not lines anyone reads: only rects inside the element's
+  // own box count.
   function lineStats(el, lhPx) {
     try {
+      const box = el.getBoundingClientRect();
       const r = document.createRange();
       r.selectNodeContents(el);
-      const rects = Array.from(r.getClientRects()).filter(x => x.width > 0 && x.height > 0)
+      const rects = Array.from(r.getClientRects())
+        .filter(x => x.width > 1 && x.height > 1 && x.top >= box.top - 2 && x.bottom <= box.bottom + 2)
         .sort((a, b) => a.top - b.top);
       const step = Math.max(4, (lhPx || 16) * 0.5);
       const lines = [];

@@ -28,7 +28,8 @@ def page_to_dict(pa, *, include_evidence: bool = True) -> dict:
         "title": pa.title,
         "language": {"declared": pa.lang_declared,
                      "declared_after_render": pa.lang_declared_rendered,
-                     "used_for_metrics": pa.lang_used},
+                     "used_for_metrics": pa.lang_used,
+                     "rules": getattr(pa, "lang_rules", pa.lang_used)},
         "fetch_ms": pa.fetch_ms,
         "rendered": pa.rendered,
         "fetched_at": (time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(pa.fetched_at))
@@ -108,6 +109,7 @@ def site_to_dict(rep, *, include_evidence: bool = True, artifacts: list | None =
         "errors": rep.errors,
         "redirected_offsite": getattr(rep, "offsite", []),
         "duplicates_skipped": getattr(rep, "duplicates", []),
+        "not_html_skipped": getattr(rep, "skipped", []),
         "pages": pages,
         # Everything needed to read the numbers above without another file.
         "scoring": {

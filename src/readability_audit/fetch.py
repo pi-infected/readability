@@ -13,7 +13,10 @@ from urllib.parse import urljoin, urlparse, urlunparse, urldefrag
 
 import httpx
 
-UA = "readability/0.1 (+readability auditor; respects robots.txt)"
+# The conventional crawler form: some servers stall any client whose User-Agent does not
+# start with "Mozilla/5.0", and a site that refuses declared bots is answered by
+# --user-agent (for sites you own), not by pretending to be a browser.
+UA = "Mozilla/5.0 (compatible; readability/0.1; +https://github.com/pi-infected/readability)"
 
 # Application surfaces are not content. Auditing /api/checkout for typography is noise,
 # and its query-string variants triple-count in the site score.
@@ -102,9 +105,11 @@ class Cache:
 
 class Fetcher:
     def __init__(self, *, timeout: float = 25.0, delay: float = 0.4, cache: Cache | None = None,
-                 respect_robots: bool = True, user_agent: str = UA):
+                 respect_robots: bool = True, user_agent: str | None = UA):
         self.client = httpx.Client(
-            headers={"User-Agent": user_agent, "Accept-Language": "en,fr;q=0.9,*;q=0.5"},
+            headers={"User-Agent": user_agent or UA,
+                     "Accept": "text/html,application/xhtml+xml;q=0.9,*/*;q=0.8",
+                     "Accept-Language": "en,fr;q=0.9,*;q=0.5"},
             follow_redirects=True, timeout=timeout,
         )
         self.delay = delay
@@ -154,6 +159,12 @@ class Fetcher:
     def get(self, url: str) -> Page:
         url = normalize(url)
         hit = self.cache.get("GET " + url)
+        # A timeout, a refused connection or a 5xx says something about that moment, not
+        # about the page: it is retried rather than replayed from disk.
+        if hit and (hit.get("status", 0) == 0 or hit.get("status", 0) >= 500):
+            hit = None
+        if hit and hit.get("status") == 200 and challenge_of(hit.get("html") or ""):
+            hit = None
         if hit:
             page = Page(**hit)
             # Serving cached text while the browser measures the live page produces a
@@ -203,12 +214,17 @@ class Fetcher:
                 page = Page(url, str(r.url), r.status_code, "", dict(r.headers),
                             (time.perf_counter() - t0) * 1000,
                             error=f"empty response body (HTTP {r.status_code})")
+            elif challenge_of(r.text):
+                page = Page(url, str(r.url), r.status_code, "", dict(r.headers),
+                            (time.perf_counter() - t0) * 1000,
+                            error=f"bot challenge instead of the page ({challenge_of(r.text)})")
             else:
                 page = Page(url, str(r.url), r.status_code, r.text, dict(r.headers),
                             (time.perf_counter() - t0) * 1000, fetched_at=time.time())
         except Exception as e:
             page = Page(url, url, 0, "", error=f"{type(e).__name__}: {e}")
-        self.cache.put("GET " + url, page.__dict__)
+        if page.status and page.status < 500 and not (page.error or "").startswith("bot challenge"):
+            self.cache.put("GET " + url, page.__dict__)
         return page
 
     # --- discovery ------------------------------------------------------
@@ -272,7 +288,12 @@ class Fetcher:
 
     def discover(self, base: str, max_pages: int = 20, max_depth: int = 2,
                  include: str | None = None, exclude: str | None = None,
-                 use_sitemap: bool = True) -> list[str]:
+                 use_sitemap: bool = True, per_section: int = 0) -> list[str]:
+        if per_section:
+            # Sample from a wide pool: the sections only show once most URLs are known.
+            pool = self.discover(base, max_pages=max(500, max_pages), max_depth=max_depth,
+                                 include=include, exclude=exclude, use_sitemap=use_sitemap)
+            return sample_sections(pool, per_section)[:max_pages]
         urls: list[str] = []
         if use_sitemap:
             urls = self.sitemap_urls(base)
@@ -291,3 +312,67 @@ class Fetcher:
             urls.remove(start)
         urls.insert(0, start)
         return urls[:max_pages]
+
+
+LANG_SEGMENT = re.compile(r"^[a-z]{2}(?:[-_][a-z]{2,4})?$", re.I)
+
+
+def section_of(url: str) -> tuple[str, bool]:
+    """(section, is_leaf): /fr/blog/post -> ("blog", True), /en/blog -> ("blog", False).
+
+    A language prefix is not a section: /en/blog and /fr/blog are the same template.
+    """
+    parts = [x for x in urlparse(url).path.split("/") if x]
+    if parts and LANG_SEGMENT.match(parts[0]):
+        parts = parts[1:]
+    if not parts:
+        return "", False
+    # /F1970 and /D10002 are records of one template, not sections of their own.
+    return re.sub(r"\d+", "#", parts[0].lower()), len(parts) > 1
+
+
+def sample_sections(urls: list[str], n: int = 1) -> list[str]:
+    """Keep the first n URLs of each section, index and leaf pages counted apart, so a
+    quick audit sees every template once instead of 50 posts of the same blog."""
+    taken: dict = {}
+    out = []
+    for u in urls:
+        k = section_of(u)
+        if taken.get(k, 0) < n:
+            taken[k] = taken.get(k, 0) + 1
+            out.append(u)
+    return out
+
+
+def resolve_base(fetcher, base: str) -> str:
+    """Where the site actually lives: www.a.fr may answer from a.gouv.fr. Auditing the
+    old name would turn every page into an offsite redirect."""
+    home = fetcher.get(base)
+    if home.ok and not same_site(base, home.final_url):
+        return home.final_url
+    return base
+
+
+# Interstitials that anti-bot services serve with a 200 in place of the page. Scoring one
+# would report the readability of "Please enable JavaScript" as the site's.
+CHALLENGE_MARKERS = (
+    ("Client Challenge", "client challenge"),
+    ("Just a moment...", "Cloudflare"),
+    ("Attention Required! | Cloudflare", "Cloudflare"),
+    ("cf-browser-verification", "Cloudflare"),
+    ("captcha-delivery.com", "DataDome"),
+    ("_Incapsula_Resource", "Imperva"),
+    ("px-captcha", "PerimeterX"),
+    ("Pardon Our Interruption", "Distil"),
+)
+
+
+def challenge_of(html: str) -> str:
+    """The anti-bot service behind a challenge page, or "" for a real page."""
+    if not html or len(html) > 60_000:
+        return ""
+    head = html[:60_000]
+    for marker, who in CHALLENGE_MARKERS:
+        if marker in head:
+            return who
+    return ""

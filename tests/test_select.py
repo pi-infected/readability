@@ -77,3 +77,14 @@ def test_diff_ignores_pillars_one_run_did_not_measure():
     assert d["pillar_delta"] == {"clarity": 5} and d["pillars_not_compared"] == ["structure"]
     assert [r["key"] for r in d["resolved"]] == ["lix"] and d["selection_changed"]
     assert d["pages"][0]["pillars"] == {"clarity": 5}
+
+
+def test_per_section_keeps_one_page_per_template():
+    from readability_audit.fetch import sample_sections, section_of
+    assert section_of("https://a.com/fr/blog/post") == ("blog", True)
+    assert section_of("https://a.com/en-US/blog") == ("blog", False)
+    assert section_of("https://a.com/") == ("", False)
+    urls = ["https://a.com/", "https://a.com/en/blog", "https://a.com/fr/blog",
+            "https://a.com/en/blog/1", "https://a.com/en/blog/2", "https://a.com/docs/x"]
+    assert sample_sections(urls) == ["https://a.com/", "https://a.com/en/blog",
+                                     "https://a.com/en/blog/1", "https://a.com/docs/x"]

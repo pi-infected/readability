@@ -104,6 +104,7 @@ time you want one thing. Select it, and readability does only the work that thin
 | Just the classic formulas | `readability text draft.md --only readability` | none |
 | Whole blog, text only, fast | `readability audit https://site.com --include '/blog/' --pages 100 --only clarity,structure` | none |
 | Everything except SEO nits | `readability audit https://site.com --skip seo` | both |
+| One page of each kind (blog index, post, docs, legal…) | `readability audit https://site.com --per-section 1` | both |
 | Check a few exact pages | `readability page URL1 URL2 URL3` | both |
 | Accessibility, minus the browser | `readability page URL --only access --skip rem_scaling` | none |
 
@@ -120,6 +121,7 @@ Selectors are **pillars**, **groups** or single **metrics**, comma-separated and
 
 ```sh
 readability urls https://site.com --pages 200              # dry run: what would be audited
+readability audit https://site.com --per-section 1 --pages 30   # one page of each template, fast
 readability audit https://site.com --pages 50 \
   --include '/en/' --exclude '/tag/' --exclude '/page/[0-9]+'   # repeatable regexes
 readability audit https://site.com --url-list https://site.com/a https://site.com/b
@@ -152,6 +154,7 @@ pages       --pages N           page budget (audit 10, urls 50)
             --include RE        URL must match one of these   (repeatable)
             --exclude RE        URL must not match any        (repeatable)
             --url-list A B C    exactly these URLs, no crawl
+            --per-section N     N pages per site section, index and detail apart
             --depth N           link-crawl depth (default 2)
             --no-sitemap        crawl links only
             --delay S           politeness delay (default 0.4s)
