@@ -315,6 +315,7 @@ CONTAINER_TAGS = {"div", "section", "article", "main", "figure", "details", "hea
                   "aside", "form", "label"}
 MIN_RUN_CHARS = 25
 LAYOUT_CELL_CHARS = 400
+XML_DECL = re.compile(r"^\s*<\?xml[^>]*\?>")
 BLANK_LINE = re.compile(r"\n\s*\n")
 SENTENCE_END = re.compile(r"[.!?…:;。！？]\W*$")
 
@@ -529,7 +530,9 @@ def parse(html: str, url: str, lang_hint: str | None = None,
     if not html or not html.strip():
         raise EmptyDocument("the document is empty")
     try:
-        tree = lxml.html.fromstring(html)
+        # lxml refuses a str that still carries <?xml encoding="..."?> (XHTML pages):
+        # the text is already decoded, so the declaration is moot.
+        tree = lxml.html.fromstring(XML_DECL.sub("", html, count=1))
     except Exception as exc:                 # lxml raises on whitespace-only input
         raise EmptyDocument(f"the document could not be parsed: {exc}") from exc
     try:

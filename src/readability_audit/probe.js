@@ -164,8 +164,10 @@
     const ls = lineStats(el, fontPx);
     // The leading the reader sees: the distance between line boxes where the text wraps,
     // the declared line-height where it does not.
-    const lhPx = ls.pitch > 0 ? ls.pitch
-      : (cs.lineHeight === 'normal' ? fontPx * 1.2 : px(cs.lineHeight));
+    // A gap outside 0.9-3 font sizes is not leading: a flex column with its date far
+    // below the title, or overlapping boxes.
+    const declared = cs.lineHeight === 'normal' ? fontPx * 1.2 : px(cs.lineHeight);
+    const lhPx = ls.pitch >= 0.9 * fontPx && ls.pitch <= 3 * fontPx ? ls.pitch : declared;
     const lines = ls.lines;
     const adv = lines > 1 ? charAdvance(cs, txt) : 0;
     const cpl = lines > 1 ? (adv > 0 && ls.widest > 0 ? ls.widest / adv : txt.length / (lines - 0.5))

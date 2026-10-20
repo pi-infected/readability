@@ -266,3 +266,9 @@ def test_overflow_under_device_width_is_not_a_missing_mobile_layout():
     vp = {"width": 1500, "meta": "width=device-width, initial-scale=1"}
     v = _analyse_viewport("mobile", {"viewport": vp, "elements": [el]})
     assert v.zoom == 1.0 and v.body_font_px == 16
+
+
+def test_xhtml_with_an_encoding_declaration_parses():
+    pa = page('<?xml version="1.0" encoding="UTF-8"?><html xmlns="http://www.w3.org/1999/xhtml">'
+              "<body><main><p>" + "A sentence served as XHTML by an older site. " * 10 + "</p></main></body></html>")
+    assert pa.ok and pa.structure.word_count > 50
