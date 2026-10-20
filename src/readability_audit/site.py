@@ -13,7 +13,7 @@ from .analysis import PageAnalysis, analyse_page
 from .fetch import Cache, Fetcher, normalize, resolve_base, same_site
 from .scoring import SEVERITY_ORDER, grade_of
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 
 @dataclass
