@@ -4,6 +4,8 @@ from __future__ import annotations
 import time
 from dataclasses import is_dataclass
 
+from ..site import __version__
+
 
 def _plain(v):
     if v is None or isinstance(v, (str, int, float, bool)):
@@ -98,7 +100,7 @@ def site_to_dict(rep, *, include_evidence: bool = True, artifacts: list | None =
             m.pop("why", None)
     return {
         "schema_version": SCHEMA_VERSION,
-        "tool": {"name": "readability", "version": rep.options.get("version", "0.1.0")},
+        "tool": {"name": "readability", "version": rep.options.get("version", __version__)},
         "base_url": rep.base_url,
         "started_at": rep.started_at,
         "duration_s": rep.duration_s,

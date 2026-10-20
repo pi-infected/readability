@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/hero.svg" alt="readability — an AI agent is asked whether a page is easy to read, calls readability, reports contrast, typography, line length and clarity findings with evidence, fixes the CSS and re-checks." width="900" />
+  <img src="https://raw.githubusercontent.com/pi-infected/readability/main/docs/assets/hero.svg" alt="readability — an AI agent is asked whether a page is easy to read, calls readability, reports contrast, typography, line length and clarity findings with evidence, fixes the CSS and re-checks." width="900" />
 </p>
 
 <h1 align="center">readability</h1>
@@ -21,7 +21,7 @@
   <a href="#measure-only-what-you-need">Recipes</a> ·
   <a href="#commands">Commands</a> ·
   <a href="#for-ai-agents">For AI agents</a> ·
-  <a href="docs/METHODOLOGY.md">Methodology</a>
+  <a href="https://github.com/pi-infected/readability/blob/main/docs/METHODOLOGY.md">Methodology</a>
 </p>
 
 **Give your AI agent a reader's eye.** One tool call opens the page in a real browser,
@@ -55,9 +55,9 @@ readability page https://site.com --only contrast --format json   # what your ag
 ### Give it to your agent
 
 ```sh
-git clone https://github.com/pi-infected/readability && cd readability
-pip install -e . && pip install playwright && playwright install chromium
-cp -r skills/readability ~/.claude/skills/        # Claude Code; other agents: AGENTS.md
+pip install readability-audit playwright && playwright install chromium
+git clone https://github.com/pi-infected/readability
+cp -r readability/skills/readability ~/.claude/skills/   # Claude Code; other agents: AGENTS.md
 ```
 
 Then ask: *"Is my pricing page easy to read? Fix what you find."* The agent picks the
@@ -73,19 +73,19 @@ checks it needs, fixes the CSS or the text the evidence points to, and re-measur
 - **Honest.** A page with no readable text scores `n/a`, not a made-up number. Terminal
   demos and JSON blobs are not scored as prose. Targets are calibrated against a reference
   set of well-typeset sites and validated on 107 labelled difficulty pairs
-  ([methodology](docs/METHODOLOGY.md)).
+  ([methodology](https://github.com/pi-infected/readability/blob/main/docs/METHODOLOGY.md)).
 - **Agent-ready.** `--format json` everywhere, stable exit codes, evidence and a fix on every
-  finding, and a ready-made [skill](skills/readability/SKILL.md).
+  finding, and a ready-made [skill](https://github.com/pi-infected/readability/blob/main/skills/readability/SKILL.md).
 
 ## Install (command line)
 
 ```sh
-git clone https://github.com/pi-infected/readability
-cd readability
-pip install -e .                 # or: uv pip install -e .
+pip install readability-audit    # or: uv tool install readability-audit
 pip install playwright && playwright install chromium   # once, for the rendered pass
-readability metrics                 # check it works: lists everything you can measure
+readability metrics              # check it works: lists everything you can measure
 ```
+
+From source: `git clone https://github.com/pi-infected/readability && cd readability && pip install -e .`
 
 Without Playwright, readability still runs every text, structure and accessibility metric —
 only the rendered *comfort* metrics (contrast, typography, layout) need the browser.
@@ -187,7 +187,7 @@ loop when you ship a fix.
 
 ### Tune the targets
 
-The bands are data, not code ([`examples/readability.toml`](examples/readability.toml)):
+The bands are data, not code ([`examples/readability.toml`](https://github.com/pi-infected/readability/blob/main/examples/readability.toml)):
 
 ```toml
 only = ["comfort", "access"]   # same selectors as --only / --skip
@@ -229,9 +229,9 @@ Install the skill so your agent knows when and how to use it:
 mkdir -p ~/.claude/skills && cp -r skills/readability ~/.claude/skills/   # Claude Code
 ```
 
-Other agents: point them at [`AGENTS.md`](AGENTS.md).
+Other agents: point them at [`AGENTS.md`](https://github.com/pi-infected/readability/blob/main/AGENTS.md).
 
-How each number is produced, calibrated and validated: [docs/METHODOLOGY.md](docs/METHODOLOGY.md).
+How each number is produced, calibrated and validated: [docs/METHODOLOGY.md](https://github.com/pi-infected/readability/blob/main/docs/METHODOLOGY.md).
 
 ## Built on
 
@@ -252,5 +252,5 @@ Issues and pull requests welcome.
 
 ## License
 
-Licensed under either of [Apache License, Version 2.0](LICENSE-APACHE) or
-[MIT license](LICENSE-MIT), at your option (`MIT OR Apache-2.0`).
+Licensed under either of [Apache License, Version 2.0](https://github.com/pi-infected/readability/blob/main/LICENSE-APACHE) or
+[MIT license](https://github.com/pi-infected/readability/blob/main/LICENSE-MIT), at your option (`MIT OR Apache-2.0`).
