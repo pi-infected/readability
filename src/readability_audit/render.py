@@ -12,7 +12,7 @@ import time
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from .fetch import challenge_of
+from .fetch import UA, challenge_of
 
 def _mobile_ua(ua: str | None, chrome_version: str = "") -> str:
     """The same identity, saying it is a phone: sites that send phones a separate
@@ -128,7 +128,10 @@ class Renderer:
         self.timeout = timeout
         self._cool_until = 0.0
         self.check_dark = check_dark
-        self.user_agent = user_agent
+        # The identity the fetcher used, which the site already accepted. Chromium's own
+        # "HeadlessChrome" is refused outright by bot rules on sites that serve us fine.
+        self.user_agent = user_agent or UA
+        self._ua_explicit = user_agent is not None
         self.screenshot_dir = Path(screenshot_dir) if screenshot_dir else None
         self.full_page_shot = full_page_shot
         self.requested_concurrency = concurrency
@@ -182,6 +185,17 @@ class Renderer:
     # --- work -----------------------------------------------------------
     async def _one_viewport(self, url: str, name: str, size: tuple[int, int],
                             res: RenderResult) -> None:
+        await self._attempt(url, name, size, res, self.user_agent)
+        # Bot rules disagree: some refuse "HeadlessChrome", others anything that is not
+        # a browser (NHK resets the connection). Unless the user chose the UA, a refusal
+        # gets one try under Chromium's own.
+        refused = res.error and ("served HTTP 4" in res.error or "net::ERR_" in res.error)
+        if refused and not self._ua_explicit:
+            res.error = None
+            await self._attempt(url, name, size, res, None)
+
+    async def _attempt(self, url: str, name: str, size: tuple[int, int],
+                       res: RenderResult, ua: str | None) -> None:
         w, h = size
         ctx = None
         try:
@@ -189,8 +203,7 @@ class Renderer:
                 viewport={"width": w, "height": h},
                 device_scale_factor=2 if name == "mobile" else 1,
                 is_mobile=(name == "mobile"), has_touch=(name == "mobile"),
-                user_agent=(_mobile_ua(self.user_agent, self._browser.version)
-                            if name == "mobile" else self.user_agent),
+                user_agent=(_mobile_ua(ua, self._browser.version) if name == "mobile" else ua),
                 locale="en-US",
             )
             await ctx.add_init_script(INIT)

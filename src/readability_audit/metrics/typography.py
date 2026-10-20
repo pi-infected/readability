@@ -125,8 +125,13 @@ def _analyse_viewport(name: str, data: dict) -> ViewportTypography:
         v.body_font_px = round(v.body_font_px * v.zoom, 1)
         v.min_body_font_px = round(v.min_body_font_px * v.zoom, 1)
     v.pct_text_below_16px = sum(e["chars"] for e in pool if e["fontPx"] < 16) / chars_total
-    v.line_height_ratio = round(_wmedian([(e["lineHeightRatio"], e["chars"]) for e in pool]), 2)
-    v.pct_tight_line_height = sum(e["chars"] for e in pool if 0 < e["lineHeightRatio"] < 1.4) / chars_total
+    # Leading only exists between lines: a one-line teaser with line-height:85px for
+    # vertical centring says nothing about how the text reads (elle.fr: "6.07").
+    wrapped = [e for e in pool if e["lines"] >= 2] or pool
+    wrapped_chars = sum(e["chars"] for e in wrapped) or 1
+    v.line_height_ratio = round(_wmedian([(e["lineHeightRatio"], e["chars"]) for e in wrapped]), 2)
+    v.pct_tight_line_height = sum(e["chars"] for e in wrapped
+                                  if 0 < e["lineHeightRatio"] < 1.4) / wrapped_chars
 
     multi = [e for e in pool if e["lines"] >= 2]
     if multi:

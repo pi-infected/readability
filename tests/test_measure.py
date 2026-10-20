@@ -100,3 +100,11 @@ def test_pages_without_paragraph_tags_are_still_measured(tmp_path):
                  f"<ul hidden><li>Menu</li></ul></main>{body}</body></html>")
     els = _probe(f.as_uri())["elements"]
     assert sum(e["chars"] for e in els) > 300, els
+
+
+@pytest.mark.render
+def test_leading_is_measured_between_the_lines_not_read_from_the_container(tmp_path):
+    body = (f"<ul><li style='line-height:85px;width:500px'><span style='display:inline-block;"
+            f"line-height:24px;font-size:16px'>{LOREM}</span></li></ul>")
+    e = max(_probe(_page(tmp_path, body))["elements"], key=lambda e: e["chars"])
+    assert 1.3 <= e["lineHeightRatio"] <= 1.7, e

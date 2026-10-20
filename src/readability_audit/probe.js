@@ -75,7 +75,7 @@
   // Text that overflows a clipped box (a collapsed stepper, a truncated card) and 1px
   // screen-reader-only text are not lines anyone reads: only rects inside the element's
   // own box count.
-  function lineStats(el, lhPx) {
+  function lineStats(el, fontPx) {
     try {
       const box = el.getBoundingClientRect();
       const r = document.createRange();
@@ -83,16 +83,20 @@
       const rects = Array.from(r.getClientRects())
         .filter(x => x.width > 1 && x.height > 1 && x.top >= box.top - 2 && x.bottom <= box.bottom + 2)
         .sort((a, b) => a.top - b.top);
-      const step = Math.max(4, (lhPx || 16) * 0.5);
+      // Group by the font size, not the element's line-height: a container's leading
+      // need not be its text's (elle.fr: an 85px <li> around 20px lines of text).
+      const step = Math.max(4, (fontPx || 16) * 0.6);
       const lines = [];
       for (const x of rects) {
         const cur = lines[lines.length - 1];
         if (!cur || x.top > cur.top + step) lines.push({top: x.top, left: x.left, right: x.right});
         else { cur.left = Math.min(cur.left, x.left); cur.right = Math.max(cur.right, x.right); }
       }
+      const gaps = lines.slice(1).map((l, i) => l.top - lines[i].top).sort((a, b) => a - b);
       return {lines: Math.max(1, lines.length),
-              widest: lines.reduce((m, l) => Math.max(m, l.right - l.left), 0)};
-    } catch (e) { return {lines: 1, widest: 0}; }
+              widest: lines.reduce((m, l) => Math.max(m, l.right - l.left), 0),
+              pitch: gaps.length ? gaps[gaps.length >> 1] : 0};
+    } catch (e) { return {lines: 1, widest: 0, pitch: 0}; }
   }
 
   // Average advance of this text in its own font. Characters per line is then the
@@ -117,7 +121,10 @@
   // the page's text is.
   const leafChars = r => Array.from(r.querySelectorAll(SEL))
     .filter(el => !el.querySelector(SEL) && shown(el)).reduce((n, el) => n + textOf(el), 0);
-  let root = document.querySelector('main, [role="main"], article') || document.body;
+  // A news home page is a grid of <article> teasers: the first of them is not the page.
+  const articles = document.querySelectorAll('article');
+  let root = document.querySelector('main, [role="main"]')
+    || (articles.length === 1 ? articles[0] : null) || document.body;
   const shownText = el => (el.innerText || '').replace(/\s+/g, ' ').trim().length;
   if (root !== document.body && shownText(root) < 200 && shownText(document.body) >= 200) root = document.body;
   const nodes = Array.from(root.querySelectorAll(SEL));
@@ -154,8 +161,11 @@
     const rect = el.getBoundingClientRect();
     const bg = bgChain(el);
     const fontPx = px(cs.fontSize);
-    const lhPx = cs.lineHeight === 'normal' ? fontPx * 1.2 : px(cs.lineHeight);
-    const ls = lineStats(el, lhPx);
+    const ls = lineStats(el, fontPx);
+    // The leading the reader sees: the distance between line boxes where the text wraps,
+    // the declared line-height where it does not.
+    const lhPx = ls.pitch > 0 ? ls.pitch
+      : (cs.lineHeight === 'normal' ? fontPx * 1.2 : px(cs.lineHeight));
     const lines = ls.lines;
     const adv = lines > 1 ? charAdvance(cs, txt) : 0;
     const cpl = lines > 1 ? (adv > 0 && ls.widest > 0 ? ls.widest / adv : txt.length / (lines - 0.5))
