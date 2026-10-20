@@ -119,7 +119,10 @@ def analyse(doc: Doc, lp: LangPack) -> StructureReport:
     main_links = [l for l in doc.links if l.in_main]
     r.links_in_main = len(main_links)
     link_words = sum(len(words(l.text)) for l in main_links)
-    r.link_density = link_words / max(prose_words, 1)
+    # Link text sitting in table cells or code is still body text: dividing by the prose
+    # words alone gives a menu laid out in a table a link share of 2500%.
+    body_words = max(prose_words, len(words(doc.text)))
+    r.link_density = min(1.0, link_words / max(body_words, 1))
     if doc.links:
         r.external_ratio = sum(1 for l in doc.links if not l.internal) / len(doc.links)
 

@@ -124,6 +124,9 @@ FINDINGS = {
                   "Augmentez le contraste ou la taille de ces blocs."),
     "overflow_desktop": ("La page défile latéralement",
                          "Trouvez l'élément plus large que la fenêtre et contraignez-le."),
+    "no_mobile_layout": ("La page n'a pas de mise en page mobile",
+                         "Ajoutez <meta name=\"viewport\" content=\"width=device-width, "
+                         "initial-scale=1\"> et laissez la colonne s'adapter à l'écran."),
     "overflow_mobile": ("La page défile latéralement sur mobile",
                         "Utilisez max-width:100% sur les médias et évitez les largeurs fixes."),
     "table_headers": ("Des tableaux n'ont pas de ligne d'en-tête",

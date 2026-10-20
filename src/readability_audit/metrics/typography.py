@@ -7,6 +7,9 @@ from dataclasses import dataclass, field
 from ..color import apca, apca_min_lc, contrast_ratio, parse, wcag_level
 
 BODY_TAGS = {"p", "li", "blockquote", "td", "dd", "figcaption"}
+HEADING_TAGS = {"h1", "h2", "h3", "h4", "h5", "h6"}
+DISPLAY_PX = 28
+PHONE_WIDTH = 390
 WHITE = (255.0, 255.0, 255.0, 1.0)
 
 
@@ -28,6 +31,9 @@ def _wmedian(pairs: list[tuple[float, float]]) -> float:
 class ViewportTypography:
     name: str = ""
     width: int = 0
+    # Without <meta name=viewport> a phone lays the page out at ~980px and shrinks it to
+    # the screen: every CSS size reaches the eye multiplied by this.
+    zoom: float = 1.0
     body_font_px: float = 0.0
     min_body_font_px: float = 0.0
     pct_text_below_16px: float = 0.0
@@ -96,14 +102,28 @@ def _analyse_viewport(name: str, data: dict) -> ViewportTypography:
     v = ViewportTypography(name=name, width=data.get("viewport", {}).get("width", 0))
     els = [e for e in data.get("elements", []) if e.get("chars", 0) >= 2]
     v.n_text_elements = len(els)
-    body = [e for e in els if e["tag"] in BODY_TAGS and e["chars"] >= 40]
-    pool = body or els
+    # Text set at display size (a 44px pull quote, a hero line) is not body copy, even in
+    # a <p>: on a landing page with little prose it would decide the "body size" alone.
+    copy = [e for e in els if e["fontPx"] < DISPLAY_PX and e["tag"] not in HEADING_TAGS]
+    body = [e for e in copy if e["tag"] in BODY_TAGS and e["chars"] >= 40]
+    # Without a paragraph, short runs stand in for the body, but a handful of badges and
+    # labels ("New", "Remote") is not text anyone reads at length: 10px, 4 chars a line.
+    runs = [e for e in copy if e["chars"] >= 20]
+    pool = body or (runs if sum(e["chars"] for e in runs) >= 120 else [])
     if not pool:
+        v.n_text_elements = 0          # headings and display text only: nothing to read
         return v
 
     chars_total = sum(e["chars"] for e in pool) or 1
     v.body_font_px = round(_wmedian([(e["fontPx"], e["chars"]) for e in pool]), 1)
     v.min_body_font_px = round(min(e["fontPx"] for e in pool), 1)
+    # Only a missing or fixed-width viewport makes the phone shrink the layout; with
+    # width=device-width a wide innerWidth is content overflowing, reported as such.
+    meta = (data.get("viewport", {}).get("meta") or "").replace(" ", "").lower()
+    if name == "mobile" and v.width > 1.5 * PHONE_WIDTH and "width=device-width" not in meta:
+        v.zoom = round(PHONE_WIDTH / v.width, 3)
+        v.body_font_px = round(v.body_font_px * v.zoom, 1)
+        v.min_body_font_px = round(v.min_body_font_px * v.zoom, 1)
     v.pct_text_below_16px = sum(e["chars"] for e in pool if e["fontPx"] < 16) / chars_total
     v.line_height_ratio = round(_wmedian([(e["lineHeightRatio"], e["chars"]) for e in pool]), 2)
     v.pct_tight_line_height = sum(e["chars"] for e in pool if 0 < e["lineHeightRatio"] < 1.4) / chars_total

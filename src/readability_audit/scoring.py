@@ -395,50 +395,53 @@ def build_metrics(pa, audience: str = "general", page_type: str = "article") -> 
     tp = getattr(pa, "typography", None)
     vp = tp.primary if tp else None
     if vp:
-        ms.append(_m("font_size", "Body text size (desktop)", "comfort", vp.body_font_px, "px",
-                     (16, 21), (14, 24), 1.6,
-                     "Set body copy to at least 16px; 17-19px reads best on the desktop web.",
-                     "Below 16px the browser's default reader has to lean in."))
-        ms.append(_m("small_text", "Text rendered below 16px", "comfort",
-                     vp.pct_text_below_16px, "%", (0, 0.12), (0, 0.35), 1.0,
-                     "Raise captions, labels and footnotes to 14px minimum, body to 16px.", ""))
-        ms.append(_m("line_height", "Line height", "comfort", vp.line_height_ratio, "ratio",
-                     (1.45, 1.75), (1.25, 2.0), 1.4,
-                     "Set line-height between 1.5 and 1.7 for body copy.",
-                     "Tight leading makes the eye lose the line on the return sweep."))
-        ms.append(_m("measure", "Line length (characters per line)", "comfort",
-                     vp.chars_per_line, "chars", (50, 80), (38, 95), 1.5,
-                     "Cap the text column near 65 characters (about 34em).",
-                     "Bringhurst's 45-75 character measure; beyond ~90 the return sweep fails.",
-                     evidence=[dict(vp.dominant_block, column_width_px=vp.content_width_px)]
-                     if getattr(vp, "dominant_block", None) else []))
-        if vp.paragraph_gap_ratio > 0:
-            ms.append(_m("paragraph_gap", "Space between paragraphs", "comfort",
-                         vp.paragraph_gap_ratio, "line-heights", (0.5, 1.4), (0.25, 2.2), 0.9,
-                         "Leave about one line of space between paragraphs.",
-                         "Without a gap the paragraph break stops being visible."))
-        ms.append(_m("contrast", "Body text contrast (WCAG)", "comfort",
-                     vp.median_contrast_ratio, "ratio", (7.0, 21.0), (4.5, 21.0), 1.5,
-                     "Darken the body colour until it clears 7:1 against its background.",
-                     "WCAG 2.2 asks 4.5:1 for AA and 7:1 for AAA on body text.",
-                     display=f"{vp.median_contrast_ratio:g}:1"))
-        ms.append(_m("apca", "Perceptual contrast (APCA Lc)", "comfort",
-                     abs(vp.median_apca_lc), "Lc", (75, 108), (60, 108), 1.0,
-                     "APCA wants Lc 75 or better for body text, 90 for text under 18px.",
-                     "APCA models perceived lightness, which WCAG 2's ratio does not.",
-                     display=f"Lc {abs(vp.median_apca_lc):g}"))
-        ms.append(_m("justified", "Justified text without hyphenation", "comfort",
-                     vp.justified_without_hyphens, "%", (0, 0.02), (0, 0.15), 0.7,
-                     "Use ragged-right, or keep justification and add hyphens: auto.",
-                     "Justification without hyphenation opens rivers of white space."))
-        ms.append(_m("uppercase", "Text set in capitals", "comfort", vp.pct_uppercase, "%",
-                     (0, 0.03), (0, 0.10), 0.6,
-                     "Reserve all-caps for short labels.",
-                     "Capitals remove the word-shape cue that fast reading relies on."))
-        if vp.n_text_elements >= 12:
-            ms.append(_m("type_sizes", "Distinct type sizes", "comfort", vp.distinct_sizes, "sizes",
-                         (2, 8), (1, 12), 0.4,
-                         "Settle on a type scale of five or six steps.", ""))
+        # No text block was found to measure (an image-only page, a canvas app): saying
+        # nothing beats reporting a 0px font and a 0:1 contrast.
+        if vp.n_text_elements:
+            ms.append(_m("font_size", "Body text size (desktop)", "comfort", vp.body_font_px, "px",
+                         (16, 21), (14, 24), 1.6,
+                         "Set body copy to at least 16px; 17-19px reads best on the desktop web.",
+                         "Below 16px the browser's default reader has to lean in."))
+            ms.append(_m("small_text", "Text rendered below 16px", "comfort",
+                         vp.pct_text_below_16px, "%", (0, 0.12), (0, 0.35), 1.0,
+                         "Raise captions, labels and footnotes to 14px minimum, body to 16px.", ""))
+            ms.append(_m("line_height", "Line height", "comfort", vp.line_height_ratio, "ratio",
+                         (1.45, 1.75), (1.25, 2.0), 1.4,
+                         "Set line-height between 1.5 and 1.7 for body copy.",
+                         "Tight leading makes the eye lose the line on the return sweep."))
+            ms.append(_m("measure", "Line length (characters per line)", "comfort",
+                         vp.chars_per_line, "chars", (50, 80), (38, 95), 1.5,
+                         "Cap the text column near 65 characters (about 34em).",
+                         "Bringhurst's 45-75 character measure; beyond ~90 the return sweep fails.",
+                         evidence=[dict(vp.dominant_block, column_width_px=vp.content_width_px)]
+                         if getattr(vp, "dominant_block", None) else []))
+            if vp.paragraph_gap_ratio > 0:
+                ms.append(_m("paragraph_gap", "Space between paragraphs", "comfort",
+                             vp.paragraph_gap_ratio, "line-heights", (0.5, 1.4), (0.25, 2.2), 0.9,
+                             "Leave about one line of space between paragraphs.",
+                             "Without a gap the paragraph break stops being visible."))
+            ms.append(_m("contrast", "Body text contrast (WCAG)", "comfort",
+                         vp.median_contrast_ratio, "ratio", (7.0, 21.0), (4.5, 21.0), 1.5,
+                         "Darken the body colour until it clears 7:1 against its background.",
+                         "WCAG 2.2 asks 4.5:1 for AA and 7:1 for AAA on body text.",
+                         display=f"{vp.median_contrast_ratio:g}:1"))
+            ms.append(_m("apca", "Perceptual contrast (APCA Lc)", "comfort",
+                         abs(vp.median_apca_lc), "Lc", (75, 108), (60, 108), 1.0,
+                         "APCA wants Lc 75 or better for body text, 90 for text under 18px.",
+                         "APCA models perceived lightness, which WCAG 2's ratio does not.",
+                         display=f"Lc {abs(vp.median_apca_lc):g}"))
+            ms.append(_m("justified", "Justified text without hyphenation", "comfort",
+                         vp.justified_without_hyphens, "%", (0, 0.02), (0, 0.15), 0.7,
+                         "Use ragged-right, or keep justification and add hyphens: auto.",
+                         "Justification without hyphenation opens rivers of white space."))
+            ms.append(_m("uppercase", "Text set in capitals", "comfort", vp.pct_uppercase, "%",
+                         (0, 0.03), (0, 0.10), 0.6,
+                         "Reserve all-caps for short labels.",
+                         "Capitals remove the word-shape cue that fast reading relies on."))
+            if vp.n_text_elements >= 12:
+                ms.append(_m("type_sizes", "Distinct type sizes", "comfort", vp.distinct_sizes, "sizes",
+                             (2, 8), (1, 12), 0.4,
+                             "Settle on a type scale of five or six steps.", ""))
         ms.append(_m("occlusion", "First screen covered by fixed chrome", "comfort",
                      vp.occlusion, "%", (0, 0.25), (0, 0.45), 1.0,
                      "Shrink the sticky header, dismiss the cookie wall on scroll, and keep "
@@ -451,7 +454,7 @@ def build_metrics(pa, audience: str = "general", page_type: str = "article") -> 
                      "Reserve space for images, ads and web fonts.",
                      "Text that jumps under the eye costs the reader their place."))
         mob = tp.viewports.get("mobile") if tp else None
-        if mob:
+        if mob and mob.n_text_elements:
             ms.append(_m("mobile_font", "Body text size (mobile)", "comfort", mob.body_font_px, "px",
                          (16, 20), (14, 22), 1.2,
                          "Keep mobile body text at 16px or more; smaller triggers zoom on iOS.", ""))
@@ -665,6 +668,12 @@ def discrete_findings(pa) -> list[Finding]:
                            f"Content is {vp.width}px wide in a {vp.width}px viewport.",
                            "Find the element wider than the viewport and constrain it."))
     mob = tp.viewports.get("mobile") if tp else None
+    if mob and mob.zoom < 1:
+        out.append(Finding("no_mobile_layout", "The page has no mobile layout", "high", "comfort",
+                           f"Phones lay it out {mob.width}px wide and shrink it to the screen: "
+                           f"body text reaches the eye at {mob.body_font_px:g}px.",
+                           "Add <meta name=\"viewport\" content=\"width=device-width, "
+                           "initial-scale=1\"> and let the column fit the screen."))
     if mob and mob.overflow_x:
         out.append(Finding("overflow_mobile", "The page scrolls sideways on mobile", "high",
                            "comfort", "Horizontal scrolling on a 390px viewport.",

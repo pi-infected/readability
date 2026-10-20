@@ -20,7 +20,7 @@ UA = "Mozilla/5.0 (compatible; readability/0.1; +https://github.com/pi-infected/
 
 # Application surfaces are not content. Auditing /api/checkout for typography is noise,
 # and its query-string variants triple-count in the site score.
-SKIP_PATH = re.compile(r"^/(api|_next|cdn-cgi|wp-json|graphql)(/|$)", re.I)
+SKIP_PATH = re.compile(r"^/(api|_next|cdn-cgi|wp-json|graphql)(/|$)|/(feed|rss|atom)(/|$)", re.I)
 
 SKIP_EXT = {
     ".pdf", ".zip", ".png", ".jpg", ".jpeg", ".gif", ".webp", ".avif", ".svg",
@@ -49,7 +49,7 @@ def same_site(a: str, b: str) -> bool:
 
 def looks_like_page(url: str) -> bool:
     path = urlparse(url).path.lower()
-    if SKIP_PATH.match(path):
+    if SKIP_PATH.search(path):
         return False
     ext = Path(path).suffix
     return ext == "" or ext in {".html", ".htm", ".php", ".asp", ".aspx"} and ext not in SKIP_EXT
@@ -156,12 +156,29 @@ class Fetcher:
             time.sleep(self.delay - gap)
         self._last = time.time()
 
+    def _get_patiently(self, url: str):
+        """One retry for what a short wait fixes: a timeout, or a 429/503 that says when to
+        come back (capped, so one slow host cannot stall the audit)."""
+        try:
+            r = self.client.get(url)
+        except (httpx.TimeoutException, httpx.RemoteProtocolError):
+            return self.client.get(url)
+        if r.status_code in (429, 503):
+            try:
+                wait = float(r.headers.get("retry-after", 5))
+            except ValueError:
+                wait = 5.0
+            if wait <= 15:
+                time.sleep(max(wait, self.delay))
+                r = self.client.get(url)
+        return r
+
     def get(self, url: str) -> Page:
         url = normalize(url)
         hit = self.cache.get("GET " + url)
         # A timeout, a refused connection or a 5xx says something about that moment, not
         # about the page: it is retried rather than replayed from disk.
-        if hit and (hit.get("status", 0) == 0 or hit.get("status", 0) >= 500):
+        if hit and (hit.get("status", 0) in (0, 202, 429) or hit.get("status", 0) >= 500):
             hit = None
         if hit and hit.get("status") == 200 and challenge_of(hit.get("html") or ""):
             hit = None
@@ -205,9 +222,14 @@ class Fetcher:
         self._throttle()
         t0 = time.perf_counter()
         try:
-            r = self.client.get(url)
+            r = self._get_patiently(url)
             ctype = r.headers.get("content-type", "")
-            if "html" not in ctype and "xml" not in ctype:
+            if r.headers.get("x-amzn-waf-action") in ("challenge", "captcha"):
+                # The challenge ships as an empty 202, which reads as a server quirk.
+                page = Page(url, str(r.url), r.status_code, "", dict(r.headers),
+                            (time.perf_counter() - t0) * 1000,
+                            error="bot challenge instead of the page (AWS WAF)")
+            elif "html" not in ctype and "xml" not in ctype:
                 page = Page(url, str(r.url), r.status_code, "", dict(r.headers),
                             (time.perf_counter() - t0) * 1000, error=f"not html ({ctype})")
             elif not (r.text or "").strip():
@@ -223,7 +245,8 @@ class Fetcher:
                             (time.perf_counter() - t0) * 1000, fetched_at=time.time())
         except Exception as e:
             page = Page(url, url, 0, "", error=f"{type(e).__name__}: {e}")
-        if page.status and page.status < 500 and not (page.error or "").startswith("bot challenge"):
+        if (page.status and page.status < 500 and page.status != 429
+                and not (page.error or "").startswith("bot challenge")):
             self.cache.put("GET " + url, page.__dict__)
         return page
 
@@ -237,7 +260,9 @@ class Fetcher:
         candidates += [origin + p for p in ("/sitemap.xml", "/sitemap_index.xml", "/sitemap-index.xml")]
         seen, out = set(), []
         queue = list(dict.fromkeys(candidates))
-        while queue and len(out) < limit:
+        # News sites index thousands of daily sitemaps; a sample of them is enough to
+        # find every section, and reading all of them took g1.globo.com past 7 minutes.
+        while queue and len(out) < limit and len(seen) < MAX_SITEMAPS:
             sm = queue.pop(0)
             if sm in seen:
                 continue
@@ -263,10 +288,14 @@ class Fetcher:
         seen = {start}
         order = [start]
         queue = [(start, 0)]
-        while queue and len(order) < max_pages * 4:
+        # Each page read yields dozens of links: a few reads find the URLs, hundreds only
+        # add minutes (g1.globo.com: 280 reads, 3 minutes, for an 8-page sample).
+        reads = 0
+        while queue and len(order) < max_pages * 4 and reads < max(10, min(max_pages, 400) // 20):
             url, depth = queue.pop(0)
             if depth >= max_depth:
                 continue
+            reads += 1
             page = self.get(url)
             if not page.ok:
                 continue
@@ -274,6 +303,8 @@ class Fetcher:
                 href = unescape(href)        # an href in markup is entity-encoded
                 nxt = normalize(urljoin(page.final_url, href))
                 if nxt in seen or not same_site(start, nxt) or not looks_like_page(nxt):
+                    continue
+                if not self.allowed(nxt):      # never spend the page budget on a refusal
                     continue
                 if Path(urlparse(nxt).path).suffix.lower() in SKIP_EXT:
                     continue
@@ -303,6 +334,7 @@ class Fetcher:
                 urls = [u for u in urls if inc.search(u)]
             if exc:
                 urls = [u for u in urls if not exc.search(u)]
+            urls = [u for u in urls if self.allowed(u)]
         if len(urls) < max_pages:
             crawled = self.crawl(base, max_pages=max_pages * 2, max_depth=max_depth,
                                  include=include, exclude=exclude)
@@ -313,6 +345,8 @@ class Fetcher:
         urls.insert(0, start)
         return urls[:max_pages]
 
+
+MAX_SITEMAPS = 25
 
 LANG_SEGMENT = re.compile(r"^[a-z]{2}(?:[-_][a-z]{2,4})?$", re.I)
 
@@ -334,6 +368,15 @@ def section_of(url: str) -> tuple[str, bool]:
 def sample_sections(urls: list[str], n: int = 1) -> list[str]:
     """Keep the first n URLs of each section, index and leaf pages counted apart, so a
     quick audit sees every template once instead of 50 posts of the same blog."""
+    def lang(u: str) -> str:
+        first = next((x for x in urlparse(u).path.split("/") if x), "")
+        return first.lower() if LANG_SEGMENT.match(first) else ""
+
+    # /en/blog and /ar/blog are one section: take it in the language the audit started in,
+    # or france.fr/fr is sampled in Arabic.
+    want = lang(urls[0]) if urls else ""
+    if want:
+        urls = sorted(urls, key=lambda u: lang(u) not in (want, ""))
     taken: dict = {}
     out = []
     for u in urls:
@@ -364,6 +407,8 @@ CHALLENGE_MARKERS = (
     ("_Incapsula_Resource", "Imperva"),
     ("px-captcha", "PerimeterX"),
     ("Pardon Our Interruption", "Distil"),
+    ("bobcmn", "F5 BIG-IP"),
+    ('id="anubis_challenge"', "Anubis"),
 )
 
 

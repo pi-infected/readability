@@ -196,9 +196,38 @@ def clarity_supported(code: str | None, text: str) -> tuple[bool, str]:
     return True, ""
 
 
-def detect(text: str) -> tuple[str, float]:
-    """Deterministic stopword-profile language id. Returns (code, confidence 0-1)."""
+# Languages each non-Latin script is written in; the first is the guess when the page
+# declares none of them.
+SCRIPT_LANGS = {
+    "greek": ("el",), "cyrillic": ("ru", "uk", "bg", "sr", "be", "mk", "kk"),
+    "hebrew": ("he", "yi"), "arabic": ("ar", "fa", "ur", "ps"),
+    "devanagari": ("hi", "mr", "ne", "sa"), "thai": ("th",),
+}
+
+
+def _cjk_lang(text: str) -> str:
+    kana = sum(1 for ch in text[:4000] if 0x3040 <= ord(ch) <= 0x30FF)
+    hangul = sum(1 for ch in text[:4000] if 0xAC00 <= ord(ch) <= 0xD7AF)
+    han = sum(1 for ch in text[:4000] if 0x4E00 <= ord(ch) <= 0x9FFF)
+    if hangul > max(kana, han):
+        return "ko"
+    return "ja" if kana > 0.1 * (kana + han) else "zh"
+
+
+def detect(text: str, declared: str | None = None) -> tuple[str, float]:
+    """Deterministic language id: the script first, then a stopword profile for
+    Latin-script text. Returns (code, confidence 0-1). A declared language written in
+    the detected script is kept: the script cannot tell Persian from Arabic."""
     import re
+    script, share = dominant_script(text)
+    if script not in ("latin", "unknown", "other") and share > 0.5:
+        if script == "cjk":
+            code = _cjk_lang(text)
+            langs = ("zh", "ja", "ko") if code == "zh" else (code,)
+        else:
+            langs = SCRIPT_LANGS[script]
+            code = langs[0]
+        return (declared if declared in langs else code), 0.9
     words = re.findall(r"[^\W\d_]+", text.lower(), re.UNICODE)[:1500]
     if len(words) < 8:
         return "en", 0.0

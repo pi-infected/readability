@@ -56,6 +56,7 @@ METRICS = {
 # `contrast_fail`. Anything else follows its pillar.
 FINDING_OWNER = {
     "contrast_fail": "contrast", "apca_fail": "apca", "overflow_mobile": "mobile_measure",
+    "no_mobile_layout": "mobile_font",
     "overflow_desktop": "measure", "alt_missing": "alt_coverage",
     "alt_filename": "alt_coverage", "ambiguous_links": "weak_links",
     "no_meta_desc": "meta_description", "font_display": "font_size",

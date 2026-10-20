@@ -136,8 +136,8 @@ def analyse_page(page: Page, *, render_result=None, lang_override: str | None = 
             rendered_doc = None
 
     probe_text = served_doc.prose_text or (rendered_doc.prose_text if rendered_doc else "")
-    detected = detect(probe_text or served_doc.text)
     declared = served_doc.lang.split("-")[0].lower() if served_doc.lang else None
+    detected = detect(probe_text or served_doc.text, declared)
     # A wrong lang attribute is common; measuring French prose with English rules is
     # worse than ignoring the attribute, so confident detection wins.
     if lang_override:
@@ -173,7 +173,7 @@ def analyse_page(page: Page, *, render_result=None, lang_override: str | None = 
     # pages are measured with neutral rules, which is not the same as being English.
     pa.lang_used = (code or lp.code).split("-")[0].lower()
     pa.lang_rules = lp.code
-    pa.title = doc.title
+    pa.title = doc.title or served_doc.title
     pa.clarity_supported = clarity_ok
     pa.clarity_note = clarity_note
     pa.extraction = {"selector": doc.main_selector, "coverage": doc.extraction_coverage,

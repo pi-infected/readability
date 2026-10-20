@@ -51,6 +51,13 @@ def canonical_of(html: str, base: str) -> str | None:
         return None
 
 
+def _render_cause(err: str) -> str:
+    if "bot challenge" in err:
+        return "bot challenge"
+    m = re.search(r"HTTP \d{3}", err)
+    return m.group(0) if m else ("timeout" if "Timeout" in err else err.split(":")[0] or "unknown")
+
+
 def _failure_breakdown(errors: list[str]) -> dict:
     """Group fetch failures by cause so 50 dead sitemap entries read as one problem."""
     import re
@@ -208,6 +215,9 @@ def audit(base_url: str, *, max_pages: int = 10, render: bool = True, audience: 
                 progress(min(i, budget), budget, url, "fetch")
             page = fetcher.get(url)
             # A stylesheet or a PDF reached by a link is not a page, nor a failed one.
+            ctype = {k.lower(): v for k, v in (page.headers or {}).items()}.get("content-type", "")
+            if not page.error and "xml" in ctype and "html" not in ctype:
+                page.error = f"not html ({ctype})"      # an RSS feed, a sitemap
             if (page.error or "").startswith("not html"):
                 rep.skipped.append({"url": url, "reason": page.error})
                 continue
@@ -322,6 +332,11 @@ def audit(base_url: str, *, max_pages: int = 10, render: bool = True, audience: 
         "reading_time_min": round(sum(p.structure.reading_time_min for p in ok if p.structure), 1),
         "severity_counts": dict(Counter(f.severity for p in ok for f in p.findings)),
         "rendered": sum(1 for p in ok if p.rendered),
+        # Pages analysed from their HTML only because the browser could not show them:
+        # their comfort pillar is missing, which the score alone does not say.
+        "render_failures": dict(Counter(
+            _render_cause(getattr(p.typography, "error", "") or "")
+            for p in ok if not p.rendered and p.typography is not None)),
     }
     rep.top_findings = aggregate_findings(ok)
 

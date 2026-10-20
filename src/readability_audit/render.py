@@ -8,8 +8,23 @@ from __future__ import annotations
 
 import asyncio
 import os
+import time
 from dataclasses import dataclass, field
 from pathlib import Path
+
+from .fetch import challenge_of
+
+def _mobile_ua(ua: str | None, chrome_version: str = "") -> str:
+    """The same identity, saying it is a phone: sites that send phones a separate
+    page (fr.wikipedia.org → fr.m.wikipedia.org) decide on "Mobile" in the UA."""
+    if not ua:
+        return ("Mozilla/5.0 (Linux; Android 14; Mobile) AppleWebKit/537.36 (KHTML, like Gecko) "
+                f"HeadlessChrome/{chrome_version} Mobile Safari/537.36")
+    if "Mobile" in ua:
+        return ua
+    return ua.replace("(compatible;", "(Linux; Android 14; Mobile; compatible;", 1) \
+        if "(compatible;" in ua else ua + " Mobile"
+
 
 PROBE = (Path(__file__).parent / "probe.js").read_text()
 
@@ -111,6 +126,7 @@ class Renderer:
                  extra_mb: int = MB_PER_EXTRA_TAB, ram_floor_mb: int = RAM_FLOOR_MB):
         self.viewports = viewports or DEFAULT_VIEWPORTS
         self.timeout = timeout
+        self._cool_until = 0.0
         self.check_dark = check_dark
         self.user_agent = user_agent
         self.screenshot_dir = Path(screenshot_dir) if screenshot_dir else None
@@ -173,17 +189,51 @@ class Renderer:
                 viewport={"width": w, "height": h},
                 device_scale_factor=2 if name == "mobile" else 1,
                 is_mobile=(name == "mobile"), has_touch=(name == "mobile"),
-                user_agent=self.user_agent, locale="en-US",
+                user_agent=(_mobile_ua(self.user_agent, self._browser.version)
+                            if name == "mobile" else self.user_agent),
+                locale="en-US",
             )
             await ctx.add_init_script(INIT)
             page = await ctx.new_page()
-            await page.goto(url, wait_until="load", timeout=self.timeout)
+            # Ad and tracker requests can hold the load event back for a minute; the text
+            # and its styles are there long before. Wait for load only as long as is useful.
+            # A parser-blocking third-party script can hold back even DOMContentLoaded
+            # (repubblica.it: never, within 45s) while the article is already parsed.
+            resp = None
+            for attempt in range(3):
+                # Rate limited: the tab would measure the error page. Every tab pauses
+                # (they share the host), then this one retries.
+                pause = self._cool_until - time.monotonic()
+                if pause > 0:
+                    await asyncio.sleep(pause)
+                resp = await page.goto(url, wait_until="commit", timeout=self.timeout)
+                if resp is None or resp.status not in (429, 503) or attempt == 2:
+                    break
+                try:
+                    wait = float(resp.headers.get("retry-after") or 0)
+                except ValueError:
+                    wait = 0
+                wait = min(max(wait, 8.0 * (attempt + 1)), 30.0)
+                self._cool_until = max(self._cool_until, time.monotonic() + wait)
+            if resp is not None and resp.status >= 400:
+                raise RuntimeError(f"the browser was served HTTP {resp.status}")
+            for state, ms in (("domcontentloaded", 20000), ("load", 12000), ("networkidle", 5000)):
+                try:
+                    await page.wait_for_load_state(state, timeout=ms)
+                except Exception:
+                    pass
             try:
-                await page.wait_for_load_state("networkidle", timeout=6000)
+                await asyncio.wait_for(page.evaluate("document.fonts.ready.then(() => 1)"), 5)
             except Exception:
                 pass
             await page.wait_for_timeout(600)
-            res.viewports[name] = await page.evaluate(PROBE)
+            try:
+                res.viewports[name] = await page.evaluate(PROBE)
+            except Exception:
+                # A client-side redirect or a re-render swapped the document under the
+                # probe (lefigaro.fr/sports: body was null). Let it settle, once.
+                await page.wait_for_timeout(2000)
+                res.viewports[name] = await page.evaluate(PROBE)
             if name == "desktop" or res.html is None:
                 # The served HTML and the rendered DOM are different documents on any
                 # client-rendered page. Everything downstream must read the same one.
@@ -191,6 +241,12 @@ class Renderer:
                     res.html = await page.content()
                 except Exception:
                     pass
+                # Some walls only show to a browser: the fetch got the page, the tab got
+                # a challenge. Measured, that is a page with no text at all.
+                wall = challenge_of(res.html or "")
+                if wall:
+                    res.html = None
+                    raise RuntimeError(f"bot challenge in the browser ({wall})")
             if self.screenshot_dir:
                 self.screenshot_dir.mkdir(parents=True, exist_ok=True)
                 safe = "".join(c if c.isalnum() else "_" for c in url)[-60:]

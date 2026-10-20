@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import copy
+from collections import Counter
 import re
 from dataclasses import dataclass, field
 from urllib.parse import urljoin, urlparse
@@ -43,6 +44,16 @@ def clean_text(s: str) -> str:
     return s.strip()
 
 
+# Chinese and Japanese leave no space between words: each character counts as one, which
+# is how those languages count length and close to their reading speed in characters.
+UNSPACED = re.compile(r"[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]")
+
+
+def count_words(text: str) -> int:
+    n = len(UNSPACED.findall(text))
+    return n + len(UNSPACED.sub(" ", text).split()) if n else len(text.split())
+
+
 @dataclass
 class Block:
     kind: str
@@ -54,7 +65,7 @@ class Block:
 
     def __post_init__(self):
         self.chars = len(self.text)
-        self.words = len(self.text.split())
+        self.words = count_words(self.text)
 
 
 @dataclass
@@ -161,6 +172,23 @@ class Doc:
         return max(0.0, 1.0 - len(self.text) / len(self.full_text))
 
 
+# Consent managers inject their dialog into the page itself, often with a vendor list
+# longer than the article: left in, it wins the content-region vote.
+CONSENT_HINT = re.compile(
+    r"\b(fc-consent|fc-dialog|onetrust|ot-sdk|didomi|qc-cmp|sp_message|usercentrics|"
+    r"CybotCookiebot|cookiebot|cookie-law-info|cmplz|truste|osano|iubenda|cky-consent|"
+    r"cookie-?consent|cookie-?banner|consent-?banner|gdpr)", re.I)
+
+
+def _strip_consent(tree: HtmlElement) -> None:
+    for el in list(tree.iter("div", "section", "aside", "dialog", "form")):
+        idcls = f"{el.get('id') or ''} {el.get('class') or ''}"
+        if CONSENT_HINT.search(idcls) and not el.xpath(".//main | .//article"):
+            parent = el.getparent()
+            if parent is not None:
+                parent.remove(el)
+
+
 def _strip(tree: HtmlElement, tags) -> None:
     for el in tree.xpath("|".join(f"//{t}" for t in tags)) if tags else []:
         parent = el.getparent()
@@ -182,6 +210,8 @@ def flat_text(el: HtmlElement) -> str:
         tag = node.tag if isinstance(node.tag, str) else ""
         block = tag in BLOCK_LEVEL
         if block:
+            parts.append("\n")
+        if tag == "br":
             parts.append("\n")
         if node.text:
             parts.append(node.text)
@@ -284,6 +314,9 @@ BLOCK_LEVEL = {
 CONTAINER_TAGS = {"div", "section", "article", "main", "figure", "details", "header", "footer",
                   "aside", "form", "label"}
 MIN_RUN_CHARS = 25
+LAYOUT_CELL_CHARS = 400
+BLANK_LINE = re.compile(r"\n\s*\n")
+SENTENCE_END = re.compile(r"[.!?…:;。！？]\W*$")
 
 
 def own_text(el: HtmlElement) -> str:
@@ -297,7 +330,9 @@ def own_text(el: HtmlElement) -> str:
         if not isinstance(child.tag, str):
             parts.append(child.tail or "")
             continue
-        if child.tag in BLOCK_LEVEL:
+        if child.tag == "br":
+            parts.append("\n" + (child.tail or ""))
+        elif child.tag in BLOCK_LEVEL:
             parts.append(child.tail or "")          # skip the block, keep what follows it
         else:
             parts.append(flat_text(child))
@@ -331,7 +366,7 @@ def _list_depth(el: HtmlElement) -> int:
     return d
 
 
-def _overlay_matcher(hints: list[dict] | None):
+def _overlay_matcher(hints: list[dict] | None, tree: HtmlElement | None = None):
     """Match the fixed and sticky elements the browser reported, by tag and class prefix.
 
     A cookie wall styled `div.fixed` carries no semantic name a regex could find, but the
@@ -342,6 +377,18 @@ def _overlay_matcher(hints: list[dict] | None):
     sigs = [(h.get("tag", "").lower(), (h.get("cls") or "").strip()[:40])
             for h in hints if h.get("cls")]
     sigs = [s for s in sigs if len(s[1]) >= 8]
+    if tree is not None and sigs:
+        # Utility-class frameworks give a fixed header and half the page the same class
+        # prefix (`pencraft pc-display-flex …`). A signature that matches many elements
+        # does not identify the overlay; using it deleted every paragraph on substack.com.
+        counts = Counter()
+        for el in tree.iter():
+            cls = (el.get("class") or "").strip() if isinstance(el.tag, str) else ""
+            if cls:
+                for sig in sigs:
+                    if el.tag == sig[0] and cls.startswith(sig[1]):
+                        counts[sig] += 1
+        sigs = [s for s in sigs if counts[s] <= 3]
 
     def match(el: HtmlElement) -> bool:
         tag = el.tag if isinstance(el.tag, str) else ""
@@ -360,7 +407,7 @@ def _overlay_matcher(hints: list[dict] | None):
 def _collect(body: HtmlElement, main: HtmlElement, url: str, host: str,
              overlay_hints: list[dict] | None = None) -> dict:
     """Strip chrome from the chosen region, then read every block, link and count out of it."""
-    is_overlay = _overlay_matcher(overlay_hints)
+    is_overlay = _overlay_matcher(overlay_hints, body)
     inline_containers = [0]
     for el in list(main.iter()):
         if not isinstance(el.tag, str) or el is main:
@@ -397,6 +444,23 @@ def _collect(body: HtmlElement, main: HtmlElement, url: str, host: str,
                     rt = flat_text(c)
                     if rt:
                         blocks.append(Block(kind="p", text=rt, dom_path=_dom_path(c)))
+                continue
+        # Older sites lay prose out in a table cell or a bare <div>, paragraphs separated
+        # by <br><br>. Read as one cell that is an essay with no paragraphs at all.
+        parts = [r.strip() for r in BLANK_LINE.split(text) if r.strip()] if kind in ("p", "cell") else []
+        # Dates and labels one per line (an archive index) are a list, not a 240-word
+        # sentence: read as prose they score LIX 105.
+        if len(parts) >= 5 and sorted(map(len, parts))[len(parts) // 2] < 40 and not any(
+                SENTENCE_END.search(r) for r in parts):
+            for r in parts:
+                blocks.append(Block(kind="cell", text=r, dom_path=_dom_path(el)))
+            continue
+        if (kind == "cell" and len(text) >= LAYOUT_CELL_CHARS) or (
+                kind == "p" and el.tag in CONTAINER_TAGS and len(parts) > 1):
+            runs = [r for r in parts if len(r) >= MIN_RUN_CHARS]
+            if runs and sum(map(len, runs)) >= 0.6 * len(text):
+                for r in runs:
+                    blocks.append(Block(kind="p", text=r, dom_path=_dom_path(el)))
                 continue
         is_heading = kind in HEADING_KINDS
         if not is_heading and kind not in ("code", "cell") and len(text) < MIN_RUN_CHARS:
@@ -511,6 +575,7 @@ def parse(html: str, url: str, lang_hint: str | None = None,
     full_text = clean_text(tree.text_content())
     body = tree.body if tree.body is not None else tree
     host = urlparse(url).netloc.lower()
+    _strip_consent(body)
 
     # Try the densest content region first. If an independent extractor finds far more
     # text than we did, the region was wrong and every language metric would be measured

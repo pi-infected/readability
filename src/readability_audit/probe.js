@@ -109,14 +109,44 @@
     } catch (e) { return 0; }
   }
 
-  const root = document.querySelector('main, [role="main"], article') || document.body;
   const SEL = 'p,li,h1,h2,h3,h4,h5,h6,blockquote,td,th,dd,dt,figcaption,summary';
+  const textOf = el => (el.textContent || '').replace(/\s+/g, ' ').trim().length;
+  const shown = el => (el.checkVisibility ? el.checkVisibility({ opacityProperty: true,
+    visibilityProperty: true }) : true) && el.getClientRects().length > 0;
+  // Visible text only: a <main> holding nothing but a collapsed nav drawer is not where
+  // the page's text is.
+  const leafChars = r => Array.from(r.querySelectorAll(SEL))
+    .filter(el => !el.querySelector(SEL) && shown(el)).reduce((n, el) => n + textOf(el), 0);
+  let root = document.querySelector('main, [role="main"], article') || document.body;
+  const shownText = el => (el.innerText || '').replace(/\s+/g, ' ').trim().length;
+  if (root !== document.body && shownText(root) < 200 && shownText(document.body) >= 200) root = document.body;
   const nodes = Array.from(root.querySelectorAll(SEL));
+  // Pages built from bare <div>s and <span>s (app shells, landing pages, some news
+  // sites) have no <p> to read. When the semantic tags carry under half the visible
+  // text, also read any element holding a run of text of its own.
+  const seen = leafChars(root);
+  if (seen < 200 || seen < 0.5 * shownText(root)) {
+    const chosen = [];
+    for (const el of Array.from(root.querySelectorAll('div,span,section,a,font,center,label'))) {
+      if (el.querySelector(SEL)) continue;
+      const own = Array.from(el.childNodes).filter(n => n.nodeType === 3)
+        .map(n => n.textContent).join('').replace(/\s+/g, ' ').trim();
+      if (own.length < 25 || chosen.some(c => c.contains(el))) continue;
+      chosen.push(el);
+    }
+    nodes.push(...chosen);
+  }
   const elements = [];
   const sizes = {}, families = {}, lhs = {};
 
+  // A consent manager's dialog is not the page, however much text its vendor list holds.
+  const CONSENT = '[id*=consent i],[class*=consent i],[class*=onetrust i],[id*=onetrust i],' +
+    '[class*=didomi i],[id*=didomi i],[id*=cookiebot i],[class*=cookie-banner i],[id*=cookie-banner i],' +
+    '[class*=qc-cmp i],[id*=sp_message i],[class*=fc-dialog i]';
   for (const el of nodes) {
     if (el.querySelector(SEL)) continue;               // container, not a leaf text block
+    const cm = el.closest(CONSENT);   // <body class="didomi-popup-open"> is still the page
+    if (cm && cm !== document.body && cm !== document.documentElement) continue;
     const txt = (el.textContent || '').replace(/\s+/g, ' ').trim();
     if (txt.length < 2) continue;
     const cs = getComputedStyle(el);
@@ -282,7 +312,8 @@
 
   return {
     url: location.href,
-    viewport: { width: window.innerWidth, height: window.innerHeight, dpr: devicePixelRatio },
+    viewport: { width: window.innerWidth, height: window.innerHeight, dpr: devicePixelRatio,
+                meta: (document.querySelector('meta[name="viewport" i]') || {}).content || null },
     scrollWidth: document.scrollingElement.scrollWidth,
     scrollHeight: document.scrollingElement.scrollHeight,
     overflowX: document.scrollingElement.scrollWidth > window.innerWidth + 2,

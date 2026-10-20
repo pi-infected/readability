@@ -32,6 +32,7 @@ def page_to_dict(pa, *, include_evidence: bool = True) -> dict:
                      "rules": getattr(pa, "lang_rules", pa.lang_used)},
         "fetch_ms": pa.fetch_ms,
         "rendered": pa.rendered,
+        "render_error": (getattr(pa.typography, "error", None) or None) if not pa.rendered else None,
         "fetched_at": (time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(pa.fetched_at))
                        if pa.fetched_at else None),
         "from_cache": pa.from_cache,

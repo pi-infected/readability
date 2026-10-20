@@ -140,6 +140,12 @@ def print_report(rep, color: bool = True, top: int = 10) -> None:
           f" {_c(str(len(p.findings)) + ' findings', 'dim', color)}\n")
     for e in rep.errors[:5]:
         w(_c(f"  ! {e}\n", "red", color))
+    rf = s.get("render_failures") or {}
+    if rf:
+        causes = ", ".join(f"{n} × {c}" for c, n in rf.items())
+        w(_c(f"  ! {sum(rf.values())} pages not rendered ({causes}): no comfort metrics for them"
+             + (". The host rate-limits: lower --concurrency or raise --delay" if "HTTP 429" in rf else "")
+             + "\n", "yellow", color))
     if not s["pages_analysed"] and any(("HTTP 40" in e or "HTTP 429" in e or "bot challenge" in e) for e in rep.errors):
         w(_c("  the server refuses automated clients. If the site is yours, retry with "
              "--user-agent '<your browser's UA>'.\n", "yellow", color))

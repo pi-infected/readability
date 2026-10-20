@@ -88,3 +88,15 @@ def test_methodology_keeps_the_advice_pages_no_longer_repeat():
         {"key": "lix", "label": "L", "pillar": "clarity", "unit": "", "why": "w", "advice": "a",
          "ideal": [1, 2], "tolerable": [0, 3], "weight": 1}]}]
     assert methodology(pages)[0]["advice"] == "a"
+
+
+@pytest.mark.render
+def test_pages_without_paragraph_tags_are_still_measured(tmp_path):
+    # Text in bare <div>s, and a <main> that holds only a collapsed menu.
+    body = (f"<div style='width:600px'>{LOREM}</div><div style='width:600px'>{LOREM}</div>"
+            "<ul style='display:none'><li>Home</li><li>Docs</li></ul>")
+    f = tmp_path / "d.html"
+    f.write_text(f"<html lang=en><body style='font:16px/26px sans-serif'><main>"
+                 f"<ul hidden><li>Menu</li></ul></main>{body}</body></html>")
+    els = _probe(f.as_uri())["elements"]
+    assert sum(e["chars"] for e in els) > 300, els
