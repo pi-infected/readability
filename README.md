@@ -10,6 +10,7 @@
 </p>
 
 <p align="center">
+  <a href="https://pypi.org/project/readability-audit/"><img src="https://img.shields.io/pypi/v/readability-audit" alt="PyPI" /></a>
   <a href="#license"><img src="https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue" alt="license" /></a>
   <img src="https://img.shields.io/badge/python-%E2%89%A53.10-3776ab?logo=python&logoColor=white" alt="python ≥ 3.10" />
   <a href="https://github.com/pi-infected/readability/actions"><img src="https://github.com/pi-infected/readability/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
@@ -80,7 +81,7 @@ checks it needs, fixes the CSS or the text the evidence points to, and re-measur
 ## Install (command line)
 
 ```sh
-pip install readability-audit    # or: uv tool install readability-audit
+pip install readability-audit
 pip install playwright && playwright install chromium   # once, for the rendered pass
 readability metrics              # check it works: lists everything you can measure
 ```
